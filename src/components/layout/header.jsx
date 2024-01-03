@@ -5,10 +5,8 @@ import { Button } from '../ui/button';
 
 
 
-import logo from '../../../public/logo.jpg'
-import Image from 'next/image';
+
 import Link from 'next/link';
-import Drawer from './drawer';
 
 
 
