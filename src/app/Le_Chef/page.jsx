@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import fetchLeChef from '../../components/fetch/fetchLeChef'; // Assurez-vous que le chemin est correct
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import SpecificCarousel from '@/components/specific/carousel';
 import { useInView } from 'react-intersection-observer';

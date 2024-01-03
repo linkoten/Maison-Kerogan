@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import fetchBrunch from '../../components/fetch/fetchBrunch'; // Assurez-vous que le chemin est correct
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import SpecificCarousel from '@/components/specific/carousel';

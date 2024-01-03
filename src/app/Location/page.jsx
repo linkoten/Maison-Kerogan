@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import fetchLocation from '../../components/fetch/fetchLocation'; // Assurez-vous que le chemin est correct
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import SpecificCarousel from '@/components/specific/carousel';
