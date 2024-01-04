@@ -17,11 +17,11 @@ export default function Home() {
                     alt='maison_kerogan'
                     src={logo}
                 />
-                <div className='sm:space-x-1 md:space-x-3 lg:space-x-4  absolute top-[68%] xl:top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-[9px] md:text-[12px] lg:text-[16px] xl:text-xl '>
+                <div className='sm:space-x-1 md:space-x-3 lg:space-x-4  absolute top-[68%] xl:top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-[6px] md:text-[12px] lg:text-[16px] xl:text-xl '>
                     {/* Bouton 1 */}
                     <Link
                         href='/Brunch'
-                        className=' transition ease-in-out delay-150   hover:scale-110   '
+                        className=' transition ease-in-out delay-150  hover:scale-110   '
                     >
                         BRUNCH
                     </Link>
@@ -60,7 +60,7 @@ export default function Home() {
                 </div>
             </div>
             <div className='text-vert font-bold space-y-4 bg-slate-200 px-16'>
-                <h1 className='text-center text-5xl'>
+                <h1 className='text-center text-lg md:text-5xl'>
                     LA MAISON KEROGAN
                 </h1>
                 <LeChef />

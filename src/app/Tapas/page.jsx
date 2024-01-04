@@ -57,13 +57,13 @@ const Tapas = () => {
                                     : 'opacity-0 -translate-x-full'
                             }`}
                         >
-                            <h3 className='text-black pt-4 font-bold text-2xl mb-6'>
+                            <h3 className='text-black pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
                                 {item.title}
                             </h3>
-                            <p className='text-black mb-4'>
+                            <p className='text-black text-xs md:text-sm lg:text-md mb-4'>
                                 {item.paragraphe1}
                             </p>
-                            <div className='flex-1 flex flex-col justify-end'>
+                            <div className='flex-1 flex flex-col justify-end text-xs md:text-sm lg:text-md'>
                                 <div className='text-black text-md font-bold'>
                                     {item.journees}
                                 </div>
