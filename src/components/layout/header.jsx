@@ -21,7 +21,7 @@ function header() {
           <div>
             <Link
               href='/'
-              className=' grow transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 flex items-center text-[5px] font-bold uppercase tracking-widest sm:text-sm lg:text-2xl'
+              className=' grow transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 flex items-center text-[3px] font-bold uppercase tracking-widest sm:text-sm lg:text-2xl'
             >
               Logo
             </Link>
@@ -30,25 +30,25 @@ function header() {
           {/* Nav links */}
           <ul className='flex items-center gap-2 sm:gap-6 lg:gap-10'>
             
-            <li className=' transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-[5px] font-medium uppercase tracking-wider  lg:text-sm'>
+            <li className=' transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-[3px] sm:text-sm lg:text-lg font-medium uppercase tracking-wider  '>
               <Link href='/Brunch'>Brunch</Link>
             </li>
-            <li className=' transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-[5px] font-medium uppercase tracking-wider  lg:text-sm '>
+            <li className=' transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-[3px] sm:text-sm lg:text-lg font-medium uppercase tracking-wider   '>
               <Link href='/Location'>Location</Link>
             </li>
-            <li className=' transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-[5px] font-medium uppercase tracking-wider  lg:text-sm '>
+            <li className=' transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-[3px] sm:text-sm lg:text-lg font-medium uppercase tracking-wider  '>
               <Link href='/Salon_de_the'>Salon De Thé</Link>
             </li>
-            <li className=' transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-[5px] font-medium uppercase tracking-wider  lg:text-sm '>
+            <li className=' transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-[3px] sm:text-sm lg:text-lg font-medium uppercase tracking-wider  '>
               <Link href='/Tapas'>Tapas</Link>
             </li>
-            <li className=' transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-[5px] font-medium uppercase tracking-wider  lg:text-sm '>
+            <li className=' transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-[3px] sm:text-sm lg:text-lg font-medium uppercase tracking-wider  '>
                 <Link href='/A_Propos'>A Propos</Link>
             </li>
           </ul>
 
           {/* Shopping cart */}
-          <Button variant='outline' className=' bg-vert flex items-center  justify-between gap-1 lg:gap-6 hover:bg-ocre text-[5px] sm:text-sm '>
+          <Button variant='outline' className=' bg-vert flex items-center  justify-between gap-1 lg:gap-6 hover:bg-ocre text-[3px] sm:text-sm '>
             Réserver
           </Button>
         </nav>
