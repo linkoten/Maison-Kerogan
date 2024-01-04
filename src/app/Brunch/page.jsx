@@ -81,7 +81,7 @@ const Brunch = () => {
                         {item.images && item.images.length > 0 && (
                             <div
                                 ref={newsletterRef}
-                                className={`lg:pl-20 lg:pr-12 w-full lg:col-span-2 transition-transform duration-500 ${
+                                className={` px-6 sm:px-0 lg:pl-20 lg:pr-12 w-full lg:col-span-2 transition-transform duration-500 ${
                                     rocketIsVisible
                                         ? 'opacity-100 translate-x-0'
                                         : 'opacity-0 -translate-x-full'

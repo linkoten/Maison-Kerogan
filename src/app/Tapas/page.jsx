@@ -80,7 +80,7 @@ const Tapas = () => {
                         {item.images && item.images.length > 0 && (
                             <div
                              ref={newsletterRef}
-                            className={`lg:pr-20 w-full lg:col-span-2 transition-transform duration-500 ${
+                            className={`px-6 sm:px-0 lg:pr-20 w-full lg:col-span-2 transition-transform duration-500 ${
     rocketIsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
   }`}>
                                 <SpecificCarousel item={item} className='z-30' />
