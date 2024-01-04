@@ -59,7 +59,7 @@ export default function Home() {
                     </Link>
                 </div>
             </div>
-            <div className='text-vert font-bold space-y-4 bg-slate-200 px-16'>
+            <div className='text-vert font-bold space-y-4 bg-slate-200 px-4 md:px-16'>
                 <h1 className='text-center text-lg md:text-5xl'>
                     LA MAISON KEROGAN
                 </h1>
