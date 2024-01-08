@@ -48,7 +48,7 @@ function header() {
           </ul>
 
           {/* Shopping cart */}
-          <Button variant='outline' className=' bg-vert flex items-center  justify-between gap-1 lg:gap-6 hover:bg-ocre text-[6px] sm:text-xs md:text-sm '>
+          <Button variant='outline' size='sm' className=' bg-vert flex items-center  justify-between gap-1 lg:gap-6 hover:bg-ocre text-[6px] sm:text-xs md:text-sm '>
             Réserver
           </Button>
         </nav>
