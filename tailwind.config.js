@@ -23,10 +23,13 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         vert:  "hsl(var(--vert))",
+        vert2: "hsl(var(--vert2))",
         ocre: "hsl(var(--ocre))",
+        ocre2: "hsl(var(--ocre2))",
         rose: "hsl(var(--rose))",
+        rose2: "hsl(var(--rose2))",
         terracotta: "hsl(var(--terracotta))",
-
+        terracotta2: "hsl(var(--terracotta2))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

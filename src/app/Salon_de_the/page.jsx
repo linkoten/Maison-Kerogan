@@ -51,39 +51,58 @@ const Thé = () => {
                         <div
                             ref={newsletterRef}
                             id='the'
-                            className={`flex flex-col px-12 w-full bg-terracotta border-rose border-2  shadow-rose shadow-lg hover:shadow-2xl hover:shadow-rose lg:order-last transition-transform duration-500  ${
+                            className={`  flex flex-col w-full h-full bg-terracotta border-rose border-2  shadow-rose shadow-lg hover:shadow-2xl hover:shadow-rose lg:order-last transition-transform duration-500  ${
                                 rocketIsVisible
                                     ? 'opacity-100 translate-x-0'
                                     : 'opacity-0 translate-x-full'
                             }`}
                         >
-                            <h3 className=' text-rose  pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
-                                {item.title}
-                            </h3>
-                            <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
-                                {item.paragraphe1}
-                            </p>
-                            <div className='flex-1 flex flex-col justify-end text-xs md:text-sm lg:text-md'>
-                                <div className=' text-white  font-bold'>
-                                    {item.journees}
+                            <div className='flex w-full h-full '>
+                                <div className=' w-1/5 h-full flex items-center justify-center border-r border-terracotta2 '>
+                                    <span className=' -rotate-90 whitespace-nowrap text-3xl text-terracotta2 bold tracking-widest uppercase'>
+                                        {' '}
+                                        {item.title}{' '}
+                                    </span>
                                 </div>
-                                <Separator />
-                                <div className=' text-white  font-bold'>
-                                    {item.horaires}
+                                <div className='flex flex-col w-full h-full px-2'>
+                                    <h3 className=' text-rose  pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
+                                        {item.title}
+                                    </h3>
+                                    <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
+                                        {item.paragraphe1}
+                                    </p>
+                                    <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
+                                        {item.paragraphe2}
+                                    </p>
+                                    <div className='flex flex-col h-full justify-end text-xs md:text-sm lg:text-md'>
+                                        <div className=' text-white  font-bold'>
+                                            {item.journees}
+                                        </div>
+                                        <Separator />
+                                        <div className=' text-white  font-bold'>
+                                            {item.horaires}
+                                        </div>
+                                        <Separator />
+                                        <Button className=' my-4 bg-rose text-black  border border-rose  hover:brightness-110 '>
+                                            Découvre en plus
+                                        </Button>
+                                    </div>
                                 </div>
-                                <Separator />
-                                <Button className=' my-4 bg-rose text-black  border border-rose  hover:brightness-110 '>
-                                    Découvre en plus
-                                </Button>
                             </div>
                         </div>
                         {item.images && item.images.length > 0 && (
-                            <div 
-                            ref={newsletterRef}
-                            className={`px-6 sm:px-0 lg:pl-20 w-full lg:col-span-2 transition-transform duration-500 ${
-    rocketIsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'
-  }`}>
-                                <SpecificCarousel item={item} className='z-30'/>
+                            <div
+                                ref={newsletterRef}
+                                className={`px-6 sm:px-0 lg:pl-20 w-full lg:col-span-2 transition-transform duration-500 ${
+                                    rocketIsVisible
+                                        ? 'opacity-100 translate-x-0'
+                                        : 'opacity-0 -translate-x-full'
+                                }`}
+                            >
+                                <SpecificCarousel
+                                    item={item}
+                                    className='z-30'
+                                />
                             </div>
                         )}
                     </div>

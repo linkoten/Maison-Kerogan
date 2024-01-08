@@ -13,7 +13,7 @@ export default function Home() {
         <div className=' overflow-x-hidden'>
             <div className='relative h-screen w-full flex items-center justify-center '>
                 <Image
-                    className='h-full w-full object-cover'
+                    className='h-full w-full object-contain sm:object-cover '
                     alt='maison_kerogan'
                     src={logo}
                 />

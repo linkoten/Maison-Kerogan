@@ -51,30 +51,43 @@ const Location = () => {
                         <div
                             ref={newsletterRef}
                             id='location'
-                            className={`flex flex-col  px-12 w-full bg-ocre  border-vert border-2  shadow-vert shadow-lg hover:shadow-2xl hover:shadow-vert transition-transform duration-500  ${
+                            className={` flex flex-col w-full h-full bg-ocre  border-vert border-2  shadow-vert shadow-lg hover:shadow-2xl hover:shadow-vert transition-transform duration-500  ${
                                 rocketIsVisible
                                     ? 'opacity-100 translate-x-0'
                                     : 'opacity-0 -translate-x-full'
                             }`}
                         >
-                            <h3 className=' text-vert pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
-                                {item.title}
-                            </h3>
-                            <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
-                                {item.paragraphe1}
-                            </p>
-                            <div className='flex-1 flex flex-col justify-end text-xs md:text-sm lg:text-md'>
-                                <div className=' text-white font-bold'>
-                                    {item.journees}
+                            <div className='flex w-full h-full '>
+                                <div className=' w-1/5 h-full flex items-center justify-center border-r border-ocre2 '>
+                                    <span className=' -rotate-90 whitespace-nowrap text-3xl text-ocre2 bold tracking-widest uppercase'>
+                                        {' '}
+                                        {item.title}{' '}
+                                    </span>
                                 </div>
-                                <Separator />
-                                <div className=' text-white font-bold'>
-                                    {item.horaires}
+                                <div className='flex flex-col w-full h-full px-2'>
+                                    <h3 className=' text-vert pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
+                                        {item.title}
+                                    </h3>
+                                    <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
+                                        {item.paragraphe1}
+                                    </p>
+                                    <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
+                                        {item.paragraphe2}
+                                    </p>
+                                    <div className=' flex flex-col h-full justify-end text-xs md:text-sm lg:text-md'>
+                                        <div className=' text-white font-bold'>
+                                            {item.journees}
+                                        </div>
+                                        <Separator />
+                                        <div className=' text-white font-bold'>
+                                            {item.horaires}
+                                        </div>
+                                        <Separator />
+                                        <Button className=' my-4 bg-vert  border border-vert hover:bg-vert hover:brightness-110 '>
+                                            Découvre en plus
+                                        </Button>
+                                    </div>
                                 </div>
-                                <Separator />
-                                <Button className=' my-4 bg-vert  border border-vert hover:bg-vert hover:brightness-110 '>
-                                    Découvre en plus
-                                </Button>
                             </div>
                         </div>
                         {item.images && item.images.length > 0 && (

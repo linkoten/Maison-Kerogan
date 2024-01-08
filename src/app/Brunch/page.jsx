@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import fetchBrunch from '../../components/fetch/fetchBrunch'; // Assurez-vous que le chemin est correct
@@ -51,30 +51,44 @@ const Brunch = () => {
                         <div
                             ref={newsletterRef}
                             id='brunch'
-                            className={`flex flex-col w-full px-12 border-ocre border-2 shadow-ocre shadow-lg hover:shadow-2xl hover:shadow-ocre bg-vert lg:order-last transition-transform duration-500  ${
+                            className={` flex flex-col w-full h-full border-ocre border-2 shadow-ocre shadow-lg hover:shadow-2xl hover:shadow-ocre bg-vert lg:order-last transition-transform duration-500  ${
                                 rocketIsVisible
                                     ? 'opacity-100 translate-x-0'
                                     : 'opacity-0 translate-x-full'
                             }`}
                         >
-                            <h3 className=' text-ocre  pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
-                                {item.title}
-                            </h3>
-                            <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
-                                {item.paragraphe1}
-                            </p>
-                            <div className='flex-1 flex flex-col justify-end text-xs md:text-sm lg:text-md'>
-                                    <div className=' text-white font-bold'>
-                                        {item.journees}
+                            <div className='flex w-full h-full '>
+                                <div className=' w-1/5 h-full flex items-center justify-center border-r border-vert2 '>
+                                    <span className=' -rotate-90 whitespace-nowrap text-3xl text-vert2 bold tracking-widest uppercase'>
+                                        {' '}
+                                        {item.title}{' '}
+                                    </span>
+                                </div>
+                                <div className='flex flex-col w-full h-full px-2'>
+                                    <h3 className=' text-ocre  pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
+                                        {item.title}
+                                    </h3>
+                                    <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
+                                        {item.paragraphe1}
+                                    </p>
+                                    <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
+                                        {item.paragraphe2}
+                                    </p>
+
+                                    <div className=' flex flex-col h-full justify-end text-xs md:text-sm lg:text-md'>
+                                        <div className=' text-white font-bold'>
+                                            {item.journees}
+                                        </div>
+                                        <Separator />
+                                        <div className=' text-white font-bold'>
+                                            {item.horaires}
+                                        </div>
+                                        <Separator />
+                                        <Button className=' my-4 bg-ocre text-white text-sm md:text-lg border border-ocre hover:brightness-110 '>
+                                            Découvre en plus
+                                        </Button>
                                     </div>
-                                    <Separator />
-                                    <div className=' text-white font-bold'>
-                                        {item.horaires}
-                                    </div>
-                                    <Separator />
-                                    <Button className=' my-4 bg-ocre text-white text-sm md:text-lg border border-ocre hover:brightness-110 '>
-                                        Découvre en plus
-                                    </Button>
+                                </div>
                             </div>
                         </div>
 
