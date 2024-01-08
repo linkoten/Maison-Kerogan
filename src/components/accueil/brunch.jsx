@@ -1,13 +1,13 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import fetchBrunch from '../../components/fetch/fetchBrunch'; // Assurez-vous que le chemin est correct
+import fetchBrunch from '@/components/fetch/fetchBrunch'; // Assurez-vous que le chemin est correct
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import SpecificCarousel from '@/components/specific/carousel';
 import { useInView } from 'react-intersection-observer';
 
-const Brunch = () => {
+const BrunchExtrait = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const Brunch = () => {
                                 {item.title}
                             </h3>
                             <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
-                                {item.paragraphe1}
+                                {item.extrait}
                             </p>
                             <div className='flex-1 flex flex-col justify-end text-xs md:text-sm lg:text-md'>
                                     <div className=' text-white font-bold'>
@@ -97,4 +97,4 @@ const Brunch = () => {
     );
 };
 
-export default Brunch;
+export default BrunchExtrait;

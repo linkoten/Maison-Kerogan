@@ -10,6 +10,24 @@ const fetchLocation = async () => {
       query MyQuery {
         locationsEvenementielles {
           paragraphe1
+          paragraphe2
+          extrait
+          photosGaleries {
+            altText
+            id
+            url
+            width
+            size
+            height
+          }
+          menu {
+            altText
+            id
+            url
+            width
+            size
+            height
+          }
           id
           slug
           title

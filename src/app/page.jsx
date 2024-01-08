@@ -1,8 +1,8 @@
-import Brunch from './Brunch/page';
+import BrunchExtrait from '@/components/accueil/brunch';
 import LeChef from './Le_Chef/page';
-import Location from './Location/page';
-import Tapas from './Tapas/page';
-import Thé from './Salon_de_the/page';
+import LocationExtrait from '@/components/accueil/location';
+import TapasExtrait from '@/components/accueil/tapas';
+import ThéExtrait from '@/components/accueil/thé';
 import A_Propos from './A_Propos/page';
 import Image from 'next/image';
 import logo from '../../public/logo-principal.jpg';
@@ -64,10 +64,10 @@ export default function Home() {
                     LA MAISON KEROGAN
                 </h1>
                 <LeChef />
-                <Brunch />
-                <Tapas />
-                <Thé />
-                <Location />
+                <BrunchExtrait />
+                <TapasExtrait />
+                <ThéExtrait />
+                <LocationExtrait />
                 <A_Propos />
             </div>
         </div>

@@ -10,6 +10,7 @@ const fetchLeChef = async () => {
       query MyQuery {
         leChefs {
           paragraphe1
+          
           id
           slug
           title
