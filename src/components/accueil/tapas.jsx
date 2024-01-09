@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import SpecificCarousel from '@/components/specific/carousel';
 import { useInView } from 'react-intersection-observer';
+import Image from 'next/image';
+import logo from '../../../public/format feuille/rose.jpg';
 
 const TapasExtrait = () => {
     const [data, setData] = useState([]);
@@ -57,9 +59,17 @@ const TapasExtrait = () => {
                                     : 'opacity-0 -translate-x-full'
                             }`}
                         >
-                            <h3 className='text-black pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
+                            <div className='flex w-full pt-4 mb-6 justify-between'>
+                            
+                            <h3 className=' text-black  font-bold text-lg md:text-xl lg:text-2xl '>
                                 {item.title}
                             </h3>
+                            <Image
+                                        className=' absolute top-4 right-4 object-cover h-10 w-10 '
+                                        alt='maison_kerogan'
+                                        src={logo}
+                                    />
+                            </div>
                             <p className='text-black text-xs md:text-sm lg:text-md mb-4'>
                                 {item.extrait}
                             </p>

@@ -6,6 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import SpecificCarousel from '@/components/specific/carousel';
 import { useInView } from 'react-intersection-observer';
+import Image from 'next/image';
+import logo from '../../../public/format moyen/vert.jpg';
+
 
 const Brunch = () => {
     const [data, setData] = useState([]);
@@ -65,10 +68,12 @@ const Brunch = () => {
                                     </span>
                                 </div>
                                 <div className='flex flex-col w-full h-full px-2'>
-                                    <h3 className=' text-ocre  pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
-                                        {item.title}
-                                    </h3>
-                                    <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
+                                    <Image
+                                        className=' z-50 object-cover mx-auto  h-1/2 w-1/2 lg:h-full lg:w-full transform   '
+                                        alt='maison_kerogan'
+                                        src={logo}
+                                    />
+                                    <p className=' text-white text-xs md:text-sm lg:text-md mb-4 pt-8'>
                                         {item.paragraphe1}
                                     </p>
                                     <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>

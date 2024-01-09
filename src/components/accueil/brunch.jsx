@@ -6,6 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import SpecificCarousel from '@/components/specific/carousel';
 import { useInView } from 'react-intersection-observer';
+import Image from 'next/image';
+import logo from '../../../public/format feuille/vert.jpg';
+
 
 const BrunchExtrait = () => {
     const [data, setData] = useState([]);
@@ -51,15 +54,23 @@ const BrunchExtrait = () => {
                         <div
                             ref={newsletterRef}
                             id='brunch'
-                            className={`flex flex-col w-full px-12 border-ocre border-2 shadow-ocre shadow-lg hover:shadow-2xl hover:shadow-ocre bg-vert lg:order-last transition-transform duration-500  ${
+                            className={`relative flex flex-col w-full px-12 border-ocre border-2 shadow-ocre shadow-lg hover:shadow-2xl hover:shadow-ocre bg-vert lg:order-last transition-transform duration-500  ${
                                 rocketIsVisible
                                     ? 'opacity-100 translate-x-0'
                                     : 'opacity-0 translate-x-full'
                             }`}
                         >
-                            <h3 className=' text-ocre  pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
+                            <div className='flex w-full pt-4 mb-6 justify-between'>
+                            
+                            <h3 className=' text-ocre  font-bold text-lg md:text-xl lg:text-2xl '>
                                 {item.title}
                             </h3>
+                            <Image
+                                        className=' absolute top-4 right-4 object-cover h-10 w-10 '
+                                        alt='maison_kerogan'
+                                        src={logo}
+                                    />
+                            </div>
                             <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
                                 {item.extrait}
                             </p>
