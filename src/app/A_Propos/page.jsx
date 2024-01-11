@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 
+import Map from '@/components/dynamic';
 import {
     Card,
     CardContent,
@@ -17,6 +18,8 @@ import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
 
 const a_propos = () => {
     return (
+        <>
+        <Map />
         <div className='grid grid-cols-1 lg:grid-cols-3 space-y-4 lg:space-y-0 place-items-center '>
             <Card className=' m-auto bg-white text-black border-ocre shadow-xl shadow-ocre  hover:bg-slate-100'>
                 <CardHeader>
@@ -85,6 +88,7 @@ const a_propos = () => {
                 </CardFooter>
             </Card>
         </div>
+        </>
     );
 };
 
