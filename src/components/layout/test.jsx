@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import {
     Sheet,
@@ -10,10 +12,14 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../../public/format texte/blanc.jpg';
+ 
+import { usePathname } from 'next/navigation'
 
 
 
 const test = () => {
+    const pathname = usePathname()
+
     return (
         <nav className=' fixed z-30 bg-white h-20 w-full sm:hidden'>
             
@@ -21,9 +27,9 @@ const test = () => {
             
                 <SheetTrigger className='flex' >
                     <div className=' p-8 px-8 space-y-2 cursor-pointer pl-4 '>
-                        <span className='block w-8 h-1 bg-ocre'></span>
-                        <span className='block w-8 h-1 bg-ocre'></span>
-                        <span className='block w-8 h-1 bg-ocre'></span>
+                        <span className='block w-8 h-[2px] bg-ocre'></span>
+                        <span className='block w-4 h-[2px] bg-ocre'></span>
+                        <span className='block w-8 h-[2px] bg-ocre'></span>
                     </div>
                     <Image
                                         className=' my-auto object-cover mx-auto  h-1/2 w-1/2   '
@@ -34,26 +40,25 @@ const test = () => {
                 <SheetContent>
                     <SheetHeader>
                         <SheetTitle>
-                            Are you absolutely sure?
                         </SheetTitle>
                         <SheetDescription>
-                            <div className='flex flex-col h-full  text-3xl space-y-20 pt-12 text-black'>
-                                <Link className='' href='/'>
+                            <div className='flex flex-col h-full  text-3xl space-y-20 pt-12 px-8 text-black'>
+                                <Link className={`link  ${pathname === '/' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110 hover:bold'}`} href='/'>
                                     ACCUEIL
                                 </Link>
-                                <Link className='' href='/Brunch'>
+                                <Link className={`link  ${pathname === '/Brunch' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110  hover:bold'}`} href='/Brunch'>
                                     BRUNCH
                                 </Link>
-                                <Link className='' href='/Tapas'>
+                                <Link className={`link  ${pathname === '/Tapas' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110  hover:bold'}`} href='/Tapas'>
                                     TAPAS
                                 </Link>
                                 <Link
-                                    className=''
+                                    className={`link  ${pathname === '/Salon_de_the' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110  hover:bold'}`}
                                     href='/Salon_de_the'
                                 >
                                     TEA TIME
                                 </Link>
-                                <Link className='' href='/Location'>
+                                <Link className={`link  ${pathname === '/Location' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110  hover:bold'}`} href='/Location'>
                                     EVENEMENTIELLE
                                 </Link>
                             </div>
