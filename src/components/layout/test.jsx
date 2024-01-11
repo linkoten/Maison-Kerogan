@@ -39,8 +39,7 @@ const test = () => {
                 </SheetTrigger>
                 <SheetContent>
                     <SheetHeader>
-                        <SheetTitle>
-                        </SheetTitle>
+                        
                         <SheetDescription>
                             <div className='flex flex-col h-full  text-3xl space-y-20 pt-12 px-8 text-black'>
                                 <Link className={`link  ${pathname === '/' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110 hover:bold'}`} href='/'>
