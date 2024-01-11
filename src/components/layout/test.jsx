@@ -17,7 +17,7 @@ import { usePathname } from 'next/navigation'
 
 
 
-const test = () => {
+const Test = () => {
     const pathname = usePathname()
 
     return (
@@ -69,4 +69,4 @@ const test = () => {
     );
 };
 
-export default test;
+export default Test;
