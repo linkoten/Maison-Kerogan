@@ -6,39 +6,62 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
-  } from "@/components/ui/sheet"
+} from '@/components/ui/sheet';
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from '../../../public/format texte/blanc.jpg';
+
+
 
 const test = () => {
     return (
-        <Sheet >
-  <SheetTrigger>
-  <div className="fixed top-10 left-10 space-y-2 cursor-pointer pl-4 z-30 sm:hidden ">
-  <span className="block w-8 h-1 bg-gray-600"></span>
-          <span className="block w-8 h-1 bg-gray-600"></span>
-          <span className="block w-8 h-1 bg-gray-600"></span>
-          </div>
-          </SheetTrigger>
-          
-  <SheetContent>
-    <SheetHeader >
-      <SheetTitle>Are you absolutely sure? 
-      
-
-      
-
-      </SheetTitle>
-      <SheetDescription>
-      <div className='flex flex-col text-3xl space-y-12 text-black'>
-      <Link className='pt-8' href="/">Accueil</Link>
-      <Link className='pt-10' href="/Tapas">Tapas</Link>
-      <Link className='pt-12' href="/Brunch">Brunch</Link>
-      </div>
-      </SheetDescription>
-
-    </SheetHeader>
-  </SheetContent>
-</Sheet>
+        <nav className=' fixed z-30 bg-white h-20 w-full sm:hidden'>
+            
+            <Sheet>
+            
+                <SheetTrigger className='flex' >
+                    <div className=' p-8 px-8 space-y-2 cursor-pointer pl-4 '>
+                        <span className='block w-8 h-1 bg-ocre'></span>
+                        <span className='block w-8 h-1 bg-ocre'></span>
+                        <span className='block w-8 h-1 bg-ocre'></span>
+                    </div>
+                    <Image
+                                        className=' my-auto object-cover mx-auto  h-1/2 w-1/2   '
+                                        alt='maison_kerogan'
+                                        src={logo}
+                                    />
+                </SheetTrigger>
+                <SheetContent>
+                    <SheetHeader>
+                        <SheetTitle>
+                            Are you absolutely sure?
+                        </SheetTitle>
+                        <SheetDescription>
+                            <div className='flex flex-col h-full  text-3xl space-y-20 pt-12 text-black'>
+                                <Link className='' href='/'>
+                                    ACCUEIL
+                                </Link>
+                                <Link className='' href='/Brunch'>
+                                    BRUNCH
+                                </Link>
+                                <Link className='' href='/Tapas'>
+                                    TAPAS
+                                </Link>
+                                <Link
+                                    className=''
+                                    href='/Salon_de_the'
+                                >
+                                    TEA TIME
+                                </Link>
+                                <Link className='' href='/Location'>
+                                    EVENEMENTIELLE
+                                </Link>
+                            </div>
+                        </SheetDescription>
+                    </SheetHeader>
+                </SheetContent>
+            </Sheet>
+        </nav>
     );
 };
 
