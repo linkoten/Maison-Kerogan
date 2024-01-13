@@ -11,7 +11,7 @@ import logo from '../../../public/format texte/vert.jpg';
 
 //version web
 
-function header() {
+function Header() {
     const pathname = usePathname()
 
     return (
@@ -65,4 +65,4 @@ function header() {
     );
 }
 
-export default header;
+export default Header;
