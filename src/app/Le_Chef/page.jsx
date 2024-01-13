@@ -62,11 +62,6 @@ const LeChef = () => {
                             <p className=' text-black text-xs md:text-sm lg:text-md mb-4'>
                                 {item.paragraphe1}
                             </p>
-                            <div className='flex-1 flex flex-col justify-end'>
-                                <Button className='my-4 bg-vert text-sm md:text-lg border border-ocre hover:bg-ocre '>
-                                    Découvre en plus
-                                </Button>
-                            </div>
                         </div>
                         {item.images && item.images.length > 0 && (
                             <div

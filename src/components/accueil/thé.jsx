@@ -8,6 +8,7 @@ import SpecificCarousel from '@/components/specific/carousel';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import logo from '../../../public/format feuille/rouge.jpg';
+import Link from 'next/link';
 
 const ThéExtrait = () => {
     const [data, setData] = useState([]);
@@ -83,7 +84,7 @@ const ThéExtrait = () => {
                                 </div>
                                 <Separator />
                                 <Button className=' my-4 bg-rose text-black  border border-rose  hover:brightness-110 '>
-                                    Découvre en plus
+                                <Link href="/Salon_de_the">Découvrez En Plus</Link>
                                 </Button>
                             </div>
                         </div>

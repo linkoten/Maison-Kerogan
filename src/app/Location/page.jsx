@@ -83,14 +83,12 @@ const Location = () => {
                                         <div className=' text-white font-bold'>
                                             {item.journees}
                                         </div>
-                                        <Separator />
+                                        <Separator className='bg-ocre2' />
                                         <div className=' text-white font-bold'>
                                             {item.horaires}
                                         </div>
-                                        <Separator />
-                                        <Button className=' my-4 bg-vert  border border-vert hover:bg-vert hover:brightness-110 '>
-                                            Découvre en plus
-                                        </Button>
+                                        <Separator className='mb-4 bg-ocre2' />
+                                        
                                     </div>
                                 </div>
                             </div>

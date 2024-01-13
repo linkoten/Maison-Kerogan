@@ -82,14 +82,12 @@ const Tapas = () => {
                                         <div className='text-black text-md font-bold'>
                                             {item.journees}
                                         </div>
-                                        <Separator />
+                                        <Separator className=' bg-rose2' />
                                         <div className='text-black text-md font-bold'>
                                             {item.horaires}
                                         </div>
-                                        <Separator />
-                                        <Button className='my-4 bg-black text-white border border-black  hover:brightness-110'>
-                                            Découvre en plus
-                                        </Button>
+                                        <Separator className='mb-4 bg-rose2' />
+                                        
                                     </div>
                                 </div>
                             </div>

@@ -56,10 +56,10 @@ const a_propos = () => {
                 <CardContent className='text-vert'>Logo</CardContent>
                 <CardFooter>
                     <div className='flex flex-row space-x-8 text-4xl'>
-                        <Link href='/Le_Chef'>
+                        <Link href='https://www.facebook.com/iletudycafe'>
                         <FaFacebook className='bg-slate-200 box-content px-3  rounded-lg shadow-black/30 cursor-pointer hover:shadow-inner hover:shadow-black/30 duration-300 hover:text-blue-600' />
                         </Link>
-                        <Link href='/Le_Chef'> 
+                        <Link href='https://www.instagram.com/cafedelaplage.iletudy/?hl=en'> 
                         <FaInstagramSquare className='bg-slate-200 box-content px-3 rounded-lg shadow-black/30 cursor-pointer hover:shadow-inner hover:shadow-black/30 duration-300 hover:text-pink-600' />
                         </Link>  
                     </div>
@@ -78,10 +78,10 @@ const a_propos = () => {
                 <CardContent className='text-vert'>Logo</CardContent>
                 <CardFooter>
                     <div className='flex flex-row space-x-8 text-4xl'>
-                        <Link href='/Le_Chef'>
+                        <Link href='https://www.facebook.com/CreperieDeLAbri'>
                         <FaFacebook className='bg-slate-200 box-content px-3  rounded-lg shadow-black/30 cursor-pointer hover:shadow-inner hover:shadow-black/30 duration-300 hover:text-blue-600' />
                         </Link>
-                        <Link href='/Le_Chef'> 
+                        <Link href='https://www.instagram.com/creperiedelabri/?hl=en'> 
                         <FaInstagramSquare className='bg-slate-200 box-content px-3  rounded-lg shadow-black/30 cursor-pointer hover:shadow-inner hover:shadow-black/30 duration-300 hover:text-pink-600' />
                         </Link>  
                     </div>

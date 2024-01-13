@@ -8,6 +8,7 @@ import SpecificCarousel from '@/components/specific/carousel';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import logo from '../../../public/format feuille/jaune.jpg';
+import Link from 'next/link';
 
 
 const LocationExtrait = () => {
@@ -84,7 +85,7 @@ const LocationExtrait = () => {
                                 </div>
                                 <Separator />
                                 <Button className=' my-4 bg-vert  border border-vert hover:bg-vert hover:brightness-110 '>
-                                    Découvre en plus
+                                <Link href="/Location">Découvrez En Plus</Link>
                                 </Button>
                             </div>
                         </div>

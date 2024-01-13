@@ -84,14 +84,12 @@ const Brunch = () => {
                                         <div className=' text-white font-bold'>
                                             {item.journees}
                                         </div>
-                                        <Separator />
+                                        <Separator className=' bg-vert2' />
                                         <div className=' text-white font-bold'>
                                             {item.horaires}
                                         </div>
-                                        <Separator />
-                                        <Button className=' my-4 bg-ocre text-white text-sm md:text-lg border border-ocre hover:brightness-110 '>
-                                            Découvre en plus
-                                        </Button>
+                                        <Separator className='mb-4 bg-vert2' />
+                                        
                                     </div>
                                 </div>
                             </div>

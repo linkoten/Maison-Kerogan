@@ -82,14 +82,12 @@ const Thé = () => {
                                         <div className=' text-white  font-bold'>
                                             {item.journees}
                                         </div>
-                                        <Separator />
+                                        <Separator className='bg-terracotta2' />
                                         <div className=' text-white  font-bold'>
                                             {item.horaires}
                                         </div>
-                                        <Separator />
-                                        <Button className=' my-4 bg-rose text-black  border border-rose  hover:brightness-110 '>
-                                            Découvre en plus
-                                        </Button>
+                                        <Separator className='mb-4 bg-terracotta2' />
+                                        
                                     </div>
                                 </div>
                             </div>
