@@ -41,7 +41,7 @@ const Test = () => {
                 <SheetContent>
                     <SheetHeader>
                         
-                        <SheetDescription className='flex flex-col h-full  text-3xl space-y-20 pt-12 px-8 text-black'>
+                        <SheetDescription className='flex flex-col h-full  text-lg space-y-20 pt-12 px-8 text-black '>
                         
                             
                             <SheetClose asChild >

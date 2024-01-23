@@ -46,7 +46,7 @@ const Thé = () => {
     }, [rocketIsVisible]);
 
     return (
-        <div>
+        <div className='overflow-x-hidden'>
             {data.map((item) => (
                 <div key={item.id}>
                     <div className='flex px-4 mb-10 space-y-4 grid grid-cols-1  lg:grid-cols-3 lg:px-0  lg:space-y-0 pt-24 sm:pt-0'>
