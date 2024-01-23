@@ -8,6 +8,7 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
+    SheetClose
 } from '@/components/ui/sheet';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -40,27 +41,38 @@ const Test = () => {
                 <SheetContent>
                     <SheetHeader>
                         
-                        <SheetDescription>
-                            <div className='flex flex-col h-full  text-3xl space-y-20 pt-12 px-8 text-black'>
+                        <SheetDescription className='flex flex-col h-full  text-3xl space-y-20 pt-12 px-8 text-black'>
+                        
+                            
+                            <SheetClose asChild >
                                 <Link className={`link  ${pathname === '/' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110 hover:bold'}`} href='/'>
                                     ACCUEIL
                                 </Link>
+                            </SheetClose>
+                            <SheetClose asChild >
                                 <Link className={`link  ${pathname === '/Brunch' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110  hover:bold'}`} href='/Brunch'>
                                     BRUNCH
                                 </Link>
+                                </SheetClose>
+                                <SheetClose asChild >
                                 <Link className={`link  ${pathname === '/Tapas' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110  hover:bold'}`} href='/Tapas'>
                                     TAPAS
                                 </Link>
+                                </SheetClose>
+                                <SheetClose asChild >
                                 <Link
                                     className={`link  ${pathname === '/Salon_de_the' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110  hover:bold'}`}
                                     href='/Salon_de_the'
                                 >
                                     TEA TIME
                                 </Link>
+                                </SheetClose>
+                                <SheetClose asChild >
                                 <Link className={`link  ${pathname === '/Location' ? 'text-ocre border-b border-ocre scale-125 hover:ocre' : 'border-b border-vert hover:text-vert hover:scale-110  hover:bold'}`} href='/Location'>
                                     EVENEMENTIELLE
                                 </Link>
-                            </div>
+                                </SheetClose>
+                            
                         </SheetDescription>
                     </SheetHeader>
                 </SheetContent>
