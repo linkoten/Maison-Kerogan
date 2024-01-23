@@ -41,9 +41,9 @@ const MyMap = () => {
     return (
         <MapContainer
             center={[markers[0].latitude, markers[0].longitude]}
-            zoom={10}
-            style={{ width: '50%', height: '300px' }}
-            className=' mx-auto border border-black'
+            zoom={11}
+            style={{ width: '100%', height: '600px' }}
+            className=' mx-auto border border-black z-10'
         >
             <TileLayer
                 url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'

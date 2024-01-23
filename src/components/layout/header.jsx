@@ -15,7 +15,7 @@ function Header() {
     const pathname = usePathname()
 
     return (
-        <header className=' hidden sm:block sticky top-0 bg-vert text-ocre rounded-xl z-10 py-6 m-5 mb-4  '>
+        <header className=' hidden sm:block sticky top-0 bg-vert text-ocre rounded-xl z-30 py-6 m-5 mb-4  '>
             <nav className='  container flex items-center justify-between'>
                 {/* Logo */}
                 

@@ -9,7 +9,6 @@ import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import logo from '../../../public/format moyen/vert.jpg';
 
-
 const Brunch = () => {
     const [data, setData] = useState([]);
 
@@ -89,7 +88,6 @@ const Brunch = () => {
                                             {item.horaires}
                                         </div>
                                         <Separator className='mb-4 bg-vert2' />
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -107,6 +105,38 @@ const Brunch = () => {
                                 <SpecificCarousel item={item} />
                             </div>
                         )}
+                    </div>
+                    <h3 className=' text-center text-3xl font-bold'>
+                        MENU
+                    </h3>
+                    <div className='mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 px-4'>
+                        {item.menu &&
+                            item.menu.length > 0 &&
+                            item.menu.map((image) => (
+                                <Image
+                                    width={image.width}
+                                    height={image.height}
+                                    className='h-full w-auto'
+                                    alt={image.altText || 'Image'}
+                                    src={image.url}
+                                />
+                            ))}
+                    </div>
+                    <h3 className=' text-center text-3xl font-bold'>
+                        GALERIE
+                    </h3>
+                    <div className='mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 px-4'>
+                        {item.photosGaleries &&
+                            item.photosGaleries.length > 0 &&
+                            item.photosGaleries.map((image) => (
+                                <Image
+                                    width={image.width}
+                                    height={image.height}
+                                    className='h-full w-auto'
+                                    alt={image.altText || 'Image'}
+                                    src={image.url}
+                                />
+                            ))}
                     </div>
                 </div>
             ))}
