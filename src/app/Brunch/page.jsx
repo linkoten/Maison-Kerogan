@@ -114,6 +114,7 @@ const Brunch = () => {
                             item.menu.length > 0 &&
                             item.menu.map((image) => (
                                 <Image
+                                    key={image.id}
                                     width={image.width}
                                     height={image.height}
                                     className='h-full w-auto'
@@ -130,6 +131,7 @@ const Brunch = () => {
                             item.photosGaleries.length > 0 &&
                             item.photosGaleries.map((image) => (
                                 <Image
+                                    key={image.id}
                                     width={image.width}
                                     height={image.height}
                                     className='h-full w-auto'
