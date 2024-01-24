@@ -62,7 +62,7 @@ const ThéExtrait = () => {
                         >
                             <div className='flex w-full pt-4 mb-6 justify-between'>
                             
-                            <h3 className=' text-rose  font-bold text-lg md:text-xl lg:text-2xl '>
+                            <h3 className=' text-rose  font-bold text-lg md:text-xl lg:text-2xl uppercase'>
                                 {item.title}
                             </h3>
                             <Image
