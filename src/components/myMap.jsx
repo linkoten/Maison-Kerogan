@@ -24,12 +24,7 @@ const markers = [
         latitude: 47.845576755279566, // Exemple de latitude
         longitude: -4.168278930831729, // Exemple de longitude
     },
-    {
-        nom: "La Creperie De L'Abri",
-        adresse: '15 Quai Jacques de Thézac 29120 Combrit France',
-        latitude: 47.87439176539229, // Exemple de latitude
-        longitude: -4.120861617219515, // Exemple de longitude
-    },
+    
 ];
 
 console.log(markers);
@@ -42,7 +37,7 @@ const MyMap = () => {
         <MapContainer
             center={[markers[0].latitude, markers[0].longitude]}
             zoom={10}
-            style={{ width: '100%', height: '600px' }}
+            style={{ width: '50%', height: '300px ' }}
             className=' mx-auto border border-black z-10'
         >
             <TileLayer
