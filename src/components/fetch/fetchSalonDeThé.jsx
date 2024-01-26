@@ -9,6 +9,7 @@ const fetchThé = async () => {
     const query = `
       query MyQuery {
         salonDeThes {
+          part1
           paragraphe1
           paragraphe2
           extrait
@@ -41,6 +42,33 @@ const fetchThé = async () => {
           }
           journees
           horaires
+          part2
+        part2Paragraphe1
+        part2Paragraphe2
+        part2Images {
+          altText
+          id
+          url
+          width
+          size
+          height
+        }
+        part2Journees
+        part2Horaires
+
+        part3
+        part3Paragraphe1
+        part3Paragraphe2
+        part3Images {
+          altText
+          id
+          url
+          width
+          size
+          height
+        }
+        part3Journees
+        part3Horaires
         }
       }
     `;

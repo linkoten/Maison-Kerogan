@@ -18,7 +18,7 @@ import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
 
 const a_propos = () => {
     return (
-        <div className='grid grid-cols-2 '>
+        <div className='grid grid-cols-2 overflow-x-hidden  '>
         <Map className='w-full' />
         <div className='grid grid-cols-1 lg:grid-cols-2  space-y-2  lg:space-y-0 place-items-center w-full mx-auto h-[600px] xl:px-4 '>
             <Card className='  m-auto bg-white text-black border-ocre shadow-xl shadow-ocre  hover:bg-slate-100 w-[150px] lg:w-[220px]'>

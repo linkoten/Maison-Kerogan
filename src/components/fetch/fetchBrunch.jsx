@@ -9,6 +9,7 @@ const fetchBrunch = async () => {
     const query = `
       query MyQuery {
         brunches {
+          part1
           paragraphe1
           paragraphe2
           extrait
@@ -41,6 +42,48 @@ const fetchBrunch = async () => {
           }
           journees
           horaires
+          part2
+        part2Paragraphe1
+        part2Paragraphe2
+        part2Images {
+          altText
+          id
+          url
+          width
+          size
+          height
+        }
+        part2Journees
+        part2Horaires
+
+        part3
+        part3Paragraphe1
+        part3Paragraphe2
+        part3Images {
+          altText
+          id
+          url
+          width
+          size
+          height
+        }
+        part3Journees
+        part3Horaires
+
+        part4
+        part4Paragraphe1
+        part4Paragraphe2
+        part4Images {
+          altText
+          id
+          url
+          width
+          size
+          height
+        }
+        part4Journees
+        part4Horaires
+
         }
       }
     `;

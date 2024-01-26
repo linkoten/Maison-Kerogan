@@ -1,14 +1,14 @@
 import { GraphQLClient } from 'graphql-request';
 
-
-
 const fetchLocation = async () => {
-    const endpoint = 'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clq25gs7i4n8301tedkg9hbzt/master';
+    const endpoint =
+        'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clq25gs7i4n8301tedkg9hbzt/master';
     const graphQLClient = new GraphQLClient(endpoint);
-  
+
     const query = `
       query MyQuery {
         locationsEvenementielles {
+          part1
           paragraphe1
           paragraphe2
           extrait
@@ -41,16 +41,45 @@ const fetchLocation = async () => {
           }
           journees
           horaires
+          part2
+        part2Paragraphe1
+        part2Paragraphe2
+        part2Images {
+          altText
+          id
+          url
+          width
+          size
+          height
         }
+        part2Journees
+        part2Horaires
+
+        part3
+        part3Paragraphe1
+        part3Paragraphe2
+        part3Images {
+          altText
+          id
+          url
+          width
+          size
+          height
+        }
+        part3Journees
+        part3Horaires
+
+        }
+        
       }
     `;
-  
+
     try {
-      const data = await graphQLClient.request(query);
-      return data.locationsEvenementielles; // Retourne les données brunches
+        const data = await graphQLClient.request(query);
+        return data.locationsEvenementielles; // Retourne les données brunches
     } catch (error) {
-      console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error);
     }
-  };
-  
-  export default fetchLocation;
+};
+
+export default fetchLocation;
