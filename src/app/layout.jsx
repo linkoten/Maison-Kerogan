@@ -2,6 +2,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/header';
 import Test from '@/components/layout/test';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 
 
@@ -18,7 +20,9 @@ export default function RootLayout({ children }) {
             <body>
             <Header />
             <Test />
-                <main>{children}</main>
+                <main>{children}
+                <SpeedInsights />
+</main>
             </body>
         </html>
     );
