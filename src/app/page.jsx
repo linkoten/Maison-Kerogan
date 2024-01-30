@@ -1,5 +1,4 @@
 import BrunchExtrait from '@/components/accueil/brunch';
-import LeChef from './Le_Chef/page';
 import LocationExtrait from '@/components/accueil/location';
 import TapasExtrait from '@/components/accueil/tapas';
 import ThéExtrait from '@/components/accueil/thé';

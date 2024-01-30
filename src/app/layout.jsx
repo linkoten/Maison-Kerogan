@@ -2,7 +2,9 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/header';
 import Test from '@/components/layout/test';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from '@vercel/analytics/react';
+
 
 
 
@@ -22,6 +24,7 @@ export default function RootLayout({ children }) {
             <Test />
                 <main>{children}
                 <SpeedInsights />
+                <Analytics />
 </main>
             </body>
         </html>
