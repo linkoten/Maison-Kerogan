@@ -16,8 +16,6 @@ export default function Home() {
                     className='h-full w-full object-contain scale-[1.8] sm:object-cover sm:scale-100 '
                     alt='maison_kerogan'
                     src={logo}
-                    placeholder="blur"
-                    priority
 
                 />
                 <div className='sm:space-x-1 md:space-x-3 lg:space-x-4  absolute top-[68%] xl:top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-[6px] sm:text-[10px] md:text-[12px] lg:text-[16px] xl:text-xl '>
