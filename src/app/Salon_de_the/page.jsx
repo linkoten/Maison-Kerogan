@@ -18,7 +18,6 @@ const Thé = () => {
         const getData = async () => {
             const result = await fetchThé();
             setData(result);
-            console.log(result);
         };
 
         getData();

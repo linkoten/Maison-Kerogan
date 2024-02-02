@@ -19,7 +19,6 @@ const Tapas = () => {
         const getData = async () => {
             const result = await fetchTapas();
             setData(result);
-            console.log(result);
         };
 
         getData();

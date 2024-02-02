@@ -21,7 +21,6 @@ const Location = () => {
         const getData = async () => {
             const result = await fetchLocation();
             setData(result);
-            console.log(result);
         };
 
         getData();

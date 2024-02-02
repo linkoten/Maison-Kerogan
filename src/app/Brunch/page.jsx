@@ -21,7 +21,6 @@ const Brunch = () => {
         const getData = async () => {
             const result = await fetchBrunch();
             setData(result);
-            console.log(result);
         };
 
         getData();

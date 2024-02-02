@@ -30,8 +30,8 @@ const carousel3 = ({ item }) => (
           </CarouselItem>
         ))}
     </CarouselContent>
-    <CarouselPrevious className='bg-ocre z-30' />
-    <CarouselNext className='bg-ocre z-30' />
+    <CarouselPrevious className='z-30' />
+    <CarouselNext className='z-30' />
   </ReactCarousel>
 );
 

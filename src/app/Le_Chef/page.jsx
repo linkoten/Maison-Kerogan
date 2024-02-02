@@ -13,7 +13,6 @@ const LeChef = () => {
         const getData = async () => {
             const result = await fetchLeChef();
             setData(result);
-            console.log(result);
         };
 
         getData();
