@@ -53,25 +53,25 @@ const Brunch = () => {
         if (rocketIsVisible) {
             animateChildElements(newsletterRef, rocketIsVisible);
         }
-    }, [rocketIsVisible]);
+    }, []);
 
     useEffect(() => {
         if (rocketIsVisible2) {
             animateChildElements(newsletterRef2, rocketIsVisible2);
         }
-    }, [rocketIsVisible2]);
+    }, []);
 
     useEffect(() => {
         if (rocketIsVisible3) {
             animateChildElements(newsletterRef3, rocketIsVisible3);
         }
-    }, [rocketIsVisible3]);
+    }, []);
 
     useEffect(() => {
         if (rocketIsVisible4) {
             animateChildElements(newsletterRef4, rocketIsVisible4);
         }
-    }, [rocketIsVisible4]);
+    }, []);
 
   
 

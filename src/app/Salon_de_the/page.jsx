@@ -49,19 +49,19 @@ const Thé = () => {
         if (rocketIsVisible) {
             animateChildElements(newsletterRef, rocketIsVisible);
         }
-    }, [rocketIsVisible]);
+    }, []);
 
     useEffect(() => {
         if (rocketIsVisible2) {
             animateChildElements(newsletterRef2, rocketIsVisible2);
         }
-    }, [rocketIsVisible2]);
+    }, []);
 
     useEffect(() => {
         if (rocketIsVisible3) {
             animateChildElements(newsletterRef3, rocketIsVisible3);
         }
-    }, [rocketIsVisible3]);
+    }, []);
 
     return (
         <div className='overflow-x-hidden'>
