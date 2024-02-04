@@ -14,13 +14,13 @@ import 'leaflet-defaulticon-compatibility';
 const markers = [
     {
         nom: 'La Maison Kerogan',
-        adresse: '3 rue Kerogan 29200 Quimper- France',
-        latitude: 47.97579677324572, // Exemple de latitude
-        longitude: -4.110731256896189, // Exemple de longitude
+        adresse: '8 Che Bernard Lannaud 29000 Quimper',
+        latitude: 47.9721229, // Exemple de latitude
+        longitude: -4.0963524, // Exemple de longitude
     },
     {
         nom: 'Le Café De La Plage',
-        adresse: '6 Pl. des déportés 29980 Île-Tudy France',
+        adresse: '6 Pl. des déportés 29980 Île-Tudy',
         latitude: 47.845576755279566, // Exemple de latitude
         longitude: -4.168278930831729, // Exemple de longitude
     },

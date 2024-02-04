@@ -25,10 +25,8 @@ const a_propos = () => {
                 <CardHeader>
                     <CardTitle className='text-vert text-xs lg:text-sm'>Maison Kerogan</CardTitle>
                     <CardDescription className='text-black text-[8px] lg:text-xs'>
-                        3 rue Kerogan <br />
-                        29200 Quimper- France <br />
-                        +33 2 96 85 23 26 <br />
-                        mail
+                    8 Che Bernard Lannaud  <br />
+                    29000 QUIMPER <br />
                     </CardDescription>
                 </CardHeader>
                 <CardFooter>
@@ -48,8 +46,6 @@ const a_propos = () => {
                     <CardDescription className='text-black text-[8px] lg:text-xs' >
                         6 Pl. des déportés <br />
                         29980 Île-Tudy France <br />
-                        02 98 56 42 06 <br />
-                        mail
                     </CardDescription>
                 </CardHeader>
                 <CardFooter>
