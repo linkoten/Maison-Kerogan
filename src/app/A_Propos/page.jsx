@@ -31,10 +31,10 @@ const a_propos = () => {
                 </CardHeader>
                 <CardFooter>
                     <div className='flex flex-row space-x-2 lg:space-x-8 text-xl lg:text-2xl'>
-                        <Link href='/Le_Chef'>
+                        <Link href='https://www.facebook.com/profile.php?id=61556132226074'>
                         <FaFacebook className='bg-slate-200 box-content px-3  rounded-lg shadow-black/30 cursor-pointer hover:shadow-inner hover:shadow-black/30 duration-300 hover:text-blue-600' />
                         </Link>
-                        <Link href='/Le_Chef'> 
+                        <Link href='https://www.instagram.com/maison_kerogan/?hl=en'> 
                         <FaInstagramSquare className='bg-slate-200 box-content px-3  rounded-lg shadow-black/30 cursor-pointer hover:shadow-inner hover:shadow-black/30 duration-300 hover:text-pink-600' />
                         </Link>  
                     </div>
