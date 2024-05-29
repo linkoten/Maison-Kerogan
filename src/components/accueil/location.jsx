@@ -79,11 +79,8 @@ const LocationExtrait = () => {
                                 <div className=' text-white font-bold'>
                                     {item.journees}
                                 </div>
-                                <Separator />
-                                <div className=' text-white font-bold'>
-                                    {item.horaires}
-                                </div>
-                                <Separator />
+                                <Separator  className=' bg-vert'/>
+                                
                                 <Button className=' my-4 bg-vert  border border-vert hover:bg-vert hover:brightness-110 '>
                                 <Link href="/Location">Découvrez En Plus</Link>
                                 </Button>

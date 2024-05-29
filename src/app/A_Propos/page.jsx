@@ -27,6 +27,7 @@ const a_propos = () => {
                     <CardDescription className='text-black text-[8px] lg:text-xs'>
                     8 Che Bernard Lannaud  <br />
                     29000 QUIMPER <br />
+                    02 98 11 56 58
                     </CardDescription>
                 </CardHeader>
                 <CardFooter>
@@ -46,6 +47,7 @@ const a_propos = () => {
                     <CardDescription className='text-black text-[8px] lg:text-xs' >
                         6 Pl. des déportés <br />
                         29980 Île-Tudy France <br />
+                        02 98 56 42 06
                     </CardDescription>
                 </CardHeader>
                 <CardFooter>

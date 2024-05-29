@@ -78,11 +78,11 @@ const TapasExtrait = () => {
                                 <div className='text-black text-md font-bold'>
                                     {item.journees}
                                 </div>
-                                <Separator />
+                                <Separator className='bg-black'/>
                                 <div className='text-black text-md font-bold'>
                                     {item.horaires}
                                 </div>
-                                <Separator />
+                                <Separator className='bg-black'/>
                                 <Button className='my-4 bg-black text-white border border-black  hover:brightness-110'>
                                 <Link href="/Tapas">Découvrez En Plus</Link>
                                 </Button>

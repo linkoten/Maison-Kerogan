@@ -98,6 +98,18 @@ const Test = () => {
                                     évènement
                                 </Link>
                             </SheetClose>
+                            <SheetClose asChild>
+                                <Link
+                                    className={`link  ${
+                                        pathname === '/Actualites'
+                                            ? 'text-ocre border-b border-ocre scale-125 hover:ocre'
+                                            : 'border-b border-vert hover:text-vert hover:scale-110  hover:bold'
+                                    }`}
+                                    href='/Actualites'
+                                >
+                                    actualités
+                                </Link>
+                            </SheetClose>
                         </SheetDescription>
                     </SheetHeader>
                 </SheetContent>

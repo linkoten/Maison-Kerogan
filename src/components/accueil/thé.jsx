@@ -78,11 +78,11 @@ const ThéExtrait = () => {
                                 <div className=' text-white  font-bold'>
                                     {item.journees}
                                 </div>
-                                <Separator />
+                                <Separator className='bg-rose'/>
                                 <div className=' text-white  font-bold'>
                                     {item.horaires}
                                 </div>
-                                <Separator />
+                                <Separator className='bg-rose'/>
                                 <Button className=' my-4 bg-rose text-black  border border-rose  hover:brightness-110 '>
                                 <Link href="/Salon_de_the">Découvrez En Plus</Link>
                                 </Button>

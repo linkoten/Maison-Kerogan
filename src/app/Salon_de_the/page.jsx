@@ -85,7 +85,7 @@ const Thé = () => {
                                 </div>
                                 <div className='flex flex-col w-full h-full px-2'>
                                 <Image
-                                        className=' z-50 object-cover mx-auto  h-1/2 w-1/2 lg:h-full lg:w-full transform   '
+                                        className=' z-50 object-cover mx-auto  h-1/2 w-1/2 lg:h-auto lg:w-fit transform   '
                                         alt='maison_kerogan'
                                         src={logo}
                                     />
@@ -133,7 +133,7 @@ const Thé = () => {
                                 </div>
                                 <div className='flex flex-col w-full h-full px-2'>
                                 <Image
-                                        className=' z-50 object-cover mx-auto  h-1/2 w-1/2 lg:h-full lg:w-full transform   '
+                                        className=' z-50 object-cover mx-auto  h-1/2 w-1/2 lg:h-auto lg:w-fit transform   '
                                         alt='maison_kerogan'
                                         src={logo}
                                     />
@@ -181,7 +181,7 @@ const Thé = () => {
                                 </div>
                                 <div className='flex flex-col w-full h-full px-2'>
                                 <Image
-                                        className=' z-50 object-cover mx-auto  h-1/2 w-1/2 lg:h-full lg:w-full transform   '
+                                        className=' z-50 object-cover mx-auto  h-1/2 w-1/2 lg:h-auto lg:w-fit transform   '
                                         alt='maison_kerogan'
                                         src={logo}
                                     />

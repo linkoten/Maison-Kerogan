@@ -87,6 +87,16 @@ function Header() {
                     >
                         A Propos
                     </Link>
+                    <Link
+                        className={`link  ${
+                            pathname === '/Actualites'
+                                ? 'text-ocre border-b border-ocre scale-125 brightness-150 uppercase'
+                                : 'border-b border-ocre hover:scale-110  hover:bold hover:-translate-y-1 uppercase tracking-wider '
+                        }`}
+                        href='/Actualites'
+                    >
+                        Actualités
+                    </Link>
                 </ul>
 
                 {/* Shopping cart */}

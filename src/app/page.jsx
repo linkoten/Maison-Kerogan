@@ -6,6 +6,7 @@ import A_Propos from './A_Propos/page';
 import Image from 'next/image';
 import logo from '../../public/logo-principal.jpg';
 import Link from 'next/link';
+import HistoireDuLieu from '@/components/accueil/histoireDuLieu';
 
 export default function Home() {
     return (
@@ -63,6 +64,7 @@ export default function Home() {
                 <h1 className='text-center text-lg md:text-5xl'>
                     LA MAISON KEROGAN
                 </h1>
+                <HistoireDuLieu />
                 <BrunchExtrait />
                 <ThéExtrait />
                 <TapasExtrait />
