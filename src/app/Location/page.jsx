@@ -103,16 +103,7 @@ const Location = () => {
                                     <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
                                         {item.paragraphe2}
                                     </p>
-                                    <div className=' flex flex-col h-full justify-end text-xs md:text-sm lg:text-md'>
-                                        <div className=' text-white font-bold'>
-                                            {item.journees}
-                                        </div>
-                                        <Separator className='bg-ocre2' />
-                                        <div className=' text-white font-bold'>
-                                            {item.horaires}
-                                        </div>
-                                        <Separator className='mb-4 bg-ocre2' />
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -160,16 +151,7 @@ const Location = () => {
                                     <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
                                         {item.part2Paragraphe2}
                                     </p>
-                                    <div className=' flex flex-col h-full justify-end text-xs md:text-sm lg:text-md'>
-                                        <div className=' text-white font-bold'>
-                                            {item.part2Journees}
-                                        </div>
-                                        <Separator className='bg-ocre2' />
-                                        <div className=' text-white font-bold'>
-                                            {item.part2Horaires}
-                                        </div>
-                                        <Separator className='mb-4 bg-ocre2' />
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -215,16 +197,7 @@ const Location = () => {
                                     <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
                                         {item.part3Paragraphe2}
                                     </p>
-                                    <div className=' flex flex-col h-full justify-end text-xs md:text-sm lg:text-md'>
-                                        <div className=' text-white font-bold'>
-                                            {item.part3Journees}
-                                        </div>
-                                        <Separator className='bg-ocre2' />
-                                        <div className=' text-white font-bold'>
-                                            {item.part3Horaires}
-                                        </div>
-                                        <Separator className='mb-4 bg-ocre2' />
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -242,41 +215,7 @@ const Location = () => {
                         )}
                     </div>
 
-                    <h3 className=' text-center text-3xl font-bold'>
-                        MENU
-                    </h3>
-                    <div className='mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 px-4'>
-                        {item.menu &&
-                            item.menu.length > 0 &&
-                            item.menu.map((image) => (
-                                <Image
-                                    key={image.id}
-                                    width={image.width}
-                                    height={image.height}
-                                    className='h-full w-auto'
-                                    alt={image.altText || 'Image'}
-                                    src={image.url}
-                                />
-                            ))}
-                    </div>
-
-                    <h3 className=' text-center text-3xl font-bold'>
-                        GALERIE
-                    </h3>
-                    <div className='mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 px-4'>
-                        {item.photosGaleries &&
-                            item.photosGaleries.length > 0 &&
-                            item.photosGaleries.map((image) => (
-                                <Image
-                                    key={image.id}
-                                    width={image.width}
-                                    height={image.height}
-                                    className='h-full w-auto'
-                                    alt={image.altText || 'Image'}
-                                    src={image.url}
-                                />
-                            ))}
-                    </div>
+                   
                     
                 </div>
             ))}

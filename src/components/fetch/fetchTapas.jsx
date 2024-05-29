@@ -13,22 +13,7 @@ const fetchTapas = async () => {
           paragraphe1
           paragraphe2
           extrait
-          photosGaleries {
-            altText
-            id
-            url
-            width
-            size
-            height
-          }
-          menu {
-            altText
-            id
-            url
-            width
-            size
-            height
-          }
+          
           id
           slug
           title
@@ -53,8 +38,7 @@ const fetchTapas = async () => {
           size
           height
         }
-        part2Journees
-        part2Horaires
+
 
         part3
         part3Paragraphe1
@@ -67,8 +51,7 @@ const fetchTapas = async () => {
           size
           height
         }
-        part3Journees
-        part3Horaires
+  
         }
       }
     `;

@@ -64,8 +64,8 @@ export default function Home() {
                     LA MAISON KEROGAN
                 </h1>
                 <BrunchExtrait />
-                <TapasExtrait />
                 <ThéExtrait />
+                <TapasExtrait />
                 <LocationExtrait />
                 <A_Propos />
             </div>

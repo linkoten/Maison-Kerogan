@@ -54,10 +54,10 @@ const ThéExtrait = () => {
                         <div
                             ref={newsletterRef}
                             id='the'
-                            className={`flex flex-col px-12 w-full bg-terracotta border-rose border-2  shadow-rose shadow-lg hover:shadow-2xl hover:shadow-rose lg:order-last transition-transform duration-500  ${
+                            className={`flex flex-col px-12 w-full bg-terracotta border-rose border-2  shadow-rose shadow-lg hover:shadow-2xl hover:shadow-rose  transition-transform duration-500  ${
                                 rocketIsVisible
                                     ? 'opacity-100 translate-x-0'
-                                    : 'opacity-0 translate-x-full'
+                                    : 'opacity-0 -translate-x-full'
                             }`}
                         >
                             <div className='flex w-full pt-4 mb-6 justify-between'>
@@ -91,7 +91,7 @@ const ThéExtrait = () => {
                         {item.images && item.images.length > 0 && (
                             <div 
                             ref={newsletterRef}
-                            className={`px-6 sm:px-0 lg:pl-20 w-full lg:col-span-2 transition-transform duration-500 ${
+                            className={`px-6 sm:px-0 lg:pr-20 w-full lg:col-span-2 transition-transform duration-500 ${
     rocketIsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'
   }`}>
                                 <SpecificCarousel item={item} className='z-30'/>

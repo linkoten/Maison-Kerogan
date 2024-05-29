@@ -7,7 +7,6 @@ import { Separator } from '@/components/ui/separator';
 import SpecificCarousel from '@/components/specific/carousel';
 import Carousel2 from '@/components/specific/carousel2';
 import Carousel3 from '@/components/specific/carousel3';
-import Carousel4 from '@/components/specific/carousel4';
 
 
 import { useInView } from 'react-intersection-observer';
@@ -66,11 +65,7 @@ const Brunch = () => {
         }
     }, []);
 
-    useEffect(() => {
-        if (rocketIsVisible4) {
-            animateChildElements(newsletterRef4, rocketIsVisible4);
-        }
-    }, []);
+  
 
   
 
@@ -109,16 +104,7 @@ const Brunch = () => {
                                         {item.paragraphe2}
                                     </p>
 
-                                    <div className=' flex flex-col h-full justify-end text-xs md:text-sm lg:text-md'>
-                                        <div className=' text-white font-bold'>
-                                            {item.journees}
-                                        </div>
-                                        <Separator className=' bg-vert2' />
-                                        <div className=' text-white font-bold'>
-                                            {item.horaires}
-                                        </div>
-                                        <Separator className='mb-4 bg-vert2' />
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -167,16 +153,7 @@ const Brunch = () => {
                                         {item.part2Paragraphe2}
                                     </p>
 
-                                    <div className=' flex flex-col h-full justify-end text-xs md:text-sm lg:text-md'>
-                                        <div className=' text-white font-bold'>
-                                            {item.part2Journees}
-                                        </div>
-                                        <Separator className=' bg-vert2' />
-                                        <div className=' text-white font-bold'>
-                                            {item.part2Horaires}
-                                        </div>
-                                        <Separator className='mb-4 bg-vert2' />
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -224,16 +201,7 @@ const Brunch = () => {
                                         {item.part3Paragraphe2}
                                     </p>
 
-                                    <div className=' flex flex-col h-full justify-end text-xs md:text-sm lg:text-md'>
-                                        <div className=' text-white font-bold'>
-                                            {item.part3Journees}
-                                        </div>
-                                        <Separator className=' bg-vert2' />
-                                        <div className=' text-white font-bold'>
-                                            {item.part3Horaires}
-                                        </div>
-                                        <Separator className='mb-4 bg-vert2' />
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -251,99 +219,9 @@ const Brunch = () => {
                             </div>
                         )}
                     </div>
-                    <div className=' flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:pr-20 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-24 sm:pt-0'>
-                        <div
-                            ref={newsletterRef4}
-                            id='brunch'
-                            className={` flex flex-col w-full h-full border-ocre border-2 shadow-ocre shadow-lg hover:shadow-2xl hover:shadow-ocre bg-vert  transition-transform duration-500  ${
-                                rocketIsVisible4
-                                    ? 'opacity-100 translate-x-0'
-                                    : 'opacity-0 -translate-x-full'
-                            }`}
-                        >
-                            <div className='flex w-full h-full '>
-                                <div className=' w-1/5 h-full flex items-center justify-center border-r border-vert2 '>
-                                    <span className=' -rotate-90 whitespace-nowrap text-3xl text-vert2 bold tracking-widest uppercase'>
-                                        {' '}
-                                        {item.part4}{' '}
-                                    </span>
-                                </div>
-                                <div className='flex flex-col w-full h-full px-2'>
-                                    <Image
-                                        className=' z-50 object-cover mx-auto  h-1/2 w-1/2 lg:h-full lg:w-full transform   '
-                                        alt='maison_kerogan'
-                                        src={logo}
-                                    />
-                                    <p className=' text-white text-xs md:text-sm lg:text-md mb-4 pt-8'>
-                                        {item.part4Paragraphe1}
-                                    </p>
-                                    <p className=' text-white text-xs md:text-sm lg:text-md mb-4'>
-                                        {item.part4Paragraphe2}
-                                    </p>
+                   
 
-                                    <div className=' flex flex-col h-full justify-end text-xs md:text-sm lg:text-md'>
-                                        <div className=' text-white font-bold'>
-                                            {item.part4Journees}
-                                        </div>
-                                        <Separator className=' bg-vert2' />
-                                        <div className=' text-white font-bold'>
-                                            {item.part4Horaires}
-                                        </div>
-                                        <Separator className='mb-4 bg-vert2' />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {item.part4Images && item.part4Images.length > 0 && (
-                            <div
-                                ref={newsletterRef4}
-                                className={` px-6 sm:px-0  w-full lg:col-span-2 transition-transform duration-500 ${
-                                    rocketIsVisible4
-                                        ? 'opacity-100 translate-x-0'
-                                        : 'opacity-0 translate-x-full'
-                                }`}
-                            >
-                                <Carousel4 item={item} />
-                            </div>
-                        )}
-                    </div>
-
-                    <h3 className=' text-center text-3xl font-bold'>
-                        MENU
-                    </h3>
-                    <div className='mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 px-4'>
-                        {item.menu &&
-                            item.menu.length > 0 &&
-                            item.menu.map((image) => (
-                                <Image
-                                    key={image.id}
-                                    width={image.width}
-                                    height={image.height}
-                                    className='h-full w-auto'
-                                    alt={image.altText || 'Image'}
-                                    src={image.url}
-                                />
-                            ))}
-                    </div>
-                    <h3 className=' text-center text-3xl font-bold'>
-                        GALERIE
-                    </h3>
-                    <div className='mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 px-4'>
-                        {item.photosGaleries &&
-                            item.photosGaleries.length > 0 &&
-                            item.photosGaleries.map((image) => (
-                                <Image
-                                    key={image.id}
-                                    width={image.width}
-                                    height={image.height}
-                                    className='h-full w-auto'
-                                    alt={image.altText || 'Image'}
-                                    src={image.url}
-                                />
-                            ))}
-                    </div>
-
+                    
 
                 </div>
             ))}
