@@ -2,12 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import fetchBrunch from "../../components/fetch/fetchBrunch"; // Assurez-vous que le chemin est correct
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import SpecificCarousel from "@/components/specific/carousel";
 import Carousel2 from "@/components/specific/carousel2";
 import Carousel3 from "@/components/specific/carousel3";
-
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import logo from "../../../public/format moyen/vert.jpg";
@@ -65,7 +62,6 @@ const Brunch = () => {
     <div className={`${nunito.className} overflow-x-hidden `}>
       {data.map((item) => (
         <div key={item.id}>
-         
           <div className=" flex px-4 mb-10 space-y-4 grid grid-cols-1   lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-24 sm:pt-0">
             <div
               ref={newsletterRef}

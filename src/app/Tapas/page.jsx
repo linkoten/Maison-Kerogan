@@ -75,7 +75,7 @@ const Tapas = () => {
                             className={` flex flex-col h-full w-full border-black  shadow-black shadow-lg  hover:shadow-2xl hover:shadow-black bg-rose transition-transform duration-500  ${
                                 rocketIsVisible
                                     ? 'opacity-100 translate-x-0'
-                                    : 'opacity-0 -translate-x-full'
+                                    : 'opacity-50 -translate-x-full'
                             }`}
                         >
                             <div className='flex w-full h-full  '>
@@ -124,7 +124,7 @@ const Tapas = () => {
                             className={` flex flex-col h-full w-full border-black  shadow-black shadow-lg  hover:shadow-2xl hover:shadow-black bg-rose transition-transform duration-500 lg:order-last ${
                                 rocketIsVisible2
                                     ? 'opacity-100 translate-x-0'
-                                    : 'opacity-0 translate-x-full'
+                                    : 'opacity-50 translate-x-full'
                             }`}
                         >
                             <div className='flex w-full h-full  '>
@@ -156,7 +156,7 @@ const Tapas = () => {
                                 className={`px-6 sm:px-0  w-full lg:col-span-2 transition-transform duration-500 ${
                                     rocketIsVisible2
                                         ? 'opacity-100 translate-x-0'
-                                        : 'opacity-0 -translate-x-full'
+                                        : 'opacity-50 -translate-x-full'
                                 }`}
                             >
                                 <Carousel2
@@ -172,7 +172,7 @@ const Tapas = () => {
                             className={` flex flex-col h-full w-full border-black  shadow-black shadow-lg  hover:shadow-2xl hover:shadow-black bg-rose transition-transform duration-500  ${
                                 rocketIsVisible3
                                     ? 'opacity-100 translate-x-0'
-                                    : 'opacity-0 -translate-x-full'
+                                    : 'opacity-50 -translate-x-full'
                             }`}
                         >
                             <div className='flex w-full h-full  '>
@@ -204,7 +204,7 @@ const Tapas = () => {
                                 className={`px-6 sm:px-0 lg:pr-20 w-full lg:col-span-2 transition-transform duration-500 ${
                                     rocketIsVisible3
                                         ? 'opacity-100 translate-x-0'
-                                        : 'opacity-0 translate-x-full'
+                                        : 'opacity-50 translate-x-full'
                                 }`}
                             >
                                 <Carousel3
