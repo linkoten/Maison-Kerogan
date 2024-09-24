@@ -109,7 +109,6 @@ const Location = () => {
                         </div>
                         {item.images && item.images.length > 0 && (
                             <div
-                                ref={newsletterRef}
                                 className={`px-6 sm:px-0 lg:pr-20 w-full lg:col-span-2 transition-transform duration-500  ${
                                     rocketIsVisible
                                         ? 'opacity-100 translate-x-0'
@@ -157,7 +156,6 @@ const Location = () => {
                         </div>
                         {item.part2Images && item.part2Images.length > 0 && (
                             <div
-                                ref={newsletterRef2}
                                 className={`px-6 sm:px-0  w-full lg:col-span-2 transition-transform duration-500 ${
                                     rocketIsVisible2
                                         ? 'opacity-100 translate-x-0'
@@ -203,7 +201,6 @@ const Location = () => {
                         </div>
                         {item.part3Images && item.part3Images.length > 0 && (
                             <div
-                                ref={newsletterRef3}
                                 className={`px-6 sm:px-0 lg:pr-20 w-full lg:col-span-2 transition-transform duration-500 ${
                                     rocketIsVisible3
                                         ? 'opacity-100 translate-x-0'
