@@ -9,6 +9,7 @@ import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import logo from '../../../public/format feuille/vert.jpg';
 import Link from 'next/link';
+import { merriweather, nunito } from '../font';
 
 
 
@@ -19,7 +20,6 @@ const BrunchExtrait = () => {
         const getData = async () => {
             const result = await fetchBrunch();
             setData(result);
-            console.log(result);
         };
 
         getData();
@@ -49,7 +49,7 @@ const BrunchExtrait = () => {
     }, [rocketIsVisible]);
 
     return (
-        <div>
+        <div className={`${nunito.className} `}>
             {data.map((item) => (
                 <div key={item.id}>
                     <div className=' flex px-4 mb-10 space-y-4 grid grid-cols-1   lg:grid-cols-3 lg:px-0 lg:space-y-0 '>
@@ -64,7 +64,7 @@ const BrunchExtrait = () => {
                         >
                             <div className='flex w-full pt-4 mb-6 justify-between'>
                             
-                            <h3 className=' text-ocre  font-bold text-lg md:text-xl lg:text-2xl uppercase '>
+                            <h3 className={`${merriweather.className} text-ocre  font-bold text-lg md:text-xl lg:text-2xl uppercase`}>
                                 {item.title}
                             </h3>
                             <Image

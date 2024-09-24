@@ -5,6 +5,7 @@ import fetchLeChef from '../../components/fetch/fetchLeChef'; // Assurez-vous qu
 import { Button } from '@/components/ui/button';
 import SpecificCarousel from '@/components/specific/carousel';
 import { useInView } from 'react-intersection-observer';
+import { merriweather, nunito } from '@/components/font';
 
 const LeChef = () => {
     const [data, setData] = useState([]);
@@ -42,7 +43,7 @@ const LeChef = () => {
     }, [rocketIsVisible]);
 
     return (
-        <div className='overflow-x-hidden'>
+        <div className={`${nunito.className} overflow-x-hidden `}>
             {data.map((item) => (
                 <div key={item.id}>
                     <div className='flex px-4 mb-10 space-y-4 grid  grid-cols-1 lg:grid-cols-3 lg:px-0  lg:space-y-0'>
@@ -55,7 +56,7 @@ const LeChef = () => {
                                     : 'opacity-0 -translate-x-full'
                             }`}
                         >
-                            <h3 className=' text-vert  pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6'>
+                            <h3 className={`${merriweather.className} text-vert  pt-4 font-bold text-lg md:text-xl lg:text-2xl mb-6`}>
                                 {item.title}
                             </h3>
                             <p className=' text-black text-xs md:text-sm lg:text-md mb-4'>

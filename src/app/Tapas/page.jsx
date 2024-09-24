@@ -10,6 +10,7 @@ import Image from 'next/image';
 import logo from '../../../public/format moyen/rose.jpg';
 import Carousel2 from '@/components/specific/carousel2';
 import Carousel3 from '@/components/specific/carousel3';
+import { merriweather, nunito } from '@/components/font';
 
 
 const Tapas = () => {
@@ -64,7 +65,7 @@ const Tapas = () => {
     }, []);
 
     return (
-        <div className='overflow-x-hidden'>
+        <div className={`${nunito.className} overflow-x-hidden `}>
             {data.map((item) => (
                 <div key={item.id}>
                     <div className='flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-24 sm:pt-0'>
@@ -79,7 +80,7 @@ const Tapas = () => {
                         >
                             <div className='flex w-full h-full  '>
                                 <div className=' w-1/5 h-full flex items-center justify-center border-r  border-rose2 '>
-                                    <span className=' -rotate-90 whitespace-nowrap text-3xl text-rose2 bold tracking-widest uppercase'>
+                                    <span className={`${merriweather.className} -rotate-90 whitespace-nowrap text-3xl text-rose2 bold tracking-widest uppercase`}>
                                         {' '}
                                         {item.part1}{' '}
                                     </span>
@@ -128,7 +129,7 @@ const Tapas = () => {
                         >
                             <div className='flex w-full h-full  '>
                                 <div className=' w-1/5 h-full flex items-center justify-center border-r  border-rose2 '>
-                                    <span className=' -rotate-90 whitespace-nowrap text-3xl text-rose2 bold tracking-widest uppercase'>
+                                    <span className={`${merriweather.className} -rotate-90 whitespace-nowrap text-3xl text-rose2 bold tracking-widest uppercase`}>
                                         {' '}
                                         {item.part2}{' '}
                                     </span>
@@ -176,7 +177,7 @@ const Tapas = () => {
                         >
                             <div className='flex w-full h-full  '>
                                 <div className=' w-1/5 h-full flex items-center justify-center border-r  border-rose2 '>
-                                    <span className=' -rotate-90 whitespace-nowrap text-3xl text-rose2 bold tracking-widest uppercase'>
+                                    <span className={`${merriweather.className} -rotate-90 whitespace-nowrap text-3xl text-rose2 bold tracking-widest uppercase`}>
                                         {' '}
                                         {item.part3}{' '}
                                     </span>

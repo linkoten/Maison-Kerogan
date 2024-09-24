@@ -12,6 +12,7 @@ import Carousel3 from '@/components/specific/carousel3';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import logo from '../../../public/format moyen/jaune.jpg';
+import { merriweather, nunito } from '@/components/font';
 
 
 const Location = () => {
@@ -70,10 +71,10 @@ const Location = () => {
     
 
     return (
-        <div className='overflow-x-hidden '>
+        <div className={`${nunito.className} overflow-x-hidden `}>
             {data.map((item) => (
                 <div key={item.id}>
-                <h2 className='text-center text-3xl font-bold uppercase'>{item.title}</h2>
+                <h2 className={`${merriweather.className}text-center text-3xl font-bold uppercase`}>{item.title}</h2>
                     <div className='flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0  lg:space-y-0  pt-24 sm:pt-0'>
                         <div
                             ref={newsletterRef}
@@ -86,7 +87,7 @@ const Location = () => {
                         >
                             <div className='flex w-full h-full '>
                                 <div className=' w-1/5 h-full flex items-center justify-center border-r border-ocre2 '>
-                                    <span className=' -rotate-90 whitespace-nowrap text-3xl text-ocre2 bold tracking-widest uppercase'>
+                                    <span className={`${merriweather.className} -rotate-90 whitespace-nowrap text-3xl text-ocre2 bold tracking-widest uppercase`}>
                                         {' '}
                                         {item.part1}{' '}
                                     </span>
@@ -134,7 +135,7 @@ const Location = () => {
                         >
                             <div className='flex w-full h-full '>
                                 <div className=' w-1/5 h-full flex items-center justify-center border-r border-ocre2 '>
-                                    <span className=' -rotate-90 whitespace-nowrap text-3xl text-ocre2 bold tracking-widest uppercase'>
+                                    <span className={`${merriweather.className} -rotate-90 whitespace-nowrap text-3xl text-ocre2 bold tracking-widest uppercase`}>
                                         {' '}
                                         {item.part2}{' '}
                                     </span>
@@ -180,7 +181,7 @@ const Location = () => {
                         >
                             <div className='flex w-full h-full '>
                                 <div className=' w-1/5 h-full flex items-center justify-center border-r border-ocre2 '>
-                                    <span className=' -rotate-90 whitespace-nowrap text-3xl text-ocre2 bold tracking-widest uppercase'>
+                                    <span className={`${merriweather.className} -rotate-90 whitespace-nowrap text-3xl text-ocre2 bold tracking-widest uppercase`}>
                                         {' '}
                                         {item.part3}{' '}
                                     </span>

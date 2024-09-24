@@ -27,7 +27,6 @@ const markers = [
     
 ];
 
-console.log(markers);
 
 const MyMap = () => {
     // Définissez ici votre marqueur personnalisé

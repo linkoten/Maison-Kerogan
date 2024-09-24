@@ -9,6 +9,7 @@ import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import logo from '../../../public/format feuille/rouge.jpg';
 import Link from 'next/link';
+import { merriweather, nunito } from '../font';
 
 const ThéExtrait = () => {
     const [data, setData] = useState([]);
@@ -17,7 +18,6 @@ const ThéExtrait = () => {
         const getData = async () => {
             const result = await fetchThé();
             setData(result);
-            console.log(result);
         };
 
         getData();
@@ -47,7 +47,7 @@ const ThéExtrait = () => {
     }, [rocketIsVisible]);
 
     return (
-        <div>
+        <div className={`${nunito.className} `}>
             {data.map((item) => (
                 <div key={item.id}>
                     <div className='flex px-4 mb-10 space-y-4 grid grid-cols-1  lg:grid-cols-3 lg:px-0  lg:space-y-0'>
@@ -62,7 +62,7 @@ const ThéExtrait = () => {
                         >
                             <div className='flex w-full pt-4 mb-6 justify-between'>
                             
-                            <h3 className=' text-rose  font-bold text-lg md:text-xl lg:text-2xl uppercase'>
+                            <h3 className={`${merriweather.className} text-rose  font-bold text-lg md:text-xl lg:text-2xl uppercase`}>
                                 {item.title}
                             </h3>
                             <Image
