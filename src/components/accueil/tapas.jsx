@@ -1,107 +1,80 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import fetchTapas from '@/components/fetch/fetchTapas'; // Assurez-vous que le chemin est correct
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
-import SpecificCarousel from '@/components/specific/carousel';
-import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
-import logo from '../../../public/format feuille/rose.jpg';
-import Link from 'next/link';
-import { merriweather, nunito } from '../font';
+import React, { useEffect, useState } from "react";
+import fetchTapas from "@/components/fetch/fetchTapas"; // Assurez-vous que le chemin est correct
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import SpecificCarousel from "@/components/specific/carousel";
+import { useInView } from "react-intersection-observer";
+import Image from "next/image";
+import logo from "../../../public/format feuille/rose.jpg";
+import Link from "next/link";
+import { merriweather, nunito } from "../font";
+import useData from "@/hooks/useData";
+import Carousel from "../Carousel";
 
 const TapasExtrait = () => {
-    const [data, setData] = useState([]);
+  const { data, loading, error } = useData("tapass", [
+    "journees",
+    "horaires",
+    "extrait",
+    "id",
+    "title",
+    "images { altText, id, url, width, size, height }",
+  ]);
 
-    useEffect(() => {
-        const getData = async () => {
-            const result = await fetchTapas();
-            setData(result);
-        };
+  if (loading) return <div></div>;
+  if (error) return <div>Une erreur s'est produite : {error.message}</div>;
 
-        getData();
-    }, []);
+  const item = data[0]; // Assuming we're using the first item from the data array
 
-    const { ref: newsletterRef, inView: rocketIsVisible } =
-        useInView();
+  const renderBlock = (extrait, journees, horaires, images) => {
+    const textContent = (
+      <div className="flex flex-col px-6 w-full border-terracotta border-2  shadow-terracotta shadow-lg  hover:shadow-xl hover:shadow-terracotta bg-rose text-black rounded-xl">
+        <div className="flex w-full pt-4 mb-6 justify-between">
+          <h3
+            className={`${merriweather.className} text-terracotta pl-6 font-bold text-lg md:text-xl lg:text-2xl uppercase`}
+          >
+            {item.title}
+          </h3>
+          <Image
+            className=" relative object-cover h-10 w-10 "
+            alt="maison_kerogan"
+            src={logo}
+          />
+        </div>
+        <p className=" text-xs md:text-sm lg:text-md mb-4">{item.extrait}</p>
+        <div className="flex-1 flex flex-col justify-end text-xs md:text-sm lg:text-md">
+          <div className=" text-md font-bold">{item.journees}</div>
+          <Separator className="bg-black" />
+          <div className=" text-md font-bold">{item.horaires}</div>
+          <Separator className="bg-black" />
+          <Button className="my-4 bg-black  border border-black  hover:brightness-110">
+            <Link href="/Tapas">Découvrez En Plus</Link>
+          </Button>
+        </div>
+      </div>
+    );
 
-    const animateChildElements = () => {
-        if (newsletterRef.current) {
-            const childElements =
-                newsletterRef.current.querySelectorAll('*');
-
-            for (let childElement of childElements) {
-                childElement.style.opacity = rocketIsVisible ? 1 : 0;
-                childElement.style.transform = rocketIsVisible
-                    ? 'translate(0)'
-                    : 'translate(-100%)';
-            }
-        }
-    };
-
-    useEffect(() => {
-        if (rocketIsVisible) {
-            animateChildElements();
-        }
-    }, [rocketIsVisible]);
+    const carouselContent = images && images.length > 0 && (
+      <div className="px-6 sm:px-0 w-full  col-span-2">
+        <Carousel images={images} />
+      </div>
+    );
 
     return (
-        <div className={`${nunito.className} `}>
-            {data.map((item) => (
-                <div key={item.id}>
-                    <div className='flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0'>
-                        <div
-                            ref={newsletterRef}
-                            id='tapas'
-                            className={`flex flex-col px-12 w-full border-black  shadow-black shadow-lg  hover:shadow-2xl hover:shadow-black bg-rose lg:order-last transition-transform duration-500  ${
-                                rocketIsVisible
-                                    ? 'opacity-100 translate-x-0'
-                                    : 'opacity-0 translate-x-full'
-                            }`}
-                        >
-                            <div className='flex w-full pt-4 mb-6 justify-between'>
-                            
-                            <h3 className={`${merriweather.className} text-black  font-bold text-lg md:text-xl lg:text-2xl uppercase`}>
-                                {item.title}
-                            </h3>
-                            <Image
-                                        className=' absolute top-4 right-4 object-cover h-10 w-10 '
-                                        alt='maison_kerogan'
-                                        src={logo}
-                                    />
-                            </div>
-                            <p className='text-black text-xs md:text-sm lg:text-md mb-4'>
-                                {item.extrait}
-                            </p>
-                            <div className='flex-1 flex flex-col justify-end text-xs md:text-sm lg:text-md'>
-                                <div className='text-black text-md font-bold'>
-                                    {item.journees}
-                                </div>
-                                <Separator className='bg-black'/>
-                                <div className='text-black text-md font-bold'>
-                                    {item.horaires}
-                                </div>
-                                <Separator className='bg-black'/>
-                                <Button className='my-4 bg-black text-white border border-black  hover:brightness-110'>
-                                <Link href="/Tapas">Découvrez En Plus</Link>
-                                </Button>
-                            </div>
-                        </div>
-                        {item.images && item.images.length > 0 && (
-                            <div
-                             ref={newsletterRef}
-                            className={`px-6 sm:px-0 lg:pl-20 w-full lg:col-span-2 transition-transform duration-500 ${
-    rocketIsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
-  }`}>
-                                <SpecificCarousel item={item} className='z-30' />
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ))}
-        </div>
+      <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-24 sm:pt-0 transition-all duration-1000">
+        {carouselContent}
+        {textContent}
+      </div>
     );
+  };
+
+  return (
+    <div className="container mx-auto">
+      {renderBlock(item.extrait, item.journees, item.horaires, item.images)}
+    </div>
+  );
 };
 
 export default TapasExtrait;
