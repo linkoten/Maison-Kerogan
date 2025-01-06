@@ -24,7 +24,7 @@ const TapasExtrait = () => {
   ]);
 
   if (loading) return <div></div>;
-  if (error) return <div>Une erreur s'est produite : {error.message}</div>;
+  if (error) return <div>Une erreur est survenue : {error.message}</div>;
 
   const item = data[0]; // Assuming we're using the first item from the data array
 
