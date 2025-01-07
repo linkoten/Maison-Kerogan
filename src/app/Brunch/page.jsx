@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import { Merriweather } from "next/font/google";
-import useData from "@/hooks/useData";
 import Carousel from "@/components/Carousel";
 import logo from "../../../public/format moyen/vert.jpg";
+import { restaurant } from "@/lib/queries";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
@@ -11,31 +11,7 @@ const merriweather = Merriweather({
 });
 
 const BrunchPage = () => {
-  const { data, loading, error } = useData("brunches", [
-    "part1",
-    "paragraphe1",
-    "paragraphe2",
-    "extrait",
-    "id",
-    "slug",
-    "title",
-    "images { altText, id, url, width, size, height }",
-    "journees",
-    "horaires",
-    "part2",
-    "part2Paragraphe1",
-    "part2Paragraphe2",
-    "part2Images { altText, id, url, width, size, height }",
-    "part3",
-    "part3Paragraphe1",
-    "part3Paragraphe2",
-    "part3Images { altText, id, url, width, size, height }",
-  ]);
-
-  if (loading) return <div></div>;
-  if (error) return <div>Une erreur est survenue : {error.message}</div>;
-
-  const item = data[0]; // Assuming we're using the first item from the data array
+  const item = restaurant;
 
   const renderBlock = (part, paragraphe1, paragraphe2, images, index) => {
     const textContent = (

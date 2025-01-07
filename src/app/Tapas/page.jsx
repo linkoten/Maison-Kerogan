@@ -3,35 +3,11 @@
 import Image from "next/image";
 import logo from "../../../public/format moyen/rose.jpg";
 import { merriweather, nunito } from "@/components/font";
-import useData from "@/hooks/useData";
 import Carousel from "@/components/Carousel";
+import { tapas } from "@/lib/queries";
 
 const Tapas = () => {
-  const { data, loading, error } = useData("tapass", [
-    "part1",
-    "paragraphe1",
-    "paragraphe2",
-    "extrait",
-    "id",
-    "slug",
-    "title",
-    "images { altText, id, url, width, size, height }",
-    "journees",
-    "horaires",
-    "part2",
-    "part2Paragraphe1",
-    "part2Paragraphe2",
-    "part2Images { altText, id, url, width, size, height }",
-    "part3",
-    "part3Paragraphe1",
-    "part3Paragraphe2",
-    "part3Images { altText, id, url, width, size, height }",
-  ]);
-
-  if (loading) return <div></div>;
-  if (error) return <div>Une erreur est survenue : {error.message}</div>;
-
-  const item = data[0]; // Assuming we're using the first item from the data array
+  const item = tapas; // Assuming we're using the first item from the data array
 
   const renderBlock = (part, paragraphe1, paragraphe2, images, index) => {
     const textContent = (

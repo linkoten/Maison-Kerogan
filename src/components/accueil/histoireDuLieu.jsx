@@ -1,23 +1,11 @@
 "use client";
 
 import { merriweather, nunito } from "@/components/font";
-import useData from "@/hooks/useData";
 import Carousel from "@/components/Carousel";
-import Image from "next/image";
+import { histoireDuLieu } from "@/lib/queries";
 
 const HistoiresDuLieu = () => {
-  const { data, loading, error } = useData("histoiresDuLieu", [
-    "paragraphe1",
-    "paragraphe2",
-    "id",
-    "title",
-    "images { altText, id, url, width, size, height }",
-  ]);
-
-  if (loading) return <div></div>;
-  if (error) return <div>Une erreur est survenue : {error.message}</div>;
-
-  const item = data[0]; // Assuming we're using the first item from the data array
+  const item = histoireDuLieu; // Assuming we're using the first item from the data array
 
   const renderBlock = (extrait, journees, horaires, images) => {
     const textContent = (

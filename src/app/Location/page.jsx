@@ -1,37 +1,13 @@
 "use client";
 
-import useData from "@/hooks/useData";
 import Carousel from "@/components/Carousel";
 import logo from "../../../public/format moyen/jaune.jpg";
 import Image from "next/image";
 import { merriweather, nunito } from "@/components/font";
+import { location } from "@/lib/queries";
 
 const Location = () => {
-  const { data, loading, error } = useData("locationsEvenementielles", [
-    "part1",
-    "paragraphe1",
-    "paragraphe2",
-    "extrait",
-    "id",
-    "slug",
-    "title",
-    "images { altText, id, url, width, size, height }",
-    "journees",
-    "horaires",
-    "part2",
-    "part2Paragraphe1",
-    "part2Paragraphe2",
-    "part2Images { altText, id, url, width, size, height }",
-    "part3",
-    "part3Paragraphe1",
-    "part3Paragraphe2",
-    "part3Images { altText, id, url, width, size, height }",
-  ]);
-
-  if (loading) return <div></div>;
-  if (error) return <div>Une erreur est survenue : {error.message}</div>;
-
-  const item = data[0]; // Assuming we're using the first item from the data array
+  const item = location; // Assuming we're using the first item from the data array
 
   const renderBlock = (part, paragraphe1, paragraphe2, images, index) => {
     const textContent = (

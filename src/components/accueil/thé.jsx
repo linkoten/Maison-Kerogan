@@ -1,32 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import fetchThé from "@/components/fetch/fetchSalonDeThé"; // Assurez-vous que le chemin est correct
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import SpecificCarousel from "@/components/specific/carousel";
-import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import logo from "../../../public/format feuille/rouge.jpg";
 import Link from "next/link";
 import { merriweather, nunito } from "../font";
-import useData from "@/hooks/useData";
 import Carousel from "../Carousel";
+import { thé } from "@/lib/queries";
 
 const ThéExtrait = () => {
-  const { data, loading, error } = useData("salonDeThes", [
-    "journees",
-    "horaires",
-    "extrait",
-    "id",
-    "title",
-    "images { altText, id, url, width, size, height }",
-  ]);
-
-  if (loading) return <div></div>;
-  if (error) return <div>Une erreur est survenue : {error.message}</div>;
-
-  const item = data[0]; // Assuming we're using the first item from the data array
+  const item = thé; // Assuming we're using the first item from the data array
 
   const renderBlock = (extrait, journees, horaires, images) => {
     const textContent = (
