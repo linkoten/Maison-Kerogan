@@ -84,13 +84,6 @@ const Thé = () => {
         item.part2Images,
         1
       )}
-      {renderBlock(
-        item.part3,
-        item.part3Paragraphe1,
-        item.part3Paragraphe2,
-        item.part3Images,
-        2
-      )}
     </div>
   );
 };
