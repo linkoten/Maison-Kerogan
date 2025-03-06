@@ -13,7 +13,15 @@ import { location } from "@/lib/queries";
 const LocationExtrait = () => {
   const item = location; // Assuming we're using the first item from the data array
 
-  const renderBlock = (extrait, journees, horaires, images) => {
+  const renderBlock = (
+    extrait,
+    extrait2,
+    titreExtrait,
+    titreExtrait2,
+    journees,
+    horaires,
+    images
+  ) => {
     const textContent = (
       <div className="flex flex-col px-6 w-full border-vert border-2  shadow-vert shadow-lg  hover:shadow-xl hover:shadow-vert bg-ocre text-white rounded-xl">
         <div className="flex w-full pt-4 mb-6 justify-between">
@@ -28,7 +36,13 @@ const LocationExtrait = () => {
             src={logo}
           />
         </div>
-        <p className=" text-xs md:text-sm lg:text-md mb-4">{item.extrait}</p>
+        <div className=" text-vert text-xs md:text-sm lg:text-md mb-4 space-y-4">
+          <p>{item.titreExtrait}</p>
+          <p className="text-white text-xs">{item.extrait}</p>
+          <p>{item.titreExtrait2}</p>
+          <p className="text-white text-xs">{item.extrait2}</p>
+        </div>
+
         <div className="flex-1 flex flex-col justify-end text-xs md:text-sm lg:text-md">
           <div className=" text-md font-bold">{item.journees}</div>
           <Separator className="bg-vert" />
@@ -43,7 +57,7 @@ const LocationExtrait = () => {
 
     const carouselContent = images && images.length > 0 && (
       <div className="px-6 sm:px-0 w-full  col-span-2 ">
-        <Carousel images={images} />
+        <Carousel images={item.images} />
       </div>
     );
 
@@ -57,7 +71,15 @@ const LocationExtrait = () => {
 
   return (
     <div className="container mx-auto">
-      {renderBlock(item.extrait, item.journees, item.horaires, item.images)}
+      {renderBlock(
+        item.extrait,
+        item.extrait2,
+        item.titreExtrait,
+        item.titreExtrait2,
+        item.journees,
+        item.horaires,
+        item.images
+      )}
     </div>
   );
 };

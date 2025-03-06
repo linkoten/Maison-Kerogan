@@ -2,11 +2,11 @@ import BrunchExtrait from "@/components/accueil/brunch";
 import LocationExtrait from "@/components/accueil/location";
 import TapasExtrait from "@/components/accueil/tapas";
 import ThéExtrait from "@/components/accueil/thé";
-import A_Propos from "./A_Propos/page";
 import Image from "next/image";
 import logo from "../../public/logo-principal.jpg";
 import Link from "next/link";
 import HistoireDuLieu from "@/components/accueil/histoireDuLieu";
+import A_propos from "@/components/Apropos";
 
 export default function Home() {
   return (
@@ -63,7 +63,7 @@ export default function Home() {
         <ThéExtrait />
         <TapasExtrait />
         <LocationExtrait />
-        <A_Propos />
+        <A_propos />
       </div>
     </div>
   );

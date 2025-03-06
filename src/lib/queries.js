@@ -9,8 +9,8 @@ export const tapas = {
   slug: "tapas",
   title: "After Work Tapas",
   images: [
-    "https://i.ibb.co/XJZ1gpr/0107-Maison-Kerogan-107.jpg",
     "https://i.ibb.co/BPnCSSv/0054-Maison-RESTAURATION-105.jpg",
+    "https://i.ibb.co/XJZ1gpr/0107-Maison-Kerogan-107.jpg",
     "https://i.ibb.co/TT3jzMz/0035-Maison-Kerogan-35.jpg",
   ],
   journees: "Du Mercredi au Samedi ",
@@ -28,9 +28,9 @@ export const tapas = {
   part3Paragraphe1:
     "Le soir, Maison Kerogan vous invite à découvrir une approche bistronomique du partage avec des menus évoluant au fil des saisons. Notre chef propose une sélection de tapas à la pièce, alliant créativité et saveurs inédites, pour une expérience gourmande et surprenante. Pour les amateurs de convivialité, quelques belles planches à partager viennent compléter l’offre. Laissez-vous tenter et explorez une cuisine où chaque bouchée raconte une histoire.",
   part3Images: [
-    "https://i.ibb.co/BPsGmD1/20230625-124855.jpg",
-    "https://i.ibb.co/sw91J8N/20220717-134547.jpg",
-    "https://i.ibb.co/tQWfLqY/20211002-130744.jpg",
+    "https://i.ibb.co/KzcBjW2S/IMG-4371.jpg",
+    "https://i.ibb.co/zT9VRPPK/IMG-4358.jpg",
+    "https://i.ibb.co/DDPJn9K7/IMG-4361.jpg",
   ],
   part3Journees: "Du Lundi au Vendredi",
   part3Horaires: "De 17h à 22h",
@@ -47,10 +47,7 @@ export const thé = {
   id: "salondethe",
   slug: "salondethe",
   title: "Tea Time",
-  images: [
-    "https://i.ibb.co/ypnJc7B/0005-Maison-Kerogan-5.jpg",
-    "https://i.ibb.co/Gv0ZyXj/0066-Maison-Kerogan-90.jpg",
-  ],
+  images: ["https://i.ibb.co/ypnJc7B/0005-Maison-Kerogan-5.jpg"],
   journees: "Du Mercredi au Samedi",
   horaires: "14h à 18h",
   part2: "Barista",
@@ -59,6 +56,7 @@ export const thé = {
   part2Images: [
     "https://i.ibb.co/TT3jzMz/0035-Maison-Kerogan-35.jpg",
     "https://i.ibb.co/G935YJ4/0004-Maison-Kerogan-140.jpg",
+    "https://i.ibb.co/ypnJc7B/0005-Maison-Kerogan-5.jpg",
   ],
 };
 
@@ -108,8 +106,6 @@ export const restaurant = {
     "https://i.ibb.co/L0QvZhm/0091-Maison-Kerogan-116.jpg",
     "https://i.ibb.co/GHpsHt9/0031-Maison-Kerogan-123.jpg",
     "https://i.ibb.co/M6Vchcn/0087-Maison-Kerogan-125.jpg",
-
-    "https://i.ibb.co/5s2938F/20220731-120536.jpg",
   ],
 };
 
@@ -117,17 +113,17 @@ export const location = {
   part1: "Evenementielle",
   paragraphe1:
     "Tout au long de l'année, notre restaurant vous accueille lors d'événements variés : des open airs musicaux en extérieur, des brunchs proposés chaque dimanche, et la mise à disposition de notre espace pour vos événements privés.",
-
+  titreExtrait: "Evenementielle",
   extrait:
-    "Je suis l'extrait de la rubrique Evenement que l'on trouve sur la page d'accueil",
+    "Tout au long de l'année, retrouvez nos événements, tels que des brunchs bistronomiques le dimanche et des open airs musicaux pendant l'été.",
+  titreExtrait2: "Location Evenementielle",
+  extrait2:
+    "Vous pouvez aussi privatiser le lieu pour vos soirées d'anniversaire, séminaires ou mariages.",
   id: "Location",
   slug: "Location",
-  title: "Evenementielle et Location Evenementielle",
-  images: [
-    "https://i.ibb.co/7bW5sPH/LOGO-WEB-1366x768-Plan-de-travail-1-copie-6.jpg",
-  ],
+  title: "Événementielle\nLocation Événementielle",
+  images: ["/Video Maison Kerogan.mp4"],
   journees: "Week-end",
-  horaires: "???",
   part2: "Brunch",
   part2Paragraphe1:
     "Le dimanche, sur réservation, Maison Kerogan vous propose un brunch bistronomique unique. Notre carte évolue à chaque édition pour vous faire découvrir de nouvelles associations de saveurs, mêlant douceur et générosité. Une expérience à savourer en toute tranquillité, dans une ambiance chaleureuse et conviviale, en famille ou entre amis.",
