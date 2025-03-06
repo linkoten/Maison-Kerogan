@@ -34,9 +34,9 @@ const A_propos = () => {
       <div className="max-w-3xl mx-auto mb-10 text-center">
         <p className="text-gray-700 leading-relaxed">
           Retrouvez-nous dans nos deux établissements en Bretagne. La Maison
-          Kerogan à Quimper et Le Café de la Plage à l'Île-Tudy sont liés par
-          une même passion pour la gastronomie locale et l'accueil chaleureux.
-          Venez nous rendre visite et découvrir notre univers !
+          Kerogan à Quimper et Le Café de la Plage à l&apos;Île-Tudy sont liés
+          par une même passion pour la gastronomie locale et l&apos;accueil
+          chaleureux. Venez nous rendre visite et découvrir notre univers !
         </p>
       </div>
 
