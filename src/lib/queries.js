@@ -57,6 +57,8 @@ export const thé = {
     "https://i.ibb.co/TT3jzMz/0035-Maison-Kerogan-35.jpg",
     "https://i.ibb.co/G935YJ4/0004-Maison-Kerogan-140.jpg",
     "https://i.ibb.co/ypnJc7B/0005-Maison-Kerogan-5.jpg",
+    "https://i.ibb.co/FL2Qs04d/Barista2.jpg",
+    "https://i.ibb.co/FkF2TJbr/Barista1.jpg",
   ],
 };
 
@@ -128,9 +130,7 @@ export const location = {
   part2Paragraphe1:
     "Le dimanche, sur réservation, Maison Kerogan vous propose un brunch bistronomique unique. Notre carte évolue à chaque édition pour vous faire découvrir de nouvelles associations de saveurs, mêlant douceur et générosité. Une expérience à savourer en toute tranquillité, dans une ambiance chaleureuse et conviviale, en famille ou entre amis.",
 
-  part2Images: [
-    "https://i.ibb.co/7bW5sPH/LOGO-WEB-1366x768-Plan-de-travail-1-copie-6.jpg",
-  ],
+  part2Images: ["https://i.ibb.co/mFPcDZxN/Brunch-Photo.jpg"],
   part2Horaires: "Dimanche",
   part2Journees: "De 12h à 15h",
   part3: "Location",
