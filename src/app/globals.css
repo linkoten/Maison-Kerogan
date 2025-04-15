@@ -84,3 +84,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes simpleFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-simple-fade-in {
+  animation: simpleFadeIn 1s ease-out forwards;
+}
+
+/* Ajouter à la fin du fichier */
+@keyframes loadingBar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-loading-bar {
+  animation: loadingBar 1.2s ease-in-out;
+}
