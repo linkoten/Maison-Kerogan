@@ -54,7 +54,7 @@ const HistoiresDuLieu = () => {
 
           {/* Éléments décoratifs */}
           <div className="flex items-center gap-4 mt-auto mb-4">
-            <span className="text-ocre text-3xl">"</span>
+            <span className="text-ocre text-3xl">&quot;</span>
             <div className="h-[1px] flex-grow bg-gradient-to-r from-ocre to-transparent"></div>
           </div>
 
