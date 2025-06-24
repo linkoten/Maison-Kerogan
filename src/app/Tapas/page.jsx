@@ -91,7 +91,7 @@ const Tapas = () => {
     const isEven = index % 2 === 1;
 
     return (
-      <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-24 sm:pt-0 transition-all duration-1000">
+      <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-6 lg:pt-12  transition-all duration-1000">
         {isEven ? (
           <>
             {textContent}
@@ -109,9 +109,9 @@ const Tapas = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="relative py-8 mb-8">
+      <div className="relative pt-24 md:pt-0">
         <h1
-          className={`${merriweather.className} text-4xl font-bold text-center relative z-10 mb-2`}
+          className={`${merriweather.className} text-4xl font-bold text-center text-vert relative z-10 mb-2`}
         >
           {item.title}
         </h1>

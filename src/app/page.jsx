@@ -75,7 +75,7 @@ export default function Home() {
           <nav className="flex items-center justify-center space-x-1 sm:space-x-2 md:space-x-3 lg:space-x-6 px-4">
             <Link
               href="/Brunch"
-              className="text-[8px] sm:text-[12px] md:text-[14px] lg:text-xl uppercase font-medium tracking-wide text-center transition-all duration-300 hover:scale-110 hover:text-ocre2"
+              className="text-[8px] sm:text-[12px] md:text-[14px] lg:text-xl uppercase font-medium tracking-wide text-center transition-all duration-300 hover:scale-110 hover:text-vert"
             >
               Brunch
             </Link>
@@ -84,7 +84,7 @@ export default function Home() {
 
             <Link
               href="/Salon_de_the"
-              className="text-[8px] sm:text-[12px] md:text-[14px] lg:text-xl uppercase font-medium tracking-wide text-center transition-all duration-300 hover:scale-110 hover:text-terracotta2"
+              className="text-[8px] sm:text-[12px] md:text-[14px] lg:text-xl uppercase font-medium tracking-wide text-center transition-all duration-300 hover:scale-110 hover:text-terracotta"
             >
               Tea Time
             </Link>
@@ -102,7 +102,7 @@ export default function Home() {
 
             <Link
               href="/Location"
-              className="text-[8px] sm:text-[12px] md:text-[14px] lg:text-xl uppercase font-medium tracking-wide text-center transition-all duration-300 hover:scale-110 hover:text-vert2"
+              className="text-[8px] sm:text-[12px] md:text-[14px] lg:text-xl uppercase font-medium tracking-wide text-center transition-all duration-300 hover:scale-110 hover:text-ocre"
             >
               Événement
             </Link>
@@ -117,7 +117,7 @@ export default function Home() {
       >
         <div className="relative py-8 my-6">
           <h1
-            className={`${merriweather.className} text-center text-lg md:text-5xl font-bold tracking-wide relative z-10`}
+            className={`${merriweather.className} text-center text-vert text-lg md:text-5xl font-bold tracking-wide relative z-10`}
           >
             LA MAISON KEROGAN
           </h1>

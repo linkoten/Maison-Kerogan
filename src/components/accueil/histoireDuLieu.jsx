@@ -76,7 +76,7 @@ const HistoiresDuLieu = () => {
     );
 
     return (
-      <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-24 sm:pt-0 transition-all duration-1000">
+      <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0  transition-all duration-1000">
         {textContent}
         {carouselContent}
       </div>
