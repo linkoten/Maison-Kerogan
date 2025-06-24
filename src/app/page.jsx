@@ -71,7 +71,7 @@ export default function Home() {
         </div>
 
         {/* Container pour les boutons de navigation */}
-        <div className="absolute inset-x-0 bottom-1/4 md:bottom-[30%] lg:bottom-[28%] z-10 w-full flex items-center justify-center">
+        <div className="absolute inset-x-0 bottom-1/4 md:bottom-[30%] lg:bottom-[26%] z-10 w-full flex items-center justify-center">
           <nav className="flex items-center justify-center space-x-1 sm:space-x-2 md:space-x-3 lg:space-x-6 px-4">
             <Link
               href="/Brunch"
