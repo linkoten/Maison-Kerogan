@@ -73,8 +73,8 @@ export const restaurant = {
   slug: "Brunch",
   title: "Le Restaurant",
   images: [
-    "https://i.ibb.co/rp5bcHz/image00004.jpg",
     "https://i.ibb.co/mRzWH68/0049-Maison-Kerogan-49.jpg",
+    "https://i.ibb.co/rp5bcHz/image00004.jpg",
     "https://i.ibb.co/zbbDCQs/image00001.jpg",
   ],
   journees: "Du Lundi au Vendredi",
@@ -85,13 +85,13 @@ export const restaurant = {
   part2Paragraphe2:
     "Une fusion de saveurs et textures, mettant en avant les produits locaux, avec une touche d’inventivité et de détails.",
   part2Images: [
+    "https://i.ibb.co/6rWPC3g/image00017.jpg",
     "https://i.ibb.co/gS3z1KL/0077-Maison-Kerogan-77.jpg",
     "https://i.ibb.co/4RWggRF/0026-Maison-RESTAURATION-89.jpg",
     "https://i.ibb.co/G935YJ4/0004-Maison-Kerogan-140.jpg",
     "https://i.ibb.co/sVY7KB3/0048-Maison-LIEU-59.jpg",
     "https://i.ibb.co/Lh29MR0/0028-Maison-RESTAURATION-75.jpg",
     "https://i.ibb.co/NyGQz8Q/0062-Maison-Kerogan-81.jpg",
-    "https://i.ibb.co/6rWPC3g/image00017.jpg",
     "https://i.ibb.co/VvCPxC7/image00022.jpg",
     "https://i.ibb.co/Vjkb95V/image00024.jpg",
     "https://i.ibb.co/4mbqxyG/image00026.jpg",
@@ -123,7 +123,7 @@ export const location = {
     "Vous pouvez aussi privatiser le lieu pour vos soirées d'anniversaire, séminaires ou mariages.",
   id: "Location",
   slug: "Location",
-  title: "Événementielle\nLocation Événementielle",
+  title: "Événementielle / Location Événementielle",
   images: ["/Video Maison Kerogan.mp4"],
   journees: "Week-end",
   part2: "Brunch",

@@ -3,8 +3,13 @@
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
 import logo from "../../../public/format moyen/jaune.jpg";
-import { merriweather } from "@/components/font";
+import { Merriweather } from "next/font/google";
 import { location } from "@/lib/queries";
+
+const merriweather = Merriweather({
+  weight: ["300", "400", "700", "900"],
+  subsets: ["latin"],
+});
 
 const Location = () => {
   const item = location;
@@ -104,7 +109,18 @@ const Location = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-4xl font-bold text-center my-8">{item.title}</h1>
+      <div className="relative py-8 mb-8">
+        <h1
+          className={`${merriweather.className} text-4xl font-bold text-center relative z-10 mb-2`}
+        >
+          {item.title}
+        </h1>
+        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-ocre to-transparent mx-auto my-1"></div>
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-ocre to-transparent mx-auto"></div>
+        <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[8rem] font-bold text-gray-50 opacity-20 z-0">
+          {item.title.charAt(0)}
+        </span>
+      </div>{" "}
       {renderBlock(
         item.part1,
         item.paragraphe1,

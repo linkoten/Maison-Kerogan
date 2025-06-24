@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { Merriweather } from "next/font/google";
 import Carousel from "@/components/Carousel";
-import logo from "../../../public/format moyen/rose.jpg";
-import { tapas } from "@/lib/queries";
+import logo from "../../../public/format moyen/vert.jpg";
+import { restaurant, tapas } from "@/lib/queries";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
@@ -12,15 +12,15 @@ const merriweather = Merriweather({
 });
 
 const Tapas = () => {
-  const item = tapas;
+  const item = restaurant;
 
   const renderBlock = (part, paragraphe1, paragraphe2, images, index) => {
     const textContent = (
-      <div className="flex flex-col w-full h-full bg-rose rounded-xl border-terracotta border-2 shadow-lg shadow-terracotta hover:shadow-xl hover:shadow-terracotta2 relative overflow-hidden">
+      <div className="flex flex-col w-full h-full bg-vert rounded-xl border-ocre border-2 shadow-lg shadow-ocre hover:shadow-xl hover:shadow-ocre relative overflow-hidden">
         {/* Bandeau latéral avec titre verticalisé */}
-        <div className="w-1/5 h-full absolute left-0 top-0 bottom-0 flex items-center justify-center border-r border-terracotta">
+        <div className="w-1/5 h-full absolute left-0 top-0 bottom-0 flex items-center justify-center border-r border-vert2">
           <span
-            className={`${merriweather.className} -rotate-90 whitespace-nowrap text-3xl text-terracotta bold tracking-widest uppercase`}
+            className={`${merriweather.className} -rotate-90 whitespace-nowrap text-3xl text-vert2 bold tracking-widest uppercase`}
           >
             {part}
           </span>
@@ -51,31 +51,31 @@ const Tapas = () => {
           </div>
 
           {/* Paragraphes avec mise en forme améliorée */}
-          <div className="border-l-2 border-terracotta pl-4 my-4">
-            <p className="text-black text-xs md:text-sm lg:text-md mb-4 font-medium">
+          <div className="border-l-2 border-ocre pl-4 my-4">
+            <p className="text-white text-xs md:text-sm lg:text-md mb-4 font-medium">
               {paragraphe1}
             </p>
           </div>
 
           {paragraphe2 && (
-            <p className="text-black text-xs md:text-sm lg:text-md mb-4 italic">
+            <p className="text-white text-xs md:text-sm lg:text-md mb-4 italic">
               {paragraphe2}
             </p>
           )}
 
           {/* Séparateur décoratif */}
           <div className="flex items-center gap-2 mt-auto mb-2">
-            <div className="h-[1px] w-1/3 bg-gradient-to-r from-transparent to-terracotta"></div>
-            <div className="h-2 w-2 rounded-full bg-terracotta"></div>
-            <div className="h-[1px] flex-grow bg-gradient-to-r from-terracotta to-transparent"></div>
+            <div className="h-[1px] w-1/3 bg-gradient-to-r from-transparent to-ocre"></div>
+            <div className="h-2 w-2 rounded-full bg-ocre"></div>
+            <div className="h-[1px] flex-grow bg-gradient-to-r from-ocre to-transparent"></div>
           </div>
 
           {/* Points décoratifs */}
           <div className="flex justify-end mb-2">
             <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-terracotta"></div>
-              <div className="h-2 w-8 rounded-full bg-terracotta opacity-70"></div>
-              <div className="h-2 w-2 rounded-full bg-terracotta"></div>
+              <div className="h-2 w-2 rounded-full bg-ocre"></div>
+              <div className="h-2 w-8 rounded-full bg-ocre opacity-70"></div>
+              <div className="h-2 w-2 rounded-full bg-ocre"></div>
             </div>
           </div>
         </div>
@@ -109,7 +109,18 @@ const Tapas = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-4xl font-bold text-center my-8">{item.title}</h1>
+      <div className="relative py-8 mb-8">
+        <h1
+          className={`${merriweather.className} text-4xl font-bold text-center relative z-10 mb-2`}
+        >
+          {item.title}
+        </h1>
+        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-vert2 to-transparent mx-auto my-1"></div>
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-vert2 to-transparent mx-auto"></div>
+        <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[8rem] font-bold text-gray-50 opacity-20 z-0">
+          {item.title.charAt(0)}
+        </span>
+      </div>{" "}
       {renderBlock(
         item.part1,
         item.paragraphe1,

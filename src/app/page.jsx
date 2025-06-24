@@ -10,7 +10,12 @@ import logo from "../../public/logo-principal.jpg";
 import Link from "next/link";
 import HistoireDuLieu from "@/components/accueil/histoireDuLieu";
 import A_propos from "@/components/Apropos";
+import { Merriweather } from "next/font/google";
 
+const merriweather = Merriweather({
+  weight: ["300", "400", "700", "900"],
+  subsets: ["latin"],
+});
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -110,7 +115,21 @@ export default function Home() {
           isLoading ? "opacity-0" : "opacity-100"
         }`}
       >
-        <h1 className="text-center text-lg md:text-5xl">LA MAISON KEROGAN</h1>
+        <div className="relative py-8 my-6">
+          <h1
+            className={`${merriweather.className} text-center text-lg md:text-5xl font-bold tracking-wide relative z-10`}
+          >
+            LA MAISON KEROGAN
+          </h1>
+          <div className="flex items-center justify-center gap-3 mt-3">
+            <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-vert"></div>
+            <div className="h-2 w-2 rounded-full bg-ocre rotate-45"></div>
+            <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-vert"></div>
+          </div>
+          <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[5rem] md:text-[8rem] font-bold text-slate-100 opacity-20 z-0 tracking-[0.2em]">
+            MK
+          </span>
+        </div>{" "}
         <HistoireDuLieu />
         <BrunchExtrait />
         <ThéExtrait />
