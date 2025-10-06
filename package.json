@@ -26,7 +26,7 @@
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "leaflet-geosearch": "^3.11.0",
     "lucide-react": "^0.295.0",
-    "next": "14.0.3",
+    "next": "^15.5.4",
     "next-navigation": "^1.0.6",
     "react": "^18",
     "react-dom": "^18",

@@ -94,14 +94,6 @@ const A_propos = () => {
           </div>
         ))}
       </div>
-
-      {/* Carte en dessous des établissements */}
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-2xl font-semibold text-vert mb-4 text-center">
-          Nous localiser
-        </h2>
-        <Map />
-      </div>
     </div>
   );
 };
