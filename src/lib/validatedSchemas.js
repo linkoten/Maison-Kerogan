@@ -16,6 +16,5 @@ export const contactSchema = z.object({
     .number()
     .min(1, "Le nombre de personnes doit être supérieur à 0"),
   dateReservation: z.string().min(1, "Veuillez sélectionner une date"),
-  plageHoraire: z.string().min(1, "Veuillez sélectionner une plage horaire"),
   informationsSupplementaires: z.string().optional(),
 });
