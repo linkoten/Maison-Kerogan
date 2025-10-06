@@ -1,9 +1,12 @@
 import { GraphQLClient } from "graphql-request";
 
-const hygraphClient = new GraphQLClient(process.env.HYGRAPH_ENDPOINT, {
-  headers: {
-    Authorization: `Bearer ${process.env.HYGRAPH_TOKEN}`,
-  },
-});
+const hygraphClient = new GraphQLClient(
+  process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT,
+  {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_TOKEN}`,
+    },
+  }
+);
 
 export default hygraphClient;
