@@ -365,7 +365,7 @@ export default function Contact() {
                       className={`w-4 h-4 ${selectedType.color}`}
                     />
                   )}
-                  Type d'événement *
+                  Type d&apos;événement *
                 </label>
                 <select
                   {...register("typeDemande")}
@@ -572,10 +572,10 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-red-800">
-                      Erreur lors de l'envoi
+                      Erreur lors de l&apos;envoi
                     </h4>
                     <p className="text-red-700 text-sm mt-1">
-                      Une erreur s'est produite. Veuillez réessayer ou nous
+                      Une erreur s&apos;est produite. Veuillez réessayer ou nous
                       contacter directement.
                     </p>
                   </div>
@@ -605,8 +605,8 @@ export default function Contact() {
 
               <div className="text-center mt-4">
                 <p className="text-sm text-gray-500">
-                  En envoyant ce formulaire, vous acceptez d'être contacté par
-                  nos équipes
+                  En envoyant ce formulaire, vous acceptez d&apos;être contacté
+                  par nos équipes
                 </p>
               </div>
             </div>
