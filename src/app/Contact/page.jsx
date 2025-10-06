@@ -52,24 +52,6 @@ const typeDemandeOptions = [
   },
 ];
 
-const plageHoraireOptions = [
-  { value: "Matin (9h-12h)", label: "Matin", time: "9h-12h", icon: "🌅" },
-  { value: "Midi (12h-14h)", label: "Midi", time: "12h-14h", icon: "☀️" },
-  {
-    value: "Après-midi (14h-18h)",
-    label: "Après-midi",
-    time: "14h-18h",
-    icon: "🌤️",
-  },
-  { value: "Soir (18h-22h)", label: "Soir", time: "18h-22h", icon: "🌅" },
-  {
-    value: "Journée complète",
-    label: "Journée complète",
-    time: "9h-22h",
-    icon: "🌞",
-  },
-];
-
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -113,7 +95,6 @@ export default function Contact() {
         type_evenement: typeDemandeDisplay,
         nombre_personnes: data.nombrePersonnes,
         date_reservation: data.dateReservation,
-        plage_horaire: data.plageHoraire,
         informations_supplementaires:
           data.informationsSupplementaires || "Aucune",
       };
@@ -126,7 +107,6 @@ export default function Contact() {
         type_evenement: typeDemandeDisplay,
         nombre_personnes: data.nombrePersonnes,
         date_reservation: data.dateReservation,
-        plage_horaire: data.plageHoraire,
         informations_supplementaires:
           data.informationsSupplementaires || "Aucune",
       };
@@ -442,77 +422,6 @@ export default function Contact() {
                     </div>
                   )}
                 </div>
-              </div>
-
-              {/* Plage horaire avec design amélioré */}
-              <div className="group">
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-3">
-                  <Clock className="w-4 h-4" />
-                  Plage horaire *
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {plageHoraireOptions.map((option) => {
-                    const isSelected = watch("plageHoraire") === option.value;
-
-                    return (
-                      <label
-                        key={option.value}
-                        className="relative cursor-pointer group/radio"
-                      >
-                        <input
-                          {...register("plageHoraire")}
-                          type="radio"
-                          value={option.value}
-                          className="sr-only"
-                        />
-                        <div
-                          className={`
-            border-2 rounded-xl p-4 transition-all duration-200 
-            ${
-              isSelected
-                ? "border-vert bg-vert/10 shadow-md ring-2 ring-vert/20"
-                : "border-gray-200 hover:border-vert hover:bg-vert/5"
-            }
-            group-hover/radio:shadow-sm
-          `}
-                        >
-                          <div className="flex items-center gap-3">
-                            <span className="text-2xl">{option.icon}</span>
-                            <div>
-                              <div
-                                className={`font-medium transition-colors ${
-                                  isSelected ? "text-vert" : "text-gray-900"
-                                }`}
-                              >
-                                {option.label}
-                              </div>
-                              <div
-                                className={`text-sm transition-colors ${
-                                  isSelected ? "text-vert/70" : "text-gray-500"
-                                }`}
-                              >
-                                {option.time}
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Indicateur visuel de sélection */}
-                          {isSelected && (
-                            <div className="absolute top-2 right-2 w-6 h-6 bg-vert rounded-full flex items-center justify-center">
-                              <CheckCircle className="w-4 h-4 text-white" />
-                            </div>
-                          )}
-                        </div>
-                      </label>
-                    );
-                  })}
-                </div>
-                {errors.plageHoraire && (
-                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
-                    <XCircle className="w-4 h-4" />
-                    {errors.plageHoraire.message}
-                  </div>
-                )}
               </div>
             </div>
 

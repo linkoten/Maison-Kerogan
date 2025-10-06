@@ -275,13 +275,13 @@ const Event = () => {
                 </div>
 
                 {/* Bouton de réservation amélioré */}
-                {event.reservationLink && (
+                {reservationConfig && event.reservationLink && (
                   <div className="mt-8 pt-6 border-t border-gray-100">
                     <button
                       onClick={handleReservation}
                       className={`w-full ${reservationConfig.color} text-white py-4 px-8 rounded-2xl hover:opacity-90 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] flex items-center justify-center gap-3 group`}
                     >
-                      <ReservationIcon
+                      <reservationConfig.icon
                         size={24}
                         className="group-hover:rotate-12 transition-transform"
                       />
