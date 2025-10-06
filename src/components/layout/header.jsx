@@ -76,10 +76,10 @@ function Header() {
             évènement
           </Link>
           <Link
-            className={`link ${
-              pathname === "/Contact"
-                ? "text-ocre border-b border-ocre scale-125 hover:ocre"
-                : "border-b border-vert hover:text-vert hover:scale-110 hover:bold"
+            className={`link  ${
+              pathname === "/Tapas"
+                ? "text-ocre border-b border-ocre scale-125 brightness-150 uppercase"
+                : "border-b border-ocre hover:scale-110  hover:bold hover:-translate-y-1 uppercase tracking-wider "
             }`}
             href="/Contact"
           >
