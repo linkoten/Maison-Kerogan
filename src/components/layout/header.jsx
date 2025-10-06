@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logo from "../../../public/format texte/vert.jpg";
+import { SheetClose } from "../ui/sheet";
 
 //version web
 
@@ -73,6 +74,16 @@ function Header() {
             href="/Location"
           >
             évènement
+          </Link>
+          <Link
+            className={`link ${
+              pathname === "/Contact"
+                ? "text-ocre border-b border-ocre scale-125 hover:ocre"
+                : "border-b border-vert hover:text-vert hover:scale-110 hover:bold"
+            }`}
+            href="/Contact"
+          >
+            Contact
           </Link>
         </ul>
       </nav>

@@ -11,6 +11,7 @@ import Link from "next/link";
 import HistoireDuLieu from "@/components/accueil/histoireDuLieu";
 import A_propos from "@/components/Apropos";
 import { Merriweather } from "next/font/google";
+import Event from "@/components/event/Event";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
@@ -130,6 +131,7 @@ export default function Home() {
             MK
           </span>
         </div>{" "}
+        <Event />
         <HistoireDuLieu />
         <BrunchExtrait />
         <ThéExtrait />
