@@ -4,19 +4,89 @@ import Image from "next/image";
 import { Merriweather } from "next/font/google";
 import Carousel from "@/components/Carousel";
 import logo from "../../../public/format moyen/vert.jpg";
-import { restaurant, tapas } from "@/lib/queries";
+import { getBrunchBySlug } from "@/lib/getHygraphEvent";
+import { useEffect, useState } from "react";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
   subsets: ["latin"],
 });
 
-const Tapas = () => {
-  const item = restaurant;
+const Brunch = () => {
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBrunch = async () => {
+      try {
+        console.log("🔍 Récupération des données Brunch...");
+        const brunchData = await getBrunchBySlug("brunch");
+
+        if (brunchData) {
+          // Transformer les images Hygraph en URLs simples pour le Carousel
+          const transformData = {
+            ...brunchData,
+            images: brunchData.images?.map((img) => img.url) || [],
+            part2Images: brunchData.part2Images?.map((img) => img.url) || [],
+            part3Images: brunchData.part3Images?.map((img) => img.url) || [],
+            part4Images: brunchData.part4Images?.map((img) => img.url) || [],
+          };
+
+          console.log("✅ Données Brunch récupérées:", transformData.title);
+          setItem(transformData);
+        } else {
+          console.log("❌ Aucun brunch trouvé avec le slug 'brunch'");
+        }
+      } catch (error) {
+        console.error("💥 Erreur lors de la récupération du brunch:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBrunch();
+  }, []);
+
+  // État de chargement
+  if (loading) {
+    return (
+      <div className="container mx-auto">
+        <div className="flex justify-center items-center h-screen">
+          <div className="flex flex-col items-center gap-4 text-gray-600">
+            <div className="w-12 h-12 border-3 border-vert border-t-transparent rounded-full animate-spin"></div>
+            <h2 className="text-xl font-medium">Chargement de la page...</h2>
+            <p className="text-sm">
+              Récupération des informations depuis Hygraph
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Si pas de données
+  if (!item) {
+    return (
+      <div className="container mx-auto">
+        <div className="flex justify-center items-center h-screen">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Contenu non disponible
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Les informations sur le brunch ne sont pas disponibles pour le
+              moment.
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-vert to-transparent mx-auto"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const renderBlock = (part, paragraphe1, paragraphe2, images, index) => {
     const textContent = (
-      <div className=" flex flex-col w-full h-full bg-vert rounded-xl border-ocre border-2 shadow-lg shadow-ocre hover:shadow-xl hover:shadow-ocre relative overflow-hidden">
+      <div className="flex flex-col w-full h-full bg-vert rounded-xl border-ocre border-2 shadow-lg shadow-ocre hover:shadow-xl hover:shadow-ocre relative overflow-hidden">
         {/* Bandeau latéral avec titre verticalisé */}
         <div className="w-1/5 h-full absolute left-0 top-0 bottom-0 flex items-center justify-center border-r border-vert2">
           <span
@@ -91,7 +161,7 @@ const Tapas = () => {
     const isEven = index % 2 === 1;
 
     return (
-      <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-6 lg:pt-12  transition-all duration-1000">
+      <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-6 lg:pt-12 transition-all duration-1000">
         {isEven ? (
           <>
             {textContent}
@@ -120,30 +190,49 @@ const Tapas = () => {
         <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[8rem] font-bold text-gray-50 opacity-20 z-0">
           {item.title.charAt(0)}
         </span>
-      </div>{" "}
-      {renderBlock(
-        item.part1,
-        item.paragraphe1,
-        item.paragraphe2,
-        item.images,
-        0
-      )}
-      {renderBlock(
-        item.part2,
-        item.part2Paragraphe1,
-        item.part2Paragraphe2,
-        item.part2Images,
-        1
-      )}
-      {renderBlock(
-        item.part3,
-        item.part3Paragraphe1,
-        item.part3Paragraphe2,
-        item.part3Images,
-        2
-      )}
+      </div>
+
+      {/* Bloc Part 1 */}
+      {item.part1 &&
+        renderBlock(
+          item.part1,
+          item.paragraphe1,
+          item.paragraphe2,
+          item.images,
+          0
+        )}
+
+      {/* Bloc Part 2 */}
+      {item.part2 &&
+        renderBlock(
+          item.part2,
+          item.part2Paragraphe1,
+          item.part2Paragraphe2,
+          item.part2Images,
+          1
+        )}
+
+      {/* Bloc Part 3 */}
+      {item.part3 &&
+        renderBlock(
+          item.part3,
+          item.part3Paragraphe1,
+          item.part3Paragraphe2,
+          item.part3Images,
+          2
+        )}
+
+      {/* Bloc Part 4 */}
+      {item.part4 &&
+        renderBlock(
+          item.part4,
+          item.part4Paragraphe1,
+          item.part4Paragraphe2,
+          item.part4Images,
+          3
+        )}
     </div>
   );
 };
 
-export default Tapas;
+export default Brunch;

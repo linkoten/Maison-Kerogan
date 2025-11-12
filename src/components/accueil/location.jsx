@@ -7,10 +7,86 @@ import logo from "../../../public/format feuille/jaune.jpg";
 import Link from "next/link";
 import { merriweather, nunito } from "../font";
 import Carousel from "../Carousel";
-import { location } from "@/lib/queries";
+import { getLocationEvenementielleBySlug } from "@/lib/getHygraphEvent";
+import { useEffect, useState } from "react";
 
 const LocationExtrait = () => {
-  const item = location;
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLocation = async () => {
+      try {
+        console.log("🔍 [LocationExtrait] Récupération des données...");
+
+        // Récupérer les données depuis Hygraph avec le slug
+        const locationData = await getLocationEvenementielleBySlug(
+          "locationevenementielle"
+        );
+
+        if (locationData) {
+          // NOUVEAU : Garder les objets complets avec mimeType pour le Carousel
+          const transformedData = {
+            ...locationData,
+            // Garder les objets complets (incluant vidéos avec mimeType)
+            images: locationData.images || [], // Objets complets avec mimeType
+          };
+
+          console.log(
+            "✅ [LocationExtrait] Données récupérées:",
+            transformedData.title
+          );
+          console.log(
+            "🎥 [LocationExtrait] Médias trouvés:",
+            transformedData.images
+          );
+
+          setItem(transformedData);
+        } else {
+          console.log("❌ [LocationExtrait] Aucune donnée trouvée");
+        }
+      } catch (error) {
+        console.error(
+          "💥 [LocationExtrait] Erreur lors de la récupération:",
+          error
+        );
+        setItem(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLocation();
+  }, []);
+
+  // État de chargement
+  if (loading) {
+    return (
+      <div className="container mx-auto">
+        <div className="flex px-4 mb-10 justify-center items-center h-64">
+          <div className="flex flex-col items-center gap-3 text-gray-600">
+            <div className="w-8 h-8 border-2 border-vert border-t-transparent rounded-full animate-spin"></div>
+            <span className="text-sm font-medium">
+              Chargement des informations...
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Si pas de données
+  if (!item) {
+    return (
+      <div className="container mx-auto">
+        <div className="flex px-4 mb-10 justify-center items-center h-64">
+          <p className="text-gray-500">
+            Informations de location non disponibles
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   const renderBlock = (
     extrait,
@@ -52,19 +128,24 @@ const LocationExtrait = () => {
 
         <div className="flex flex-col w-full h-full px-2 relative">
           <div className="space-y-3">
+            {/* Utilisation des données dynamiques */}
             <div className="border-l-2 border-vert pl-4 my-3">
               <p className="text-vert font-medium text-xs md:text-sm mb-1">
-                {item.titreExtrait}
+                {item.part1 || "Notre espace"}
               </p>
               <p className="text-white text-xs md:text-sm">{item.extrait}</p>
             </div>
 
-            <div className="border-l-2 border-vert pl-4 my-3">
-              <p className="text-vert font-medium text-xs md:text-sm mb-1">
-                {item.titreExtrait2}
-              </p>
-              <p className="text-white text-xs md:text-sm">{item.extrait2}</p>
-            </div>
+            {item.paragraphe1 && (
+              <div className="border-l-2 border-vert pl-4 my-3">
+                <p className="text-vert font-medium text-xs md:text-sm mb-1">
+                  {item.part2 || "Services"}
+                </p>
+                <p className="text-white text-xs md:text-sm">
+                  {item.paragraphe1}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="flex-1 flex flex-col justify-end text-xs md:text-sm lg:text-md mt-4">
@@ -105,6 +186,7 @@ const LocationExtrait = () => {
       </div>
     );
 
+    // CAROUSEL AVEC SUPPORT VIDÉO (objets complets)
     const carouselContent = images && images.length > 0 && (
       <div className="px-6 sm:px-0 w-full col-span-2">
         <Carousel images={images} />
@@ -123,12 +205,12 @@ const LocationExtrait = () => {
     <div className="container mx-auto">
       {renderBlock(
         item.extrait,
-        item.extrait2,
-        item.titreExtrait,
-        item.titreExtrait2,
+        item.paragraphe1,
+        item.part1,
+        item.part2,
         item.journees,
         item.horaires,
-        item.images
+        item.images // Maintenant contient les objets complets avec mimeType
       )}
     </div>
   );

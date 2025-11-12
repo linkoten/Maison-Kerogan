@@ -1,4 +1,3 @@
-import Map from "@/components/dynamic";
 import Link from "next/link";
 import React from "react";
 import { MapPin, Phone } from "lucide-react";
@@ -18,8 +17,7 @@ const locations = [
     address: "6 Pl. des déportés",
     city: "29980 Île-Tudy France",
     phone: "02 98 56 42 06",
-    facebook: "https://www.facebook.com/iletudycafe",
-    instagram: "https://www.instagram.com/cafedelaplage.iletudy/?hl=en",
+    instagram: "https://www.instagram.com/cafedelaplage_iletudy/?hl=en",
   },
 ];
 
@@ -67,28 +65,46 @@ const A_propos = () => {
                 </div>
               </div>
 
+              {/* Liens sociaux avec rendu conditionnel */}
               <div className="pt-4 flex justify-center space-x-6">
-                <Link
-                  href={location.facebook}
-                  target="_blank"
-                  className="group flex flex-col items-center"
-                >
-                  <div className="bg-gray-100 p-3 rounded-full group-hover:bg-blue-100 transition-colors duration-300">
-                    <FaFacebook className="h-6 w-6 text-gray-600 group-hover:text-blue-600 transition-colors duration-300" />
-                  </div>
-                  <span className="text-xs mt-1 text-gray-500">Facebook</span>
-                </Link>
+                {/* Facebook - CONDITIONNEL */}
+                {location.facebook && (
+                  <Link
+                    href={location.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center"
+                  >
+                    <div className="bg-gray-100 p-3 rounded-full group-hover:bg-blue-100 transition-colors duration-300">
+                      <FaFacebook className="h-6 w-6 text-gray-600 group-hover:text-blue-600 transition-colors duration-300" />
+                    </div>
+                    <span className="text-xs mt-1 text-gray-500">Facebook</span>
+                  </Link>
+                )}
 
-                <Link
-                  href={location.instagram}
-                  target="_blank"
-                  className="group flex flex-col items-center"
-                >
-                  <div className="bg-gray-100 p-3 rounded-full group-hover:bg-pink-100 transition-colors duration-300">
-                    <FaInstagram className="h-6 w-6 text-gray-600 group-hover:text-pink-600 transition-colors duration-300" />
+                {/* Instagram - CONDITIONNEL */}
+                {location.instagram && (
+                  <Link
+                    href={location.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center"
+                  >
+                    <div className="bg-gray-100 p-3 rounded-full group-hover:bg-pink-100 transition-colors duration-300">
+                      <FaInstagram className="h-6 w-6 text-gray-600 group-hover:text-pink-600 transition-colors duration-300" />
+                    </div>
+                    <span className="text-xs mt-1 text-gray-500">
+                      Instagram
+                    </span>
+                  </Link>
+                )}
+
+                {/* Message si aucun réseau social */}
+                {!location.facebook && !location.instagram && (
+                  <div className="text-center text-gray-500 text-sm">
+                    <p>Suivez-nous sur nos réseaux sociaux</p>
                   </div>
-                  <span className="text-xs mt-1 text-gray-500">Instagram</span>
-                </Link>
+                )}
               </div>
             </div>
           </div>

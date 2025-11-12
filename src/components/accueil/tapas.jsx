@@ -7,10 +7,73 @@ import logo from "../../../public/format feuille/rose.jpg";
 import Link from "next/link";
 import { merriweather, nunito } from "../font";
 import Carousel from "../Carousel";
-import { tapas } from "@/lib/queries";
+import { getTapasBySlug } from "@/lib/getHygraphEvent"; // SUPPRIMÉ debugListAllTapas
+import { useEffect, useState } from "react";
 
 const TapasExtrait = () => {
-  const item = tapas;
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTapas = async () => {
+      try {
+        // SIMPLIFIÉ - Tentative directe avec slug "tapas"
+        console.log("🔍 Récupération des données Tapas...");
+        const tapasData = await getTapasBySlug("tapas");
+
+        if (tapasData) {
+          // Transformer les images Hygraph en URLs simples pour le Carousel
+          const transformedImages =
+            tapasData.images?.map((img) => img.url) || [];
+
+          setItem({
+            ...tapasData,
+            images: transformedImages,
+          });
+          console.log("✅ Tapas chargé:", tapasData.title);
+        } else {
+          console.log("❌ Aucun tapas trouvé avec le slug 'tapas'");
+        }
+      } catch (error) {
+        console.error(
+          "💥 Erreur lors de la récupération des données tapas:",
+          error
+        );
+        setItem(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTapas();
+  }, []);
+
+  // État de chargement
+  if (loading) {
+    return (
+      <div className="container mx-auto">
+        <div className="flex px-4 mb-10 justify-center items-center h-64">
+          <div className="flex flex-col items-center gap-3 text-gray-600">
+            <div className="w-8 h-8 border-2 border-terracotta border-t-transparent rounded-full animate-spin"></div>
+            <span className="text-sm font-medium">
+              Chargement des informations...
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Si pas de données
+  if (!item) {
+    return (
+      <div className="container mx-auto">
+        <div className="flex px-4 mb-10 justify-center items-center h-64">
+          <p className="text-gray-500">Informations tapas non disponibles</p>
+        </div>
+      </div>
+    );
+  }
 
   const renderBlock = (extrait, journees, horaires, images) => {
     const textContent = (
@@ -45,7 +108,7 @@ const TapasExtrait = () => {
         <div className="flex flex-col w-full h-full px-2 relative">
           <div className="border-l-2 border-terracotta pl-4 my-4">
             <p className="text-xs md:text-sm lg:text-md mb-4 font-medium">
-              {item.extrait}
+              {extrait}
             </p>
           </div>
 
@@ -57,9 +120,9 @@ const TapasExtrait = () => {
               <div className="h-[1px] flex-grow bg-gradient-to-r from-terracotta to-transparent"></div>
             </div>
 
-            <div className="text-md font-bold ml-2">{item.journees}</div>
+            <div className="text-md font-bold ml-2">{journees}</div>
             <Separator className="bg-black opacity-70 my-1" />
-            <div className="text-md font-bold ml-2">{item.horaires}</div>
+            <div className="text-md font-bold ml-2">{horaires}</div>
             <Separator className="bg-black opacity-70 my-1" />
 
             <Button className="my-4 bg-black border border-black hover:brightness-110 hover:scale-[1.02] transition-all duration-200">

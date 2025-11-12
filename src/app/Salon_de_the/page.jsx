@@ -4,7 +4,8 @@ import Image from "next/image";
 import { Merriweather } from "next/font/google";
 import Carousel from "@/components/Carousel";
 import logo from "../../../public/format moyen/rouge.jpg";
-import { thé } from "@/lib/queries";
+import { getSalonDeTheBySlug } from "@/lib/getHygraphEvent";
+import { useEffect, useState } from "react";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
@@ -12,7 +13,81 @@ const merriweather = Merriweather({
 });
 
 const Thé = () => {
-  const item = thé;
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSalonDeThe = async () => {
+      try {
+        console.log("🔍 Récupération des données Salon de Thé...");
+        const salonData = await getSalonDeTheBySlug("salondethe");
+
+        if (salonData) {
+          // Transformer les images Hygraph en URLs simples pour le Carousel
+          const transformData = {
+            ...salonData,
+            images: salonData.images?.map((img) => img.url) || [],
+            part2Images: salonData.part2Images?.map((img) => img.url) || [],
+            part3Images: salonData.part3Images?.map((img) => img.url) || [],
+          };
+
+          console.log(
+            "✅ Données Salon de Thé récupérées:",
+            transformData.title
+          );
+          setItem(transformData);
+        } else {
+          console.log("❌ Aucun salon de thé trouvé avec le slug 'salondethe'");
+        }
+      } catch (error) {
+        console.error(
+          "💥 Erreur lors de la récupération du salon de thé:",
+          error
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSalonDeThe();
+  }, []);
+
+  // État de chargement
+  if (loading) {
+    return (
+      <div className="container mx-auto">
+        <div className="flex justify-center items-center h-screen">
+          <div className="flex flex-col items-center gap-4 text-gray-600">
+            <div className="w-12 h-12 border-3 border-terracotta border-t-transparent rounded-full animate-spin"></div>
+            <h2 className="text-xl font-medium">Chargement de la page...</h2>
+            <p className="text-sm">
+              Récupération des informations depuis Hygraph
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Si pas de données
+  if (!item) {
+    return (
+      <div className="container mx-auto">
+        <div className="flex justify-center items-center h-screen">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Contenu non disponible
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Les informations sur le salon de thé ne sont pas disponibles pour
+              le moment.
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-terracotta to-transparent mx-auto"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const renderBlock = (part, paragraphe1, paragraphe2, images, index) => {
     const textContent = (
@@ -120,21 +195,37 @@ const Thé = () => {
         <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[8rem] font-bold text-gray-50 opacity-20 z-0">
           {item.title.charAt(0)}
         </span>
-      </div>{" "}
-      {renderBlock(
-        item.part1,
-        item.paragraphe1,
-        item.paragraphe2,
-        item.images,
-        0
-      )}
-      {renderBlock(
-        item.part2,
-        item.part2Paragraphe1,
-        item.part2Paragraphe2,
-        item.part2Images,
-        1
-      )}
+      </div>
+
+      {/* Bloc Part 1 */}
+      {item.part1 &&
+        renderBlock(
+          item.part1,
+          item.paragraphe1,
+          item.paragraphe2,
+          item.images,
+          0
+        )}
+
+      {/* Bloc Part 2 */}
+      {item.part2 &&
+        renderBlock(
+          item.part2,
+          item.part2Paragraphe1,
+          item.part2Paragraphe2,
+          item.part2Images,
+          1
+        )}
+
+      {/* Bloc Part 3 */}
+      {item.part3 &&
+        renderBlock(
+          item.part3,
+          item.part3Paragraphe1,
+          item.part3Paragraphe2,
+          item.part3Images,
+          2
+        )}
     </div>
   );
 };
