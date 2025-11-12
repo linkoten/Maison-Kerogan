@@ -354,7 +354,7 @@ const Menu = () => {
           <div className="text-center mt-24">
             <div className="w-20 h-0.5 bg-gradient-to-r from-ocre to-vert rounded-full mx-auto mb-6"></div>
             <p className="text-gray-500 text-lg">
-              Pour plus d'informations ou réservations,
+              Pour plus d&apos;informations ou réservations,
               <span className="text-vert font-medium"> contactez-nous</span>
             </p>
           </div>
