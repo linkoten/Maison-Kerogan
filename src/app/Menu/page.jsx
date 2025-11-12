@@ -5,6 +5,7 @@ import { Merriweather } from "next/font/google";
 import { useEffect, useState } from "react";
 import { Download, Maximize, X, Clock, Utensils, ChefHat } from "lucide-react";
 import { getAllMenus } from "@/lib/getHygraphEvent";
+import Link from "next/link";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
@@ -291,14 +292,14 @@ const Menu = () => {
                   description={menuData.menuDuMidi}
                   image={menuData.menuDuMidiImage}
                   icon={Utensils}
-                  accentColor="bg-gradient-to-br from-ocre via-orange-500 to-orange-600"
+                  accentColor="bg-ocre"
                 />
                 <MenuCard
                   title="Menu du Soir"
                   description={menuData.menuDuSoir}
                   image={menuData.menuDuSoirImage}
                   icon={ChefHat}
-                  accentColor="bg-gradient-to-br from-vert via-green-600 to-green-700"
+                  accentColor="bg-vert"
                 />
               </div>
             ) : (
@@ -354,8 +355,13 @@ const Menu = () => {
           <div className="text-center mt-24">
             <div className="w-20 h-0.5 bg-gradient-to-r from-ocre to-vert rounded-full mx-auto mb-6"></div>
             <p className="text-gray-500 text-lg">
-              Pour plus d&apos;informations ou réservations,
-              <span className="text-vert font-medium"> contactez-nous</span>
+              Pour plus d&apos;informations ou réservations,{" "}
+              <Link
+                href="/Contact"
+                className="text-vert font-medium hover:text-ocre transition-colors underline decoration-vert/30 hover:decoration-ocre"
+              >
+                contactez-nous
+              </Link>{" "}
             </p>
           </div>
         </div>
