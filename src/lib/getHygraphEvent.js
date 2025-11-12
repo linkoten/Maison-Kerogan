@@ -606,40 +606,14 @@ export const getTapasBySlug = async (slug) => {
   }
 };
 
-export const getHistoireDuLieu = async () => {
+export const getHistoireDuLieuBySlug = async (slug) => {
+  // TEMPORAIRE: Utiliser l'ID directement puisque le slug n'est pas encore indexé
   const query = gql`
     query GetHistoireDuLieu {
-      histoireDuLieus(stage: PUBLISHED) {
-        id
-        title
-        paragraphe1
-        paragraphe2
-        images {
-          id
-          fileName
-          url
-          width
-          height
-          handle
-        }
-      }
-    }
-  `;
-
-  try {
-    const data = await hygraphClient.request(query);
-    return data.histoireDuLieus;
-  } catch (error) {
-    console.error("Erreur lors de la récupération de Histoire du Lieu:", error);
-    return [];
-  }
-};
-
-// Récupérer Histoire du Lieu par slug (si vous voulez utiliser un slug)
-export const getHistoireDuLieuBySlug = async (slug) => {
-  const query = gql`
-    query GetHistoireDuLieuBySlug($slug: String!) {
-      histoireDuLieu(where: { slug: $slug }, stage: PUBLISHED) {
+      histoireDuLieu(
+        where: { id: "clwrump5erp6407vx6e5ialg0" }
+        stage: PUBLISHED
+      ) {
         id
         title
         slug
@@ -658,19 +632,62 @@ export const getHistoireDuLieuBySlug = async (slug) => {
   `;
 
   try {
-    console.log("🔍 Recherche Histoire du Lieu avec slug:", slug);
-    const data = await hygraphClient.request(query, { slug });
     console.log(
-      "📊 Réponse brute Histoire du Lieu:",
+      "🔍 Récupération Histoire du Lieu par ID (slug temporaire):",
+      slug
+    );
+    const data = await hygraphClient.request(query);
+    console.log(
+      "📊 Histoire du Lieu récupérée:",
       JSON.stringify(data, null, 2)
     );
     return data.histoireDuLieu;
   } catch (error) {
     console.error(
-      "💥 Erreur lors de la récupération de Histoire du Lieu par slug:",
+      "💥 Erreur lors de la récupération de Histoire du Lieu:",
       error
     );
+    if (error.response) {
+      console.error("🔍 Response errors:", error.response.errors);
+    }
     return null;
+  }
+};
+
+// Alternative simple pour récupérer par ID direct
+export const getHistoireDuLieu = async () => {
+  const query = gql`
+    query GetHistoireDuLieu {
+      histoireDuLieu(stage: PUBLISHED) {
+        id
+        title
+        slug
+        paragraphe1
+        paragraphe2
+        images {
+          id
+          fileName
+          url
+          width
+          height
+          handle
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await hygraphClient.request(query);
+    return data.histoireDuLieu;
+  } catch (error) {
+    console.error(
+      "💥 Erreur lors de la récupération de Histoire du Lieu:",
+      error
+    );
+    if (error.response) {
+      console.error("🔍 Response errors:", error.response.errors);
+    }
+    return [];
   }
 };
 
