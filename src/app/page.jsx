@@ -188,7 +188,7 @@ export default function Home() {
                       href="/Location"
                       className="text-vert hover:text-ocre transition-colors font-medium underline decoration-vert/30 hover:decoration-ocre"
                     >
-                      location événementielle
+                      privatisation
                     </Link>
                     .
                   </p>
@@ -232,7 +232,7 @@ export default function Home() {
                     href="/Location"
                     className="px-6 py-3 bg-ocre text-white rounded-xl hover:bg-ocre2 transition-all duration-300 hover:scale-105 shadow-lg font-medium"
                   >
-                    Location Événementielle
+                    Privatisation
                   </Link>
                 </div>
               </div>
