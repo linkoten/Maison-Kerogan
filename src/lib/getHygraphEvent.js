@@ -215,9 +215,7 @@ export const getLocationEvenementielleBySlug = async (slug) => {
   `;
 
   try {
-    console.log("🔍 Recherche LocationEvenementielle avec slug:", slug);
     const data = await hygraphClient.request(query, { slug });
-    console.log("📊 Réponse brute:", JSON.stringify(data, null, 2));
     return data.locationEvenementielle;
   } catch (error) {
     console.error(
@@ -587,9 +585,7 @@ export const getTapasBySlug = async (slug) => {
   `;
 
   try {
-    console.log("🔍 Recherche Tapas avec slug:", slug);
     const data = await hygraphClient.request(query, { slug });
-    console.log("📊 Réponse brute Tapas:", JSON.stringify(data, null, 2));
     return data.tapas;
   } catch (error) {
     console.error(
@@ -632,15 +628,8 @@ export const getHistoireDuLieuBySlug = async (slug) => {
   `;
 
   try {
-    console.log(
-      "🔍 Récupération Histoire du Lieu par ID (slug temporaire):",
-      slug
-    );
     const data = await hygraphClient.request(query);
-    console.log(
-      "📊 Histoire du Lieu récupérée:",
-      JSON.stringify(data, null, 2)
-    );
+
     return data.histoireDuLieu;
   } catch (error) {
     console.error(
@@ -660,6 +649,7 @@ export const getHistoireDuLieu = async () => {
     query GetHistoireDuLieu {
       histoireDuLieu(stage: PUBLISHED) {
         id
+
         title
         slug
         paragraphe1
@@ -726,9 +716,7 @@ export const getAllMenus = async () => {
   `;
 
   try {
-    console.log("🔍 Récupération de tous les menus...");
     const data = await hygraphClient.request(query);
-    console.log("📊 Menus récupérés:", JSON.stringify(data, null, 2));
     return data.menus;
   } catch (error) {
     console.error("💥 Erreur lors de la récupération des menus:", error);
@@ -774,9 +762,7 @@ export const getMenuBySlug = async (slug) => {
   `;
 
   try {
-    console.log("🔍 Recherche menu avec slug:", slug);
     const data = await hygraphClient.request(query, { slug });
-    console.log("📊 Menu récupéré par slug:", JSON.stringify(data, null, 2));
     return data.menu;
   } catch (error) {
     console.error("💥 Erreur lors de la récupération du menu par slug:", error);
@@ -822,14 +808,11 @@ export const getMenuData = async () => {
   `;
 
   try {
-    console.log("🔍 Récupération du premier menu disponible...");
     const data = await hygraphClient.request(query);
-    console.log("📊 Premier menu récupéré:", JSON.stringify(data, null, 2));
 
     if (data.menus && data.menus.length > 0) {
       return data.menus[0];
     } else {
-      console.log("❌ Aucun menu trouvé");
       return null;
     }
   } catch (error) {
@@ -858,9 +841,7 @@ export const testMenuStructure = async () => {
   `;
 
   try {
-    console.log("🔍 Test de la structure du modèle Menu...");
     const data = await hygraphClient.request(query);
-    console.log("📊 Structure Menu:", JSON.stringify(data, null, 2));
     return data;
   } catch (error) {
     console.error("💥 Erreur test structure:", error);

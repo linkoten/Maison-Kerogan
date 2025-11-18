@@ -19,7 +19,6 @@ const Thé = () => {
   useEffect(() => {
     const fetchSalonDeThe = async () => {
       try {
-        console.log("🔍 Récupération des données Salon de Thé...");
         const salonData = await getSalonDeTheBySlug("salondethe");
 
         if (salonData) {
@@ -31,13 +30,11 @@ const Thé = () => {
             part3Images: salonData.part3Images?.map((img) => img.url) || [],
           };
 
-          console.log(
-            "✅ Données Salon de Thé récupérées:",
-            transformData.title
-          );
           setItem(transformData);
         } else {
-          console.log("❌ Aucun salon de thé trouvé avec le slug 'salondethe'");
+          console.warn(
+            "⚠️ Aucune donnée de salon de thé trouvée pour le slug donné."
+          );
         }
       } catch (error) {
         console.error(

@@ -14,8 +14,6 @@ const HistoiresDuLieu = () => {
   useEffect(() => {
     const fetchHistoireDuLieu = async () => {
       try {
-        console.log("🔍 Récupération Histoire du Lieu...");
-
         const histoireData = await getHistoireDuLieuBySlug("histoireDuLieu");
 
         if (histoireData) {
@@ -27,15 +25,9 @@ const HistoiresDuLieu = () => {
             ...histoireData,
             images: transformedImages,
           });
-
-          console.log("✅ Histoire du lieu récupérée avec succès:", {
-            title: histoireData.title,
-            slug: histoireData.slug,
-            imagesCount: transformedImages.length,
-          });
         } else {
-          console.log(
-            "❌ Aucune histoire trouvée pour le slug: histoireDuLieu"
+          console.warn(
+            "⚠️ Aucune donnée d'histoire du lieu trouvée pour le slug donné."
           );
         }
       } catch (error) {

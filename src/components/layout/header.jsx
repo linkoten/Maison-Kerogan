@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logo from "../../../public/format texte/vert.jpg";
 import { useSeason } from "@/hooks/useSeason";
+import ReservationButton from "@/components/ui/ReservationButton";
 
 //version web
 
@@ -29,7 +30,7 @@ function Header() {
         </Link>
 
         {/* Nav links avec logique saisonnière */}
-        <ul className="flex justify-around gap-2 sm:gap-6 lg:gap-10 text-[6px] sm:text-xs md:text-sm">
+        <ul className="flex justify-around gap-2 sm:gap-6 lg:gap-10 text-[6px] sm:text-xs md:text-sm flex-1">
           <Link
             className={`link ${
               pathname === "/Menu"
@@ -102,6 +103,27 @@ function Header() {
             Contact
           </Link>
         </ul>
+
+        {/* Bouton de réservation */}
+        <div className="ml-4">
+          <ReservationButton variant="header">
+            <span className="hidden md:inline">Réserver</span>
+            <span className="md:hidden">Rés.</span>
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </ReservationButton>
+        </div>
       </nav>
     </header>
   );

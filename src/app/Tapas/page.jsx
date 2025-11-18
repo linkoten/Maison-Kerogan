@@ -19,8 +19,6 @@ const Tapas = () => {
   useEffect(() => {
     const fetchTapas = async () => {
       try {
-        console.log("🔍 Récupération des données Tapas...");
-
         // SIMPLIFIÉ - Tentative directe avec slug "tapas"
         const tapasData = await getTapasBySlug("tapas");
 
@@ -37,10 +35,9 @@ const Tapas = () => {
             menu: tapasData.menu?.map((img) => img.url) || [],
           };
 
-          console.log("✅ Données Tapas récupérées:", transformData.title);
           setItem(transformData);
         } else {
-          console.log("❌ Aucun tapas trouvé avec le slug 'tapas'");
+          console.warn("⚠️ Aucune donnée de tapas trouvée pour le slug donné.");
         }
       } catch (error) {
         console.error("💥 Erreur lors de la récupération des tapas:", error);

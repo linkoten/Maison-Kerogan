@@ -18,7 +18,6 @@ const TapasExtrait = () => {
     const fetchTapas = async () => {
       try {
         // SIMPLIFIÉ - Tentative directe avec slug "tapas"
-        console.log("🔍 Récupération des données Tapas...");
         const tapasData = await getTapasBySlug("tapas");
 
         if (tapasData) {
@@ -30,9 +29,8 @@ const TapasExtrait = () => {
             ...tapasData,
             images: transformedImages,
           });
-          console.log("✅ Tapas chargé:", tapasData.title);
         } else {
-          console.log("❌ Aucun tapas trouvé avec le slug 'tapas'");
+          console.warn("⚠️ Aucune donnée de tapas trouvée pour le slug donné.");
         }
       } catch (error) {
         console.error(

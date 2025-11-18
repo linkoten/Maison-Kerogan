@@ -17,8 +17,6 @@ const LocationExtrait = () => {
   useEffect(() => {
     const fetchLocation = async () => {
       try {
-        console.log("🔍 [LocationExtrait] Récupération des données...");
-
         // Récupérer les données depuis Hygraph avec le slug
         const locationData = await getLocationEvenementielleBySlug(
           "locationevenementielle"
@@ -32,18 +30,11 @@ const LocationExtrait = () => {
             images: locationData.images || [], // Objets complets avec mimeType
           };
 
-          console.log(
-            "✅ [LocationExtrait] Données récupérées:",
-            transformedData.title
-          );
-          console.log(
-            "🎥 [LocationExtrait] Médias trouvés:",
-            transformedData.images
-          );
-
           setItem(transformedData);
         } else {
-          console.log("❌ [LocationExtrait] Aucune donnée trouvée");
+          console.warn(
+            "⚠️ [LocationExtrait] Aucune donnée de location événementielle trouvée pour le slug donné."
+          );
         }
       } catch (error) {
         console.error(

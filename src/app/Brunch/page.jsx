@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Merriweather } from "next/font/google";
 import Carousel from "@/components/Carousel";
+import ReservationButton from "@/components/ui/ReservationButton";
 import logo from "../../../public/format moyen/vert.jpg";
 import { getBrunchBySlug } from "@/lib/getHygraphEvent";
 import { useEffect, useState } from "react";
@@ -19,7 +20,6 @@ const Brunch = () => {
   useEffect(() => {
     const fetchBrunch = async () => {
       try {
-        console.log("🔍 Récupération des données Brunch...");
         const brunchData = await getBrunchBySlug("brunch");
 
         if (brunchData) {
@@ -32,10 +32,11 @@ const Brunch = () => {
             part4Images: brunchData.part4Images?.map((img) => img.url) || [],
           };
 
-          console.log("✅ Données Brunch récupérées:", transformData.title);
           setItem(transformData);
         } else {
-          console.log("❌ Aucun brunch trouvé avec le slug 'brunch'");
+          console.warn(
+            "⚠️ Aucune donnée de brunch trouvée pour le slug donné."
+          );
         }
       } catch (error) {
         console.error("💥 Erreur lors de la récupération du brunch:", error);
@@ -133,6 +134,13 @@ const Brunch = () => {
             </p>
           )}
 
+          {/* Bouton de réservation - Uniquement pour Part 1 (index 0) */}
+          {index === 0 && (
+            <div className="flex justify-center my-6">
+              <ReservationButton />
+            </div>
+          )}
+
           {/* Séparateur décoratif */}
           <div className="flex items-center gap-2 mt-auto mb-2">
             <div className="h-[1px] w-1/3 bg-gradient-to-r from-transparent to-ocre"></div>
@@ -161,7 +169,7 @@ const Brunch = () => {
     const isEven = index % 2 === 1;
 
     return (
-      <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-6 lg:pt-12 transition-all duration-1000">
+      <div className="px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-6 lg:pt-12 transition-all duration-1000">
         {isEven ? (
           <>
             {textContent}

@@ -5,6 +5,7 @@ import { Merriweather } from "next/font/google";
 import { useEffect, useState } from "react";
 import { Download, Maximize, X, Clock, Utensils, ChefHat } from "lucide-react";
 import { getAllMenus } from "@/lib/getHygraphEvent";
+import ReservationButton from "@/components/ui/ReservationButton";
 import Link from "next/link";
 
 const merriweather = Merriweather({
@@ -147,6 +148,26 @@ const Menu = () => {
               </p>
             </div>
           )}
+
+          {/* Bouton de réservation */}
+          <div className="mt-6">
+            <ReservationButton variant={title === "Menu du Midi" ? "midi" : "compact"}>
+              <span>Réserver</span>
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </ReservationButton>
+          </div>
         </div>
       </div>
 
