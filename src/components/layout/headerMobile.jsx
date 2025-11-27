@@ -15,8 +15,9 @@ import Image from "next/image";
 import logo from "../../../public/format texte/blanc.jpg";
 import { usePathname } from "next/navigation";
 import { useSeason } from "@/hooks/useSeason.js";
+import ReservationButton from "../ui/ReservationButton";
 
-const Test = () => {
+const HeaderMobile = () => {
   const pathname = usePathname();
   const { isSummer, isWinter } = useSeason();
 
@@ -145,6 +146,25 @@ const Test = () => {
                   CONTACT
                 </Link>
               </SheetClose>
+              <SheetClose asChild>
+                <ReservationButton variant="header">
+                  <span className="hidden md:inline">Réserver</span>
+                  <span className="md:hidden text-xs">Réserver</span>
+                  <svg
+                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </ReservationButton>
+              </SheetClose>
 
               {/* Message saisonnier en bas du menu - CHANGEMENT: utilisation de span au lieu de p */}
               {isWinter && (
@@ -161,4 +181,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default HeaderMobile;
