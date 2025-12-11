@@ -42,12 +42,12 @@ export const useSeasonalVisibility = (component) => {
 
   const visibilityRules = {
     // Composants visibles seulement en été
-    TapasExtrait: ["ete"],
     ThéExtrait: ["ete"],
 
     // Composants toujours visibles (vous pouvez ajouter d'autres règles)
     BrunchExtrait: ["ete", "hiver"],
     LocationExtrait: ["ete", "hiver"],
+    TapasExtrait: ["ete", "hiver"],
     HistoireDuLieu: ["ete", "hiver"],
     Event: ["ete", "hiver"],
     A_propos: ["ete", "hiver"],

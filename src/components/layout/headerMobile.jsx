@@ -108,21 +108,19 @@ const HeaderMobile = () => {
               </SheetClose>
             )}
 
-            {/* Tapas - Visible seulement en été */}
-            {isSummer && (
-              <SheetClose asChild>
-                <Link
-                  className={`link ${
-                    pathname === "/Tapas"
-                      ? "text-ocre border-b border-ocre scale-125 hover:ocre"
-                      : "border-b border-vert hover:text-vert hover:scale-110 hover:bold"
-                  }`}
-                  href="/Tapas"
-                >
-                  AFTER WORK
-                </Link>
-              </SheetClose>
-            )}
+            {/* Tapas - Disponible toute l'année */}
+            <SheetClose asChild>
+              <Link
+                className={`link ${
+                  pathname === "/Tapas"
+                    ? "text-ocre border-b border-ocre scale-125 hover:ocre"
+                    : "border-b border-vert hover:text-vert hover:scale-110 hover:bold"
+                }`}
+                href="/Tapas"
+              >
+                TAPAS
+              </Link>
+            </SheetClose>
 
             <SheetClose asChild>
               <Link
@@ -172,7 +170,7 @@ const HeaderMobile = () => {
             {/* Message saisonnier en bas du menu */}
             {isWinter && (
               <div className="mt-auto text-xs text-gray-500 normal-case text-center py-4">
-                <span className="block">🌸 Tea Time et After Work</span>
+                <span className="block">🌸 Tea Time</span>
                 <span className="block">de retour au printemps</span>
               </div>
             )}

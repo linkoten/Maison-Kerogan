@@ -186,8 +186,8 @@ const LocationExtrait = () => {
 
     return (
       <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-0 sm:pt-12 transition-all duration-1000">
-        {textContent}
         {carouselContent}
+        {textContent}
       </div>
     );
   };

@@ -66,18 +66,14 @@ export default function Home() {
               </>
             )}
 
-            {/* After Work - Visible seulement en été */}
-            {isSummer && (
-              <>
-                <Link
-                  href="/Tapas"
-                  className="text-[8px] sm:text-[12px] md:text-[14px] lg:text-xl uppercase font-medium tracking-wide text-center transition-all duration-300 hover:scale-110 hover:text-rose"
-                >
-                  After Work
-                </Link>
-                <span className="text-ocre text-lg lg:text-xl">·</span>
-              </>
-            )}
+            {/* Tapas - Disponible toute l'année */}
+            <Link
+              href="/Tapas"
+              className="text-[8px] sm:text-[12px] md:text-[14px] lg:text-xl uppercase font-medium tracking-wide text-center transition-all duration-300 hover:scale-110 hover:text-terracotta"
+            >
+              Tapas
+            </Link>
+            <span className="text-ocre text-lg lg:text-xl">·</span>
 
             <Link
               href="/Location"
@@ -118,12 +114,10 @@ export default function Home() {
           </div>
         )}
 
-        {/* TapasExtrait - Visible seulement en été */}
-        {isSummer && (
-          <div className="transition-all duration-500 ease-in-out">
-            <TapasExtrait />
-          </div>
-        )}
+        {/* TapasExtrait - Disponible toute l'année */}
+        <div className="transition-all duration-500 ease-in-out">
+          <TapasExtrait />
+        </div>
 
         <LocationExtrait />
 
@@ -170,10 +164,9 @@ export default function Home() {
                 {/* Description principale */}
                 <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-inner mb-8">
                   <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">
-                    Nos services{" "}
-                    <span className="font-semibold text-vert">Tea Time</span> et{" "}
-                    <span className="font-semibold text-vert">After Work</span>{" "}
-                    reprennent au printemps.
+                    Notre service{" "}
+                    <span className="font-semibold text-vert">Tea Time</span>{" "}
+                    reprend au printemps.
                   </p>
                   <p className="text-gray-600 text-base md:text-lg">
                     En attendant, découvrez nos délicieux{" "}
@@ -182,6 +175,13 @@ export default function Home() {
                       className="text-vert hover:text-ocre transition-colors font-medium underline decoration-vert/30 hover:decoration-ocre"
                     >
                       brunchs
+                    </Link>
+                    , nos{" "}
+                    <Link
+                      href="/Tapas"
+                      className="text-vert hover:text-ocre transition-colors font-medium underline decoration-vert/30 hover:decoration-ocre"
+                    >
+                      Tapas
                     </Link>{" "}
                     et notre service de{" "}
                     <Link

@@ -6,6 +6,7 @@ import Carousel from "@/components/Carousel";
 import logo from "../../../public/format moyen/rose.jpg";
 import { getTapasBySlug } from "@/lib/getHygraphEvent";
 import { useEffect, useState } from "react";
+import { useSeason } from "@/hooks/useSeason";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
@@ -15,6 +16,7 @@ const merriweather = Merriweather({
 const Tapas = () => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { isSummer, isWinter } = useSeason();
 
   useEffect(() => {
     const fetchTapas = async () => {
@@ -186,16 +188,16 @@ const Tapas = () => {
         <h1
           className={`${merriweather.className} text-4xl font-bold text-center text-vert relative z-10 mb-2`}
         >
-          {item.title}
+          {isWinter ? "Tapas" : item.title}
         </h1>
         <div className="w-24 h-1 bg-gradient-to-r from-transparent via-rose to-transparent mx-auto my-1"></div>
         <div className="w-16 h-1 bg-gradient-to-r from-transparent via-rose to-transparent mx-auto"></div>
         <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[8rem] font-bold text-gray-50 opacity-20 z-0">
-          {item.title.charAt(0)}
+          {isWinter ? "T" : item.title.charAt(0)}
         </span>
       </div>
 
-      {/* Bloc Part 1 - SUPPRESSION DES PARAMETRES HORAIRES */}
+      {/* Bloc Part 1 - After Work - Visible toute l'année */}
       {item.part1 &&
         renderBlock(
           item.part1,
@@ -205,7 +207,7 @@ const Tapas = () => {
           0
         )}
 
-      {/* Bloc Part 2 - SUPPRESSION DES PARAMETRES HORAIRES */}
+      {/* Bloc Part 2 - Cocktail - Visible toute l'année */}
       {item.part2 &&
         renderBlock(
           item.part2,
@@ -215,7 +217,7 @@ const Tapas = () => {
           1
         )}
 
-      {/* Bloc Part 3 - SUPPRESSION DES PARAMETRES HORAIRES */}
+      {/* Bloc Part 3 - Tapas - Visible toute l'année */}
       {item.part3 &&
         renderBlock(
           item.part3,

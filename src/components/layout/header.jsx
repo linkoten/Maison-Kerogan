@@ -67,19 +67,17 @@ function Header() {
             </Link>
           )}
 
-          {/* After Work - Visible seulement en été */}
-          {isSummer && (
-            <Link
-              className={`link transition-all duration-300 ${
-                pathname === "/Tapas"
-                  ? "text-ocre border-b border-ocre scale-125 brightness-150 uppercase"
-                  : "border-b border-ocre hover:scale-110 hover:bold hover:-translate-y-1 uppercase tracking-wider"
-              }`}
-              href="/Tapas"
-            >
-              After Work
-            </Link>
-          )}
+          {/* Tapas - Disponible toute l'année */}
+          <Link
+            className={`link transition-all duration-300 ${
+              pathname === "/Tapas"
+                ? "text-ocre border-b border-ocre scale-125 brightness-150 uppercase"
+                : "border-b border-ocre hover:scale-110 hover:bold hover:-translate-y-1 uppercase tracking-wider"
+            }`}
+            href="/Tapas"
+          >
+            Tapas
+          </Link>
 
           <Link
             className={`link ${
