@@ -12,7 +12,7 @@ import ReservationButton from "@/components/ui/ReservationButton";
 
 function Header() {
   const pathname = usePathname();
-  const { isSummer, isWinter } = useSeason();
+  // const { isSummer, isWinter } = useSeason();
 
   return (
     <header className="hidden sm:block sticky top-4 bg-vert text-ocre rounded-xl z-30 py-6 m-5 mb-4">
@@ -53,19 +53,17 @@ function Header() {
             Restauration
           </Link>
 
-          {/* Tea Time - Visible seulement en été */}
-          {isSummer && (
-            <Link
-              className={`link transition-all duration-300 ${
-                pathname === "/Salon_de_the"
-                  ? "text-ocre border-b border-ocre scale-125 brightness-150 uppercase"
-                  : "border-b border-ocre hover:scale-110 hover:bold hover:-translate-y-1 uppercase tracking-wider"
-              }`}
-              href="/Salon_de_the"
-            >
-              Tea Time
-            </Link>
-          )}
+          {/* Tea Time - Visible toute l'année */}
+          <Link
+            className={`link transition-all duration-300 ${
+              pathname === "/Salon_de_the"
+                ? "text-ocre border-b border-ocre scale-125 brightness-150 uppercase"
+                : "border-b border-ocre hover:scale-110 hover:bold hover:-translate-y-1 uppercase tracking-wider"
+            }`}
+            href="/Salon_de_the"
+          >
+            Tea Time
+          </Link>
 
           {/* Tapas - Disponible toute l'année */}
           <Link

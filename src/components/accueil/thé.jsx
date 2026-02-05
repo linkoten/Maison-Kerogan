@@ -31,10 +31,6 @@ const ThéExtrait = () => {
           });
         }
       } catch (error) {
-        console.error(
-          "Erreur lors de la récupération des données salon de thé:",
-          error
-        );
         setItem(null);
       } finally {
         setLoading(false);

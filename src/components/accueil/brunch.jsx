@@ -31,10 +31,6 @@ const BrunchExtrait = () => {
           });
         }
       } catch (error) {
-        console.error(
-          "Erreur lors de la récupération des données brunch:",
-          error
-        );
         // Fallback vers les données statiques en cas d'erreur
         setItem(null);
       } finally {

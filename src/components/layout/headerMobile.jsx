@@ -19,7 +19,6 @@ import ReservationButton from "../ui/ReservationButton";
 
 const HeaderMobile = () => {
   const pathname = usePathname();
-  const { isSummer, isWinter } = useSeason();
 
   return (
     <nav className="fixed z-30 bg-white h-20 w-full sm:hidden">
@@ -42,10 +41,6 @@ const HeaderMobile = () => {
           <SheetHeader>
             <SheetTitle className="text-vert text-3xl font-bold text-left">
               MAISON KEROGAN
-              {/* Indicateur de saison dans le menu */}
-              <span className="block text-sm font-normal text-gray-500 mt-1">
-                {isWinter ? "❄️ Mode Hiver" : "☀️ Mode Été"}
-              </span>
             </SheetTitle>
             <SheetDescription className="sr-only">
               Menu de navigation principal
@@ -92,21 +87,19 @@ const HeaderMobile = () => {
               </Link>
             </SheetClose>
 
-            {/* Salon de thé - Visible seulement en été */}
-            {isSummer && (
-              <SheetClose asChild>
-                <Link
-                  className={`link ${
-                    pathname === "/Salon_de_the"
-                      ? "text-ocre border-b border-ocre scale-125 hover:ocre"
-                      : "border-b border-vert hover:text-vert hover:scale-110 hover:bold"
-                  }`}
-                  href="/Salon_de_the"
-                >
-                  SALON DE THÉ
-                </Link>
-              </SheetClose>
-            )}
+            {/* Salon de thé - Visible toute l'année */}
+            <SheetClose asChild>
+              <Link
+                className={`link ${
+                  pathname === "/Salon_de_the"
+                    ? "text-ocre border-b border-ocre scale-125 hover:ocre"
+                    : "border-b border-vert hover:text-vert hover:scale-110 hover:bold"
+                }`}
+                href="/Salon_de_the"
+              >
+                SALON DE THÉ
+              </Link>
+            </SheetClose>
 
             {/* Tapas - Disponible toute l'année */}
             <SheetClose asChild>
@@ -166,14 +159,6 @@ const HeaderMobile = () => {
                 </svg>
               </ReservationButton>
             </SheetClose>
-
-            {/* Message saisonnier en bas du menu */}
-            {isWinter && (
-              <div className="mt-auto text-xs text-gray-500 normal-case text-center py-4">
-                <span className="block">🌸 Tea Time</span>
-                <span className="block">de retour au printemps</span>
-              </div>
-            )}
           </div>
         </SheetContent>
       </Sheet>

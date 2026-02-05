@@ -30,13 +30,8 @@ const TapasExtrait = () => {
             images: transformedImages,
           });
         } else {
-          console.warn("⚠️ Aucune donnée de tapas trouvée pour le slug donné.");
         }
       } catch (error) {
-        console.error(
-          "💥 Erreur lors de la récupération des données tapas:",
-          error
-        );
         setItem(null);
       } finally {
         setLoading(false);
@@ -156,8 +151,8 @@ const TapasExtrait = () => {
 
     return (
       <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-0 sm:pt-12 transition-all duration-1000">
-        {textContent}
         {carouselContent}
+        {textContent}
       </div>
     );
   };

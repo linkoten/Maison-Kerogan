@@ -19,7 +19,7 @@ const LocationExtrait = () => {
       try {
         // Récupérer les données depuis Hygraph avec le slug
         const locationData = await getLocationEvenementielleBySlug(
-          "locationevenementielle"
+          "locationevenementielle",
         );
 
         if (locationData) {
@@ -32,15 +32,8 @@ const LocationExtrait = () => {
 
           setItem(transformedData);
         } else {
-          console.warn(
-            "⚠️ [LocationExtrait] Aucune donnée de location événementielle trouvée pour le slug donné."
-          );
         }
       } catch (error) {
-        console.error(
-          "💥 [LocationExtrait] Erreur lors de la récupération:",
-          error
-        );
         setItem(null);
       } finally {
         setLoading(false);
@@ -86,7 +79,7 @@ const LocationExtrait = () => {
     titreExtrait2,
     journees,
     horaires,
-    images
+    images,
   ) => {
     const textContent = (
       <div className="flex flex-col px-6 w-full border-vert border-2 shadow-vert shadow-lg hover:shadow-xl hover:shadow-vert bg-ocre text-white rounded-xl relative overflow-hidden">
@@ -186,8 +179,8 @@ const LocationExtrait = () => {
 
     return (
       <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0 pt-0 sm:pt-12 transition-all duration-1000">
-        {carouselContent}
         {textContent}
+        {carouselContent}
       </div>
     );
   };
@@ -201,7 +194,7 @@ const LocationExtrait = () => {
         item.part2,
         item.journees,
         item.horaires,
-        item.images // Maintenant contient les objets complets avec mimeType
+        item.images, // Maintenant contient les objets complets avec mimeType
       )}
     </div>
   );

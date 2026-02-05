@@ -39,7 +39,7 @@ export const MapComponent = ({ className = "", height = "250px" }) => {
 
   // ID unique pour éviter les conflits
   const mapId = useRef(
-    `leaflet-map-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+    `leaflet-map-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
   );
 
   // Montage côté client uniquement
@@ -51,9 +51,7 @@ export const MapComponent = ({ className = "", height = "250px" }) => {
       if (mapInstance) {
         try {
           mapInstance.remove();
-        } catch (error) {
-          console.warn("Erreur lors du nettoyage de la carte:", error);
-        }
+        } catch (error) {}
       }
 
       // Nettoyage du DOM
@@ -81,7 +79,7 @@ export const MapComponent = ({ className = "", height = "250px" }) => {
     // Ajuster la vue pour inclure tous les marqueurs
     if (markers.length > 1) {
       const group = new L.featureGroup(
-        markers.map((marker) => L.marker([marker.latitude, marker.longitude]))
+        markers.map((marker) => L.marker([marker.latitude, marker.longitude])),
       );
       map.fitBounds(group.getBounds().pad(0.1));
     }

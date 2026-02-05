@@ -26,12 +26,8 @@ const HistoiresDuLieu = () => {
             images: transformedImages,
           });
         } else {
-          console.warn(
-            "⚠️ Aucune donnée d'histoire du lieu trouvée pour le slug donné."
-          );
         }
       } catch (error) {
-        console.error("💥 Erreur fetchHistoireDuLieu:", error);
         setItem(null);
       } finally {
         setLoading(false);
