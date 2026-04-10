@@ -10,6 +10,16 @@ import Carousel from "../Carousel";
 import { getSalonDeTheBySlug } from "@/lib/getHygraphEvent";
 import { useEffect, useState } from "react";
 
+const FALLBACK_IMAGES = ["/IMG_0160.jpg", "/IMG_0378.jpg", "/0123_Maison_Kerogan-123.png"];
+
+const checkImageAccessible = (url) =>
+  new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+
 const ThéExtrait = () => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -21,17 +31,21 @@ const ThéExtrait = () => {
         const salonData = await getSalonDeTheBySlug("salondethe");
 
         if (salonData) {
-          // Transformer les images Hygraph en URLs simples pour le Carousel
           const transformedImages =
             salonData.images?.map((img) => img.url) || [];
 
-          setItem({
-            ...salonData,
-            images: transformedImages,
-          });
+          let finalImages = FALLBACK_IMAGES;
+          if (transformedImages.length > 0) {
+            const accessible = await checkImageAccessible(transformedImages[0]);
+            finalImages = accessible ? transformedImages : FALLBACK_IMAGES;
+          }
+
+          setItem({ ...salonData, images: finalImages });
+        } else {
+          setItem({ images: FALLBACK_IMAGES });
         }
       } catch (error) {
-        setItem(null);
+        setItem({ images: FALLBACK_IMAGES });
       } finally {
         setLoading(false);
       }

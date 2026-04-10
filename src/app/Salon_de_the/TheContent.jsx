@@ -12,6 +12,16 @@ const merriweather = Merriweather({
   subsets: ["latin"],
 });
 
+const FALLBACK_IMAGES = ["/IMG_0160.jpg", "/IMG_0378.jpg", "/0123_Maison_Kerogan-123.png"];
+
+const checkImageAccessible = (url) =>
+  new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+
 export default function TheContent() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -22,18 +32,25 @@ export default function TheContent() {
         const salonData = await getSalonDeTheBySlug("salondethe");
 
         if (salonData) {
-          // Transformer les images Hygraph en URLs simples pour le Carousel
+          const hygraphImages = salonData.images?.map((img) => img.url) || [];
+          const firstUrl = hygraphImages[0];
+          const hygraphAccessible = firstUrl
+            ? await checkImageAccessible(firstUrl)
+            : false;
+
           const transformData = {
             ...salonData,
-            images: salonData.images?.map((img) => img.url) || [],
+            images: hygraphAccessible ? hygraphImages : FALLBACK_IMAGES,
             part2Images: salonData.part2Images?.map((img) => img.url) || [],
             part3Images: salonData.part3Images?.map((img) => img.url) || [],
           };
 
           setItem(transformData);
         } else {
+          setItem({ images: FALLBACK_IMAGES });
         }
       } catch (error) {
+        setItem({ images: FALLBACK_IMAGES });
       } finally {
         setLoading(false);
       }
