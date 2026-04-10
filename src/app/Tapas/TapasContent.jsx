@@ -13,6 +13,18 @@ const merriweather = Merriweather({
   subsets: ["latin"],
 });
 
+const FALLBACK_IMAGES = ["/18832.png"];
+const FALLBACK_PHOTOS_GALERIES = ["/0030_Maison_Kerogan-30.jpg"];
+const FALLBACK_PART2_IMAGES = ["/tapas.jpg", "/0030_Maison_Kerogan-30.jpg"];
+
+const checkImageAccessible = (url) =>
+  new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+
 export default function TapasContent() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,22 +37,46 @@ export default function TapasContent() {
         const tapasData = await getTapasBySlug("tapas");
 
         if (tapasData) {
-          // Transformer les images Hygraph en URLs simples pour le Carousel
+          // Vérifier accessibilité du CDN Hygraph une seule fois
+          const allUrls = [
+            ...(tapasData.images || []),
+            ...(tapasData.photosGaleries || []),
+            ...(tapasData.part2Images || []),
+          ];
+          const firstUrl = allUrls[0]?.url || allUrls[0];
+          const hygraphAccessible = firstUrl
+            ? await checkImageAccessible(firstUrl)
+            : false;
+
           const transformData = {
             ...tapasData,
-            images: tapasData.images?.map((img) => img.url) || [],
-            part2Images: tapasData.part2Images?.map((img) => img.url) || [],
+            images: hygraphAccessible
+              ? tapasData.images?.map((img) => img.url) || []
+              : FALLBACK_IMAGES,
+            part2Images: hygraphAccessible
+              ? tapasData.part2Images?.map((img) => img.url) || []
+              : FALLBACK_PART2_IMAGES,
             part3Images: tapasData.part3Images?.map((img) => img.url) || [],
-            // Nouveaux champs spécifiques aux tapas
-            photosGaleries:
-              tapasData.photosGaleries?.map((img) => img.url) || [],
+            photosGaleries: hygraphAccessible
+              ? tapasData.photosGaleries?.map((img) => img.url) || []
+              : FALLBACK_PHOTOS_GALERIES,
             menu: tapasData.menu?.map((img) => img.url) || [],
           };
 
           setItem(transformData);
         } else {
+          setItem({
+            images: FALLBACK_IMAGES,
+            photosGaleries: FALLBACK_PHOTOS_GALERIES,
+            part2Images: FALLBACK_PART2_IMAGES,
+          });
         }
       } catch (error) {
+        setItem({
+          images: FALLBACK_IMAGES,
+          photosGaleries: FALLBACK_PHOTOS_GALERIES,
+          part2Images: FALLBACK_PART2_IMAGES,
+        });
       } finally {
         setLoading(false);
       }

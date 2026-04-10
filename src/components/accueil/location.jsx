@@ -10,6 +10,19 @@ import Carousel from "../Carousel";
 import { getLocationEvenementielleBySlug } from "@/lib/getHygraphEvent";
 import { useEffect, useState } from "react";
 
+const FALLBACK_IMAGES = [
+  "/AT9A4016.jpg",
+  "/AT9A3983.jpg",
+];
+
+const checkImageAccessible = (url) =>
+  new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+
 const LocationExtrait = () => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -23,18 +36,21 @@ const LocationExtrait = () => {
         );
 
         if (locationData) {
-          // NOUVEAU : Garder les objets complets avec mimeType pour le Carousel
-          const transformedData = {
-            ...locationData,
-            // Garder les objets complets (incluant vidéos avec mimeType)
-            images: locationData.images || [], // Objets complets avec mimeType
-          };
+          const hygraphImages = locationData.images || [];
 
-          setItem(transformedData);
+          let finalImages = FALLBACK_IMAGES;
+          if (hygraphImages.length > 0) {
+            const firstUrl = hygraphImages[0]?.url || hygraphImages[0];
+            const accessible = await checkImageAccessible(firstUrl);
+            finalImages = accessible ? hygraphImages : FALLBACK_IMAGES;
+          }
+
+          setItem({ ...locationData, images: finalImages });
         } else {
+          setItem({ images: FALLBACK_IMAGES });
         }
       } catch (error) {
-        setItem(null);
+        setItem({ images: FALLBACK_IMAGES });
       } finally {
         setLoading(false);
       }

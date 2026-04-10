@@ -10,6 +10,16 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 
+const FALLBACK_IMAGES = ["/AT9A3756.jpg", "/AT9A3703.jpg"];
+
+const checkImageAccessible = (url) =>
+  new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+
 const BrunchExtrait = () => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -21,18 +31,21 @@ const BrunchExtrait = () => {
         const brunchData = await getBrunchBySlug("brunch"); // ← Utilisez le bon slug
 
         if (brunchData) {
-          // Transformer les images Hygraph en URLs simples pour le Carousel
           const transformedImages =
             brunchData.images?.map((img) => img.url) || [];
 
-          setItem({
-            ...brunchData,
-            images: transformedImages,
-          });
+          let finalImages = FALLBACK_IMAGES;
+          if (transformedImages.length > 0) {
+            const accessible = await checkImageAccessible(transformedImages[0]);
+            finalImages = accessible ? transformedImages : FALLBACK_IMAGES;
+          }
+
+          setItem({ ...brunchData, images: finalImages });
+        } else {
+          setItem({ images: FALLBACK_IMAGES });
         }
       } catch (error) {
-        // Fallback vers les données statiques en cas d'erreur
-        setItem(null);
+        setItem({ images: FALLBACK_IMAGES });
       } finally {
         setLoading(false);
       }

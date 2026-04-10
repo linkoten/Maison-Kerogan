@@ -7,6 +7,20 @@ import { getHistoireDuLieuBySlug } from "@/lib/getHygraphEvent";
 import Image from "next/image";
 import logo from "../../../public/format feuille/blanc.jpg";
 
+const FALLBACK_IMAGES = [
+  "/Photo maison kerogan.jpg",
+  "/photo salle.jpg",
+  "/AT9A3862.jpg",
+];
+
+const checkImageAccessible = (url) =>
+  new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+
 const HistoiresDuLieu = () => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -21,14 +35,21 @@ const HistoiresDuLieu = () => {
           const transformedImages =
             histoireData.images?.map((img) => img.url) || [];
 
+          let finalImages = FALLBACK_IMAGES;
+          if (transformedImages.length > 0) {
+            const accessible = await checkImageAccessible(transformedImages[0]);
+            finalImages = accessible ? transformedImages : FALLBACK_IMAGES;
+          }
+
           setItem({
             ...histoireData,
-            images: transformedImages,
+            images: finalImages,
           });
         } else {
+          setItem({ title: "", paragraphe1: "", paragraphe2: null, images: FALLBACK_IMAGES });
         }
       } catch (error) {
-        setItem(null);
+        setItem({ title: "", paragraphe1: "", paragraphe2: null, images: FALLBACK_IMAGES });
       } finally {
         setLoading(false);
       }

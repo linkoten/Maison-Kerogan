@@ -563,10 +563,6 @@ export const getTapasBySlug = async (slug) => {
     const data = await hygraphClient.request(query, { slug });
     return data.tapas;
   } catch (error) {
-    ;
-
-    
-
     return null;
   }
 };
@@ -601,8 +597,6 @@ export const getHistoireDuLieuBySlug = async (slug) => {
 
     return data.histoireDuLieu;
   } catch (error) {
-    
-   
     return null;
   }
 };
@@ -634,7 +628,6 @@ export const getHistoireDuLieu = async () => {
     const data = await hygraphClient.request(query);
     return data.histoireDuLieu;
   } catch (error) {
-    
     if (error.response) {
     }
     return [];
@@ -723,7 +716,6 @@ export const getMenuBySlug = async (slug) => {
     const data = await hygraphClient.request(query, { slug });
     return data.menu;
   } catch (error) {
-    
     return null;
   }
 };
@@ -771,7 +763,6 @@ export const getMenuData = async () => {
       return null;
     }
   } catch (error) {
-    
     return null;
   }
 };

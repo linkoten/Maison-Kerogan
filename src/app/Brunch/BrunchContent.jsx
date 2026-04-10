@@ -13,6 +13,16 @@ const merriweather = Merriweather({
   subsets: ["latin"],
 });
 
+const FALLBACK_PART2_IMAGES = ["/AT9A3756.jpg", "/AT9A3703.jpg"];
+
+const checkImageAccessible = (url) =>
+  new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+
 export default function BrunchContent() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -23,11 +33,18 @@ export default function BrunchContent() {
         const brunchData = await getBrunchBySlug("brunch");
 
         if (brunchData) {
-          // Transformer les images Hygraph en URLs simples pour le Carousel
+          const part2Urls = brunchData.part2Images?.map((img) => img.url) || [];
+
+          let finalPart2Images = FALLBACK_PART2_IMAGES;
+          if (part2Urls.length > 0) {
+            const accessible = await checkImageAccessible(part2Urls[0]);
+            finalPart2Images = accessible ? part2Urls : FALLBACK_PART2_IMAGES;
+          }
+
           const transformData = {
             ...brunchData,
             images: brunchData.images?.map((img) => img.url) || [],
-            part2Images: brunchData.part2Images?.map((img) => img.url) || [],
+            part2Images: finalPart2Images,
             part3Images: brunchData.part3Images?.map((img) => img.url) || [],
             part4Images: brunchData.part4Images?.map((img) => img.url) || [],
           };

@@ -12,6 +12,17 @@ const merriweather = Merriweather({
   subsets: ["latin"],
 });
 
+const FALLBACK_IMAGES = ["/AT9A4016.jpg", "/AT9A3983.jpg"];
+const FALLBACK_PART2_IMAGES = ["/Photo maison kerogan.jpg", "/AT9A3862.jpg"];
+
+const checkImageAccessible = (url) =>
+  new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+
 export default function LocationContent() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -24,19 +35,27 @@ export default function LocationContent() {
         );
 
         if (locationData) {
-          // CORRECTION : Passer les objets complets au lieu des URLs seulement
+          const hygraphImages = locationData.images || [];
+          const firstUrl = hygraphImages[0]?.url || hygraphImages[0];
+          const hygraphAccessible = firstUrl
+            ? await checkImageAccessible(firstUrl)
+            : false;
+
           const transformData = {
             ...locationData,
-            // Garder les objets complets avec mimeType pour la détection
-            images: locationData.images || [], // Objets complets avec mimeType
-            part2Images: locationData.part2Images?.map((img) => img.url) || [], // URLs simples pour images
-            part3Images: locationData.part3Images?.map((img) => img.url) || [], // URLs simples pour images
+            images: hygraphAccessible ? hygraphImages : FALLBACK_IMAGES,
+            part2Images: hygraphAccessible
+              ? locationData.part2Images?.map((img) => img.url) || []
+              : FALLBACK_PART2_IMAGES,
+            part3Images: locationData.part3Images?.map((img) => img.url) || [],
           };
 
           setItem(transformData);
         } else {
+          setItem({ images: FALLBACK_IMAGES, part2Images: FALLBACK_PART2_IMAGES });
         }
       } catch (error) {
+        setItem({ images: FALLBACK_IMAGES, part2Images: FALLBACK_PART2_IMAGES });
       } finally {
         setLoading(false);
       }
