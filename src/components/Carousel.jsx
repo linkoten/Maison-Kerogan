@@ -101,7 +101,6 @@ const Carousel = ({ images }) => {
               height={800}
               className="max-h-[90vh] w-auto h-auto rounded-lg"
               style={{ objectFit: "contain" }}
-              unoptimized
             />
           </div>
         </div>
@@ -148,7 +147,6 @@ const Carousel = ({ images }) => {
                       className="object-contain p-2"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 50vw"
                       priority={index === currentIndex}
-                      unoptimized
                     />
 
                     {/* BOUTON PLEIN ÉCRAN SEULEMENT POUR LES IMAGES */}
@@ -216,7 +214,6 @@ const Carousel = ({ images }) => {
                         fill
                         className="object-cover"
                         sizes="80px"
-                        unoptimized
                       />
                     </div>
                   )}
