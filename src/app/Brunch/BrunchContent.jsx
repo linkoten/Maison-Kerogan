@@ -5,82 +5,14 @@ import { Merriweather } from "next/font/google";
 import Carousel from "@/components/Carousel";
 import ReservationButton from "@/components/ui/ReservationButton";
 import logo from "../../../public/format moyen/vert.jpg";
-import { getBrunchBySlug } from "@/lib/getHygraphEvent";
-import { useEffect, useState } from "react";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
   subsets: ["latin"],
 });
 
-const FALLBACK_PART2_IMAGES = ["/AT9A3756.jpg", "/AT9A3703.jpg"];
-
-const checkImageAccessible = (url) =>
-  new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-
-export default function BrunchContent() {
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchBrunch = async () => {
-      try {
-        const brunchData = await getBrunchBySlug("brunch");
-
-        if (brunchData) {
-          const part2Urls = brunchData.part2Images?.map((img) => img.url) || [];
-
-          let finalPart2Images = FALLBACK_PART2_IMAGES;
-          if (part2Urls.length > 0) {
-            const accessible = await checkImageAccessible(part2Urls[0]);
-            finalPart2Images = accessible ? part2Urls : FALLBACK_PART2_IMAGES;
-          }
-
-          const transformData = {
-            ...brunchData,
-            images: brunchData.images?.map((img) => img.url) || [],
-            part2Images: finalPart2Images,
-            part3Images: brunchData.part3Images?.map((img) => img.url) || [],
-            part4Images: brunchData.part4Images?.map((img) => img.url) || [],
-          };
-
-          setItem(transformData);
-        } else {
-          console.warn(
-            "⚠️ Aucune donnée de brunch trouvée pour le slug donné.",
-          );
-        }
-      } catch (error) {
-        console.error("💥 Erreur lors de la récupération du brunch:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBrunch();
-  }, []);
-
-  // État de chargement
-  if (loading) {
-    return (
-      <div className="container mx-auto">
-        <div className="flex justify-center items-center h-screen">
-          <div className="flex flex-col items-center gap-4 text-gray-600">
-            <div className="w-12 h-12 border-3 border-vert border-t-transparent rounded-full animate-spin"></div>
-            <h2 className="text-xl font-medium">Chargement de la page...</h2>
-            <p className="text-sm">
-              Récupération des informations depuis Hygraph
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+export default function BrunchContent({ initialData }) {
+  const item = initialData;
 
   // Si pas de données
   if (!item) {

@@ -1,4 +1,7 @@
 import BrunchContent from "./BrunchContent";
+import { getBrunchBySlug } from "@/lib/getHygraphEvent";
+
+export const revalidate = 3600; // Revalider les données toutes les heures
 
 export const metadata = {
   title:
@@ -25,6 +28,16 @@ export const metadata = {
   },
 };
 
-export default function Page() {
-  return <BrunchContent />;
+export default async function Page() {
+  const brunchData = await getBrunchBySlug("brunch");
+  const initialData = brunchData
+    ? {
+        ...brunchData,
+        images: brunchData.images?.map((img) => img.url) ?? [],
+        part2Images: brunchData.part2Images?.map((img) => img.url) ?? [],
+        part3Images: brunchData.part3Images?.map((img) => img.url) ?? [],
+        part4Images: brunchData.part4Images?.map((img) => img.url) ?? [],
+      }
+    : null;
+  return <BrunchContent initialData={initialData} />;
 }

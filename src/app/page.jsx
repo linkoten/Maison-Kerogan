@@ -1,4 +1,14 @@
 import HomeContent from "./HomeContent";
+import {
+  getBrunchBySlug,
+  getTapasBySlug,
+  getSalonDeTheBySlug,
+  getLocationEvenementielleBySlug,
+  getHistoireDuLieuBySlug,
+  getFeaturedEvent,
+} from "@/lib/getHygraphEvent";
+
+export const revalidate = 3600;
 
 export const metadata = {
   title:
@@ -29,6 +39,39 @@ export const metadata = {
   },
 };
 
-export default function Page() {
-  return <HomeContent />;
+export default async function Page() {
+  // Fetch toutes les données en parallèle (une seule fois/heure pour tous les utilisateurs)
+  const [brunchData, tapasData, salonData, locationData, histoireData, eventData] =
+    await Promise.all([
+      getBrunchBySlug("brunch"),
+      getTapasBySlug("tapas"),
+      getSalonDeTheBySlug("salondethe"),
+      getLocationEvenementielleBySlug("locationevenementielle"),
+      getHistoireDuLieuBySlug("histoireDuLieu"),
+      getFeaturedEvent(),
+    ]);
+
+  const homeData = {
+    brunch: brunchData
+      ? { ...brunchData, images: brunchData.images?.map((img) => img.url) ?? [] }
+      : null,
+    tapas: tapasData
+      ? { ...tapasData, images: tapasData.images?.map((img) => img.url) ?? [] }
+      : null,
+    salon: salonData
+      ? { ...salonData, images: salonData.images?.map((img) => img.url) ?? [] }
+      : null,
+    location: locationData
+      ? { ...locationData, images: locationData.images ?? [] }
+      : null,
+    histoire: histoireData
+      ? {
+          ...histoireData,
+          images: histoireData.images?.map((img) => img.url) ?? [],
+        }
+      : null,
+    event: eventData,
+  };
+
+  return <HomeContent homeData={homeData} />;
 }

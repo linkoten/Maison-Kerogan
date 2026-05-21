@@ -1,7 +1,18 @@
-import { gql } from "graphql-request";
+﻿import { gql } from "graphql-request";
 import hygraphClient from "./hygraph";
 
-// Récupérer le prochain événement à afficher
+// Fragments de transformation WebP - reduisent la taille des images ~90%
+const IMG_LG = `url(transformation: {
+          image: { resize: { width: 1200, fit: clip } }
+          document: { output: { format: webp } }
+        })`;
+
+const IMG_SM = `url(transformation: {
+          image: { resize: { width: 600, fit: clip } }
+          document: { output: { format: webp } }
+        })`;
+
+// Recuperer le prochain evenement a afficher
 export const getFeaturedEvent = async () => {
   const query = gql`
     query GetFeaturedEvent {
@@ -19,7 +30,7 @@ export const getFeaturedEvent = async () => {
         endTime
         reservationLink
         coverImage {
-          url
+          ${IMG_SM}
           fileName
           handle
         }
@@ -33,15 +44,13 @@ export const getFeaturedEvent = async () => {
 
     if (!event) return null;
 
-    // Transformer le tableau de dates en chaîne simple
     if (event.date && Array.isArray(event.date)) {
-      event.date = event.date[0]; // Prendre le premier élément
+      event.date = event.date[0];
     }
 
-    // Filtrer côté client pour les dates futures
     const eventDate = new Date(event.date);
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Reset l'heure pour comparer seulement les dates
+    today.setHours(0, 0, 0, 0);
 
     if (eventDate >= today) {
       return event;
@@ -53,7 +62,7 @@ export const getFeaturedEvent = async () => {
   }
 };
 
-// Récupérer tous les événements futurs à afficher
+// Recuperer tous les evenements futurs a afficher
 export const getAllEvents = async () => {
   const query = gql`
     query GetAllEvents {
@@ -66,7 +75,7 @@ export const getAllEvents = async () => {
         endTime
         reservationLink
         coverImage {
-          url
+          ${IMG_SM}
           fileName
           handle
         }
@@ -77,11 +86,10 @@ export const getAllEvents = async () => {
   try {
     const data = await hygraphClient.request(query);
 
-    // Transformer les tableaux de dates et filtrer les événements futurs
     const events = data.events
       .map((event) => {
         if (event.date && Array.isArray(event.date)) {
-          event.date = event.date[0]; // Prendre le premier élément
+          event.date = event.date[0];
         }
         return event;
       })
@@ -98,9 +106,8 @@ export const getAllEvents = async () => {
   }
 };
 
-// ======================== NOUVEAUX MODÈLES ========================
+// ======================== NOUVEAUX MODELES ========================
 
-// Récupérer LocationEvenementielle
 export const getLocationEvenementielle = async () => {
   const query = gql`
     query GetLocationEvenementielle {
@@ -116,7 +123,7 @@ export const getLocationEvenementielle = async () => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -132,7 +139,7 @@ export const getLocationEvenementielle = async () => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -147,7 +154,7 @@ export const getLocationEvenementielle = async () => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -164,7 +171,6 @@ export const getLocationEvenementielle = async () => {
   }
 };
 
-// Récupérer LocationEvenementielle par slug - VERSION CORRIGÉE
 export const getLocationEvenementielleBySlug = async (slug) => {
   const query = gql`
     query GetLocationEvenementielleBySlug($slug: String!) {
@@ -175,18 +181,16 @@ export const getLocationEvenementielleBySlug = async (slug) => {
         part1
         paragraphe1
         paragraphe2
-
         images {
           id
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
         }
-
         journees
         horaires
         extrait
@@ -198,7 +202,7 @@ export const getLocationEvenementielleBySlug = async (slug) => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -215,7 +219,6 @@ export const getLocationEvenementielleBySlug = async (slug) => {
   }
 };
 
-// Récupérer Restauration
 export const getBrunch = async () => {
   const query = gql`
     query GetBrunch {
@@ -227,7 +230,7 @@ export const getBrunch = async () => {
         paragraphe1
         paragraphe2
         images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -240,7 +243,7 @@ export const getBrunch = async () => {
         part2Paragraphe1
         part2Paragraphe2
         part2Images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -250,7 +253,7 @@ export const getBrunch = async () => {
         part3Paragraphe1
         part3Paragraphe2
         part3Images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -260,7 +263,7 @@ export const getBrunch = async () => {
         part4Paragraphe1
         part4Paragraphe2
         part4Images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -278,7 +281,6 @@ export const getBrunch = async () => {
   }
 };
 
-// Récupérer Brunch par slug
 export const getBrunchBySlug = async (slug) => {
   const query = gql`
     query GetBrunchBySlug($slug: String!) {
@@ -290,7 +292,7 @@ export const getBrunchBySlug = async (slug) => {
         paragraphe1
         paragraphe2
         images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -303,7 +305,7 @@ export const getBrunchBySlug = async (slug) => {
         part2Paragraphe1
         part2Paragraphe2
         part2Images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -313,7 +315,7 @@ export const getBrunchBySlug = async (slug) => {
         part3Paragraphe1
         part3Paragraphe2
         part3Images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -331,7 +333,6 @@ export const getBrunchBySlug = async (slug) => {
   }
 };
 
-// Récupérer Salon de Thé
 export const getSalonDeThe = async () => {
   const query = gql`
     query GetSalonDeThe {
@@ -343,7 +344,7 @@ export const getSalonDeThe = async () => {
         paragraphe1
         paragraphe2
         images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -356,7 +357,7 @@ export const getSalonDeThe = async () => {
         part2Paragraphe1
         part2Paragraphe2
         part2Images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -367,7 +368,7 @@ export const getSalonDeThe = async () => {
         part3Paragraphe1
         part3Paragraphe2
         part3Images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -385,7 +386,6 @@ export const getSalonDeThe = async () => {
   }
 };
 
-// Récupérer Salon de Thé par slug
 export const getSalonDeTheBySlug = async (slug) => {
   const query = gql`
     query GetSalonDeTheBySlug($slug: String!) {
@@ -397,7 +397,7 @@ export const getSalonDeTheBySlug = async (slug) => {
         paragraphe1
         paragraphe2
         images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -409,7 +409,7 @@ export const getSalonDeTheBySlug = async (slug) => {
         part2
         part2Paragraphe1
         part2Images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -427,7 +427,6 @@ export const getSalonDeTheBySlug = async (slug) => {
   }
 };
 
-// Récupérer Tapas
 export const getTapas = async () => {
   const query = gql`
     query GetTapas {
@@ -439,7 +438,7 @@ export const getTapas = async () => {
         paragraphe1
         paragraphe2
         images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -452,7 +451,7 @@ export const getTapas = async () => {
         part2Paragraphe1
         part2Paragraphe2
         part2Images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -463,7 +462,7 @@ export const getTapas = async () => {
         part3Paragraphe1
         part3Paragraphe2
         part3Images {
-          url
+          ${IMG_LG}
           fileName
           handle
           width
@@ -481,7 +480,6 @@ export const getTapas = async () => {
   }
 };
 
-// Récupérer Tapas par slug
 export const getTapasBySlug = async (slug) => {
   const query = gql`
     query GetTapasBySlug($slug: String!) {
@@ -497,7 +495,7 @@ export const getTapasBySlug = async (slug) => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -510,7 +508,7 @@ export const getTapasBySlug = async (slug) => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -520,7 +518,7 @@ export const getTapasBySlug = async (slug) => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -533,7 +531,7 @@ export const getTapasBySlug = async (slug) => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -548,7 +546,7 @@ export const getTapasBySlug = async (slug) => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -568,7 +566,6 @@ export const getTapasBySlug = async (slug) => {
 };
 
 export const getHistoireDuLieuBySlug = async (slug) => {
-  // TEMPORAIRE: Utiliser l'ID directement puisque le slug n'est pas encore indexé
   const query = gql`
     query GetHistoireDuLieu {
       histoireDuLieu(
@@ -583,7 +580,7 @@ export const getHistoireDuLieuBySlug = async (slug) => {
         images {
           id
           fileName
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -594,20 +591,17 @@ export const getHistoireDuLieuBySlug = async (slug) => {
 
   try {
     const data = await hygraphClient.request(query);
-
     return data.histoireDuLieu;
   } catch (error) {
     return null;
   }
 };
 
-// Alternative simple pour récupérer par ID direct
 export const getHistoireDuLieu = async () => {
   const query = gql`
     query GetHistoireDuLieu {
       histoireDuLieu(stage: PUBLISHED) {
         id
-
         title
         slug
         paragraphe1
@@ -615,7 +609,7 @@ export const getHistoireDuLieu = async () => {
         images {
           id
           fileName
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -648,7 +642,7 @@ export const getAllMenus = async () => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -659,7 +653,7 @@ export const getAllMenus = async () => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -678,7 +672,6 @@ export const getAllMenus = async () => {
   }
 };
 
-// Récupérer Menu par slug (le champ 'menu' est le slug)
 export const getMenuBySlug = async (slug) => {
   const query = gql`
     query GetMenuBySlug($slug: String!) {
@@ -692,7 +685,7 @@ export const getMenuBySlug = async (slug) => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -703,7 +696,7 @@ export const getMenuBySlug = async (slug) => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -720,7 +713,6 @@ export const getMenuBySlug = async (slug) => {
   }
 };
 
-// Récupérer le premier menu disponible
 export const getMenuData = async () => {
   const query = gql`
     query GetFirstMenu {
@@ -734,7 +726,7 @@ export const getMenuData = async () => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -745,7 +737,7 @@ export const getMenuData = async () => {
           fileName
           size
           mimeType
-          url
+          ${IMG_LG}
           width
           height
           handle
@@ -767,7 +759,6 @@ export const getMenuData = async () => {
   }
 };
 
-// Test de connexion pour vérifier la structure
 export const testMenuStructure = async () => {
   const query = gql`
     query TestMenuStructure {
@@ -790,3 +781,4 @@ export const testMenuStructure = async () => {
     return null;
   }
 };
+

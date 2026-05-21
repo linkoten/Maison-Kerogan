@@ -7,68 +7,9 @@ import logo from "../../../public/format feuille/rouge.jpg";
 import Link from "next/link";
 import { merriweather, nunito } from "../font";
 import Carousel from "../Carousel";
-import { getSalonDeTheBySlug } from "@/lib/getHygraphEvent";
-import { useEffect, useState } from "react";
 
-const FALLBACK_IMAGES = ["/IMG_0160.jpg", "/IMG_0378.jpg", "/0123_Maison_Kerogan-123.png"];
-
-const checkImageAccessible = (url) =>
-  new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-
-const ThéExtrait = () => {
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchSalonDeThe = async () => {
-      try {
-        // Récupérer les données depuis Hygraph avec le slug
-        const salonData = await getSalonDeTheBySlug("salondethe");
-
-        if (salonData) {
-          const transformedImages =
-            salonData.images?.map((img) => img.url) || [];
-
-          let finalImages = FALLBACK_IMAGES;
-          if (transformedImages.length > 0) {
-            const accessible = await checkImageAccessible(transformedImages[0]);
-            finalImages = accessible ? transformedImages : FALLBACK_IMAGES;
-          }
-
-          setItem({ ...salonData, images: finalImages });
-        } else {
-          setItem({ images: FALLBACK_IMAGES });
-        }
-      } catch (error) {
-        setItem({ images: FALLBACK_IMAGES });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSalonDeThe();
-  }, []);
-
-  // État de chargement
-  if (loading) {
-    return (
-      <div className="container mx-auto">
-        <div className="flex px-4 mb-10 justify-center items-center h-64">
-          <div className="flex flex-col items-center gap-3 text-gray-600">
-            <div className="w-8 h-8 border-2 border-terracotta border-t-transparent rounded-full animate-spin"></div>
-            <span className="text-sm font-medium">
-              Chargement des informations...
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  }
+const ThéExtrait = ({ initialData }) => {
+  const item = initialData;
 
   // Si pas de données
   if (!item) {

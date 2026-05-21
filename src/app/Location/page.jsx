@@ -1,4 +1,7 @@
 import LocationContent from "./LocationContent";
+import { getLocationEvenementielleBySlug } from "@/lib/getHygraphEvent";
+
+export const revalidate = 3600;
 
 export const metadata = {
   title:
@@ -25,6 +28,17 @@ export const metadata = {
   },
 };
 
-export default function Page() {
-  return <LocationContent />;
+export default async function Page() {
+  const locationData = await getLocationEvenementielleBySlug(
+    "locationevenementielle",
+  );
+  const initialData = locationData
+    ? {
+        ...locationData,
+        images: locationData.images ?? [], // objets complets (mimeType pour vidéos)
+        part2Images: locationData.part2Images?.map((img) => img.url) ?? [],
+        part3Images: locationData.part3Images?.map((img) => img.url) ?? [],
+      }
+    : null;
+  return <LocationContent initialData={initialData} />;
 }

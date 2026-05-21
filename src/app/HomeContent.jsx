@@ -17,7 +17,7 @@ const merriweather = Merriweather({
   subsets: ["latin"],
 });
 
-export default function HomeContent() {
+export default function HomeContent({ homeData }) {
   return (
     <div className="overflow-x-hidden">
       {/* Contenu principal de la page */}
@@ -96,21 +96,21 @@ export default function HomeContent() {
         </div>
 
         {/* COMPOSANTS AVEC LOGIQUE SAISONNIÈRE */}
-        <Event />
-        <HistoireDuLieu />
-        <BrunchExtrait />
+        <Event initialData={homeData?.event} />
+        <HistoireDuLieu initialData={homeData?.histoire} />
+        <BrunchExtrait initialData={homeData?.brunch} />
 
         {/* ThéExtrait - Visible toute l'année */}
         <div className="transition-all duration-500 ease-in-out">
-          <ThéExtrait />
+          <ThéExtrait initialData={homeData?.salon} />
         </div>
 
         {/* TapasExtrait - Disponible toute l'année */}
         <div className="transition-all duration-500 ease-in-out">
-          <TapasExtrait />
+          <TapasExtrait initialData={homeData?.tapas} />
         </div>
 
-        <LocationExtrait />
+        <LocationExtrait initialData={homeData?.location} />
 
         <A_propos />
       </div>

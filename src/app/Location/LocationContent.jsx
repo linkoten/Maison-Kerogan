@@ -4,82 +4,14 @@ import Image from "next/image";
 import Carousel from "@/components/Carousel";
 import logo from "../../../public/format moyen/jaune.jpg";
 import { Merriweather } from "next/font/google";
-import { getLocationEvenementielleBySlug } from "@/lib/getHygraphEvent";
-import { useEffect, useState } from "react";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
   subsets: ["latin"],
 });
 
-const FALLBACK_IMAGES = ["/AT9A4016.jpg", "/AT9A3983.jpg"];
-const FALLBACK_PART2_IMAGES = ["/Photo maison kerogan.jpg", "/AT9A3862.jpg"];
-
-const checkImageAccessible = (url) =>
-  new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-
-export default function LocationContent() {
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchLocation = async () => {
-      try {
-        const locationData = await getLocationEvenementielleBySlug(
-          "locationevenementielle",
-        );
-
-        if (locationData) {
-          const hygraphImages = locationData.images || [];
-          const firstUrl = hygraphImages[0]?.url || hygraphImages[0];
-          const hygraphAccessible = firstUrl
-            ? await checkImageAccessible(firstUrl)
-            : false;
-
-          const transformData = {
-            ...locationData,
-            images: hygraphAccessible ? hygraphImages : FALLBACK_IMAGES,
-            part2Images: hygraphAccessible
-              ? locationData.part2Images?.map((img) => img.url) || []
-              : FALLBACK_PART2_IMAGES,
-            part3Images: locationData.part3Images?.map((img) => img.url) || [],
-          };
-
-          setItem(transformData);
-        } else {
-          setItem({ images: FALLBACK_IMAGES, part2Images: FALLBACK_PART2_IMAGES });
-        }
-      } catch (error) {
-        setItem({ images: FALLBACK_IMAGES, part2Images: FALLBACK_PART2_IMAGES });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchLocation();
-  }, []);
-
-  // États de chargement inchangés...
-  if (loading) {
-    return (
-      <div className="container mx-auto">
-        <div className="flex justify-center items-center h-screen">
-          <div className="flex flex-col items-center gap-4 text-gray-600">
-            <div className="w-12 h-12 border-3 border-ocre border-t-transparent rounded-full animate-spin"></div>
-            <h2 className="text-xl font-medium">Chargement de la page...</h2>
-            <p className="text-sm">
-              Récupération des informations depuis Hygraph
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+export default function LocationContent({ initialData }) {
+  const item = initialData;
 
   if (!item) {
     return (

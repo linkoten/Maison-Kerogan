@@ -7,73 +7,9 @@ import logo from "../../../public/format feuille/jaune.jpg";
 import Link from "next/link";
 import { merriweather, nunito } from "../font";
 import Carousel from "../Carousel";
-import { getLocationEvenementielleBySlug } from "@/lib/getHygraphEvent";
-import { useEffect, useState } from "react";
 
-const FALLBACK_IMAGES = [
-  "/AT9A4016.jpg",
-  "/AT9A3983.jpg",
-];
-
-const checkImageAccessible = (url) =>
-  new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-
-const LocationExtrait = () => {
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchLocation = async () => {
-      try {
-        // Récupérer les données depuis Hygraph avec le slug
-        const locationData = await getLocationEvenementielleBySlug(
-          "locationevenementielle",
-        );
-
-        if (locationData) {
-          const hygraphImages = locationData.images || [];
-
-          let finalImages = FALLBACK_IMAGES;
-          if (hygraphImages.length > 0) {
-            const firstUrl = hygraphImages[0]?.url || hygraphImages[0];
-            const accessible = await checkImageAccessible(firstUrl);
-            finalImages = accessible ? hygraphImages : FALLBACK_IMAGES;
-          }
-
-          setItem({ ...locationData, images: finalImages });
-        } else {
-          setItem({ images: FALLBACK_IMAGES });
-        }
-      } catch (error) {
-        setItem({ images: FALLBACK_IMAGES });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchLocation();
-  }, []);
-
-  // État de chargement
-  if (loading) {
-    return (
-      <div className="container mx-auto">
-        <div className="flex px-4 mb-10 justify-center items-center h-64">
-          <div className="flex flex-col items-center gap-3 text-gray-600">
-            <div className="w-8 h-8 border-2 border-vert border-t-transparent rounded-full animate-spin"></div>
-            <span className="text-sm font-medium">
-              Chargement des informations...
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  }
+const LocationExtrait = ({ initialData }) => {
+  const item = initialData;
 
   // Si pas de données
   if (!item) {

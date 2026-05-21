@@ -4,8 +4,6 @@ import Image from "next/image";
 import { Merriweather } from "next/font/google";
 import Carousel from "@/components/Carousel";
 import logo from "../../../public/format moyen/rose.jpg";
-import { getTapasBySlug } from "@/lib/getHygraphEvent";
-import { useEffect, useState } from "react";
 import { useSeason } from "@/hooks/useSeason";
 
 const merriweather = Merriweather({
@@ -13,94 +11,9 @@ const merriweather = Merriweather({
   subsets: ["latin"],
 });
 
-const FALLBACK_IMAGES = ["/18832.png"];
-const FALLBACK_PHOTOS_GALERIES = ["/0030_Maison_Kerogan-30.jpg"];
-const FALLBACK_PART2_IMAGES = ["/tapas.jpg", "/0030_Maison_Kerogan-30.jpg"];
-
-const checkImageAccessible = (url) =>
-  new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-
-export default function TapasContent() {
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
+export default function TapasContent({ initialData }) {
+  const item = initialData;
   const { isSummer, isWinter } = useSeason();
-
-  useEffect(() => {
-    const fetchTapas = async () => {
-      try {
-        // SIMPLIFIÉ - Tentative directe avec slug "tapas"
-        const tapasData = await getTapasBySlug("tapas");
-
-        if (tapasData) {
-          // Vérifier accessibilité du CDN Hygraph une seule fois
-          const allUrls = [
-            ...(tapasData.images || []),
-            ...(tapasData.photosGaleries || []),
-            ...(tapasData.part2Images || []),
-          ];
-          const firstUrl = allUrls[0]?.url || allUrls[0];
-          const hygraphAccessible = firstUrl
-            ? await checkImageAccessible(firstUrl)
-            : false;
-
-          const transformData = {
-            ...tapasData,
-            images: hygraphAccessible
-              ? tapasData.images?.map((img) => img.url) || []
-              : FALLBACK_IMAGES,
-            part2Images: hygraphAccessible
-              ? tapasData.part2Images?.map((img) => img.url) || []
-              : FALLBACK_PART2_IMAGES,
-            part3Images: tapasData.part3Images?.map((img) => img.url) || [],
-            photosGaleries: hygraphAccessible
-              ? tapasData.photosGaleries?.map((img) => img.url) || []
-              : FALLBACK_PHOTOS_GALERIES,
-            menu: tapasData.menu?.map((img) => img.url) || [],
-          };
-
-          setItem(transformData);
-        } else {
-          setItem({
-            images: FALLBACK_IMAGES,
-            photosGaleries: FALLBACK_PHOTOS_GALERIES,
-            part2Images: FALLBACK_PART2_IMAGES,
-          });
-        }
-      } catch (error) {
-        setItem({
-          images: FALLBACK_IMAGES,
-          photosGaleries: FALLBACK_PHOTOS_GALERIES,
-          part2Images: FALLBACK_PART2_IMAGES,
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTapas();
-  }, []);
-
-  // État de chargement
-  if (loading) {
-    return (
-      <div className="container mx-auto">
-        <div className="flex justify-center items-center h-screen">
-          <div className="flex flex-col items-center gap-4 text-gray-600">
-            <div className="w-12 h-12 border-3 border-terracotta border-t-transparent rounded-full animate-spin"></div>
-            <h2 className="text-xl font-medium">Chargement de la page...</h2>
-            <p className="text-sm">
-              Récupération des informations depuis Hygraph
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   // Si pas de données
   if (!item) {

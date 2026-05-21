@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   Calendar,
@@ -10,7 +9,6 @@ import {
   Phone,
   Mail,
 } from "lucide-react";
-import { getFeaturedEvent } from "@/lib/getHygraphEvent";
 import { Merriweather } from "next/font/google";
 
 const merriweather = Merriweather({
@@ -18,78 +16,8 @@ const merriweather = Merriweather({
   subsets: ["latin"],
 });
 
-const Event = () => {
-  const [event, setEvent] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchEvent = async () => {
-      try {
-        setError(null);
-        const eventData = await getFeaturedEvent();
-        setEvent(eventData);
-      } catch (error) {
-        console.error("Erreur lors du chargement de l'événement:", error);
-        setError("Impossible de charger l'événement");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEvent();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="container mx-auto px-4 py-12">
-        {/* Skeleton loading amélioré */}
-        <div className="max-w-4xl mx-auto">
-          <div className="animate-pulse">
-            {/* Header skeleton */}
-            <div className="text-center mb-8">
-              <div className="h-8 bg-gray-200 rounded-lg w-64 mx-auto mb-4"></div>
-              <div className="h-1 bg-gray-200 rounded w-24 mx-auto"></div>
-            </div>
-
-            {/* Card skeleton */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="md:flex">
-                <div className="md:w-1/2 h-80 bg-gray-200"></div>
-                <div className="md:w-1/2 p-8 space-y-6">
-                  <div className="h-8 bg-gray-200 rounded-lg w-3/4"></div>
-                  <div className="space-y-3">
-                    <div className="h-5 bg-gray-200 rounded w-1/2"></div>
-                    <div className="h-5 bg-gray-200 rounded w-1/3"></div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-4 bg-gray-200 rounded w-full"></div>
-                    <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-                    <div className="h-4 bg-gray-200 rounded w-4/6"></div>
-                  </div>
-                  <div className="h-12 bg-gray-200 rounded-xl w-full"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-md mx-auto bg-red-50 border border-red-200 rounded-2xl p-8 text-center shadow-lg">
-          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="text-2xl">⚠️</span>
-          </div>
-          <h3 className="text-lg font-semibold text-red-800 mb-2">Oups !</h3>
-          <p className="text-red-600 text-sm">{error}</p>
-        </div>
-      </div>
-    );
-  }
+const Event = ({ initialData }) => {
+  const event = initialData;
 
   if (!event) {
     return null;

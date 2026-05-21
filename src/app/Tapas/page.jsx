@@ -1,4 +1,7 @@
 import TapasContent from "./TapasContent";
+import { getTapasBySlug } from "@/lib/getHygraphEvent";
+
+export const revalidate = 3600;
 
 export const metadata = {
   title:
@@ -25,6 +28,17 @@ export const metadata = {
   },
 };
 
-export default function Page() {
-  return <TapasContent />;
+export default async function Page() {
+  const tapasData = await getTapasBySlug("tapas");
+  const initialData = tapasData
+    ? {
+        ...tapasData,
+        images: tapasData.images?.map((img) => img.url) ?? [],
+        part2Images: tapasData.part2Images?.map((img) => img.url) ?? [],
+        part3Images: tapasData.part3Images?.map((img) => img.url) ?? [],
+        photosGaleries: tapasData.photosGaleries?.map((img) => img.url) ?? [],
+        menu: tapasData.menu?.map((img) => img.url) ?? [],
+      }
+    : null;
+  return <TapasContent initialData={initialData} />;
 }

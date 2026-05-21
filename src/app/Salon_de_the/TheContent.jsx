@@ -4,77 +4,14 @@ import Image from "next/image";
 import { Merriweather } from "next/font/google";
 import Carousel from "@/components/Carousel";
 import logo from "../../../public/format moyen/rouge.jpg";
-import { getSalonDeTheBySlug } from "@/lib/getHygraphEvent";
-import { useEffect, useState } from "react";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
   subsets: ["latin"],
 });
 
-const FALLBACK_IMAGES = ["/IMG_0160.jpg", "/IMG_0378.jpg", "/0123_Maison_Kerogan-123.png"];
-
-const checkImageAccessible = (url) =>
-  new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-
-export default function TheContent() {
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchSalonDeThe = async () => {
-      try {
-        const salonData = await getSalonDeTheBySlug("salondethe");
-
-        if (salonData) {
-          const hygraphImages = salonData.images?.map((img) => img.url) || [];
-          const firstUrl = hygraphImages[0];
-          const hygraphAccessible = firstUrl
-            ? await checkImageAccessible(firstUrl)
-            : false;
-
-          const transformData = {
-            ...salonData,
-            images: hygraphAccessible ? hygraphImages : FALLBACK_IMAGES,
-            part2Images: salonData.part2Images?.map((img) => img.url) || [],
-            part3Images: salonData.part3Images?.map((img) => img.url) || [],
-          };
-
-          setItem(transformData);
-        } else {
-          setItem({ images: FALLBACK_IMAGES });
-        }
-      } catch (error) {
-        setItem({ images: FALLBACK_IMAGES });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSalonDeThe();
-  }, []);
-
-  // État de chargement
-  if (loading) {
-    return (
-      <div className="container mx-auto">
-        <div className="flex justify-center items-center h-screen">
-          <div className="flex flex-col items-center gap-4 text-gray-600">
-            <div className="w-12 h-12 border-3 border-terracotta border-t-transparent rounded-full animate-spin"></div>
-            <h2 className="text-xl font-medium">Chargement de la page...</h2>
-            <p className="text-sm">
-              Récupération des informations depuis Hygraph
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+export default function TheContent({ initialData }) {
+  const item = initialData;
 
   // Si pas de données
   if (!item) {

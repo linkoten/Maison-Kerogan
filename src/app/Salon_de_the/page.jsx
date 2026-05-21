@@ -1,4 +1,7 @@
 import TheContent from "./TheContent";
+import { getSalonDeTheBySlug } from "@/lib/getHygraphEvent";
+
+export const revalidate = 3600;
 
 export const metadata = {
   title:
@@ -25,6 +28,15 @@ export const metadata = {
   },
 };
 
-export default function Page() {
-  return <TheContent />;
+export default async function Page() {
+  const salonData = await getSalonDeTheBySlug("salondethe");
+  const initialData = salonData
+    ? {
+        ...salonData,
+        images: salonData.images?.map((img) => img.url) ?? [],
+        part2Images: salonData.part2Images?.map((img) => img.url) ?? [],
+        part3Images: salonData.part3Images?.map((img) => img.url) ?? [],
+      }
+    : null;
+  return <TheContent initialData={initialData} />;
 }

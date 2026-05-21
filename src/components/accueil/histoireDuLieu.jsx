@@ -1,102 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { merriweather, nunito } from "@/components/font";
 import Carousel from "@/components/Carousel";
-import { getHistoireDuLieuBySlug } from "@/lib/getHygraphEvent";
 import Image from "next/image";
 import logo from "../../../public/format feuille/blanc.jpg";
 
-const FALLBACK_IMAGES = [
-  "/Photo maison kerogan.jpg",
-  "/photo salle.jpg",
-  "/AT9A3862.jpg",
-];
-
-const checkImageAccessible = (url) =>
-  new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-
-const HistoiresDuLieu = () => {
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchHistoireDuLieu = async () => {
-      try {
-        const histoireData = await getHistoireDuLieuBySlug("histoireDuLieu");
-
-        if (histoireData) {
-          // Transformer les images pour le Carousel
-          const transformedImages =
-            histoireData.images?.map((img) => img.url) || [];
-
-          let finalImages = FALLBACK_IMAGES;
-          if (transformedImages.length > 0) {
-            const accessible = await checkImageAccessible(transformedImages[0]);
-            finalImages = accessible ? transformedImages : FALLBACK_IMAGES;
-          }
-
-          setItem({
-            ...histoireData,
-            images: finalImages,
-          });
-        } else {
-          setItem({ title: "", paragraphe1: "", paragraphe2: null, images: FALLBACK_IMAGES });
-        }
-      } catch (error) {
-        setItem({ title: "", paragraphe1: "", paragraphe2: null, images: FALLBACK_IMAGES });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchHistoireDuLieu();
-  }, []);
-
-  // État de chargement
-  if (loading) {
-    return (
-      <div className="container mx-auto">
-        <div className="flex px-4 mb-10 space-y-4 grid grid-cols-1 lg:grid-cols-3 lg:px-0 lg:space-y-0">
-          {/* Skeleton pour le texte */}
-          <div className="flex flex-col px-6 w-full border-gray-200 border-2 shadow-lg bg-gray-50 text-vert rounded-xl relative overflow-hidden animate-pulse">
-            <div className="flex w-full pt-4 mb-3 justify-between items-center">
-              <div>
-                <div className="h-6 w-32 bg-gray-300 rounded mb-2"></div>
-                <div className="h-1 w-16 bg-gray-300 rounded"></div>
-              </div>
-              <div className="h-12 w-12 bg-gray-300 rounded"></div>
-            </div>
-
-            <div className="flex flex-col w-full h-full px-2 relative">
-              <div className="border-l-2 border-gray-300 pl-4 my-4">
-                <div className="space-y-2 mb-6">
-                  <div className="h-3 bg-gray-300 rounded w-full"></div>
-                  <div className="h-3 bg-gray-300 rounded w-3/4"></div>
-                  <div className="h-3 bg-gray-300 rounded w-5/6"></div>
-                </div>
-              </div>
-
-              <div className="space-y-2 mb-4">
-                <div className="h-3 bg-gray-300 rounded w-2/3"></div>
-                <div className="h-3 bg-gray-300 rounded w-1/2"></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Skeleton pour le carousel */}
-          <div className="px-6 sm:px-0 w-full col-span-2">
-            <div className="h-64 bg-gray-200 rounded-xl animate-pulse"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+const HistoiresDuLieu = ({ initialData }) => {
+  const item = initialData;
 
   // État sans données
   if (!item) {
